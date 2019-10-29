@@ -1,4 +1,4 @@
-package com.liamma.commons.base.adapter;
+package com.liamma.commons.adapters;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -18,6 +18,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 /**
  * RecyclerView Holder for all RecyclerView.

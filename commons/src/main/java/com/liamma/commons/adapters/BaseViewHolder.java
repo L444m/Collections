@@ -1,9 +1,10 @@
-package com.liamma.commons.base.adapter;
+package com.liamma.commons.adapters;
 
 import android.util.SparseArray;
 import android.view.View;
 
 import androidx.annotation.IdRes;
+
 
 /**
  * Created by Liam on 2019/1/4

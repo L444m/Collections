@@ -1,4 +1,4 @@
-package com.liamma.commons.base.mvp;
+package com.liamma.commons.framewroks.mvp.base;
 
 /**
  * Base interface of model.

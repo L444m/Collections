@@ -4,8 +4,8 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.liamma.commons.base.adapter.RecyclerViewAdapter;
-import com.liamma.commons.base.adapter.RecyclerViewHolder;
+import com.liamma.commons.adapters.RecyclerViewAdapter;
+import com.liamma.commons.adapters.RecyclerViewHolder;
 
 
 /**

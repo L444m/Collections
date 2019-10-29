@@ -1,4 +1,4 @@
-package com.liamma.commons.widget;
+package com.liamma.commons.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;

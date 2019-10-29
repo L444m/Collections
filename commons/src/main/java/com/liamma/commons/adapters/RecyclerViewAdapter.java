@@ -1,4 +1,4 @@
-package com.liamma.commons.base.adapter;
+package com.liamma.commons.adapters;
 
 import android.content.Context;
 import android.view.View;
