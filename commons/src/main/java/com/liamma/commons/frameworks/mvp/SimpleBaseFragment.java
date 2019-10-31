@@ -1,4 +1,4 @@
-package com.liamma.commons.framewroks.mvp;
+package com.liamma.commons.frameworks.mvp;
 
 import android.os.Bundle;
 

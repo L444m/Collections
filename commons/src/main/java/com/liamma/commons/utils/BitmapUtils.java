@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +27,20 @@ public final class BitmapUtils {
     // bitmap 2 file
     // bitmap 2 gallery
 
+    public static byte[] bitmapToBytes(@Nullable Bitmap bitmap) {
+        return null;
+    }
+
+    public static String bitmapToString(@Nullable Bitmap bitmap) {
+        byte[] bytes = bitmapToBytes(bitmap);
+
+        if (EmptyUtils.isEmpty(bytes)) {
+            return "";
+        } else {
+            return new String(bytes);
+        }
+    }
+
     /**
      * Saves bitmap into the specified filename.
      *
@@ -33,8 +48,12 @@ public final class BitmapUtils {
      * @param filename String filename
      * @return {@code true} if saving successfully, otherwise {@code false}.
      */
-    public static File saveToFile(@NonNull Bitmap bitmap, String filename) {
+    public static File bitmapToFile(@NonNull Bitmap bitmap, String filename) {
         return null;
+    }
+
+    public static boolean bitmapToFile(@NonNull Bitmap bitmap, File file) {
+        return false;
     }
 
     /**
@@ -75,7 +94,6 @@ public final class BitmapUtils {
     }
 
     public static Bitmap getRatioBitmap(String imgPath, float wPixel, float hPixel) {
-
         return null;
     }
 

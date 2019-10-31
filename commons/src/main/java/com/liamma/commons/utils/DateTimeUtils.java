@@ -23,9 +23,12 @@ public final class DateTimeUtils {
 
     public static final long SECOND = 1000L;
     public static final long MINUTE = 60 * SECOND;
-    public static final long HALF_HOUR = 30 * MINUTE;
     public static final long HOUR = 60 * MINUTE;
     public static final long DAY = 24 * HOUR;
+    public static final long YEAR = 365 * DAY;
+
+    public static final long HALF_HOUR = 30 * MINUTE;
+    public static final long HALF_DAY = 12 * HOUR;
 
     private static final long SECONDS_IN_DAY = 24 * 60 * 60;
     private static final long MILLS_IN_DAY = 1000 * SECONDS_IN_DAY;
@@ -35,7 +38,7 @@ public final class DateTimeUtils {
     public static final String YYYY_MM_DD = "yyyy-MM-dd";
     public static final String MM_DD = "MM-dd";
 
-    // return "now" timestamp value.
+    // return current timestamp value.
     private static long now() {
         return System.currentTimeMillis();
     }

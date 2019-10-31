@@ -2,7 +2,7 @@ package com.liamma.commons.utils;
 
 import android.view.View;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 
 /**
@@ -17,8 +17,9 @@ public final class ClickUtils {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-
-    public static boolean isValid(@NonNull View view, long duration) {
+    public static boolean isValid(@Nullable View view, long duration) {
+        if (view == null) return false;
+        // object tag could be null.
         Object tag = view.getTag();
         long current = System.currentTimeMillis();
 
@@ -36,24 +37,16 @@ public final class ClickUtils {
         }
     }
 
-    public static boolean isValid(@NonNull View view) {
+    public static boolean isValid(@Nullable View view) {
         return isValid(view, CLICK_DURATION);
     }
 
-    public static boolean isFastClick(@NonNull View view, long duration) {
-        return false;
+    public static boolean isFastClick(@Nullable View view, long duration) {
+        return !isValid(view, duration);
     }
 
-    public static void testNull(Object o) {
-        if (o instanceof String) {
-            System.out.println((String) o);
-        } else {
-            System.out.println("it is not String.");
-        }
-    }
-
-    public static void main(String[] args) {
-        testNull(null);
+    public static boolean isFastClick(@Nullable View view) {
+        return !isValid(view);
     }
 
 }

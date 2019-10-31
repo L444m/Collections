@@ -1,4 +1,4 @@
-package com.liamma.commons.framewroks.mvp.base;
+package com.liamma.commons.frameworks.mvp.base;
 
 /**
  * Default empty model .

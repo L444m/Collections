@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.liamma.collections.dialog.BaseDialogFragment;
 import com.liamma.collections.event.MessageEvent;
 import com.liamma.collections.widget.CustomSpinner;
-import com.liamma.commons.framewroks.mvp.BaseToolsActivity;
+import com.liamma.commons.frameworks.mvp.BaseToolsActivity;
 import com.liamma.commons.adapters.RecyclerViewAdapter;
 import com.liamma.commons.adapters.RecyclerViewHolder;
 import com.liamma.commons.common.SpannableEditor;
