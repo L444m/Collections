@@ -178,7 +178,7 @@ public class MainActivity extends BaseToolsActivity {
     private void compareInSecond() {
 
         String s1 = "2018-08-25 20:47:50";
-        int result = DateTimeUtils.format().compareTo(s1);
+        int result = DateTimeUtils.formatTimestamp().compareTo(s1);
 
         Timestamp timestamp = Timestamp.valueOf(s1);
         long value = timestamp.getTime();
@@ -291,7 +291,7 @@ public class MainActivity extends BaseToolsActivity {
         current = System.currentTimeMillis();
 
 
-        // String format
+        // String formatTimestamp
         for (int i = 0; i < count; i++) {
             result = String.format("我们班%1$s学习成绩最好。", "lily");
         }

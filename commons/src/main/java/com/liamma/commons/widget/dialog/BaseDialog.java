@@ -2,7 +2,9 @@ package com.liamma.commons.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+
 import androidx.annotation.NonNull;
+
 
 /**
  * Base dialog.
@@ -28,13 +30,14 @@ public abstract class BaseDialog extends Dialog {
 
     /**
      * Offer a layout for this dialog.
+     *
      * @return layout ResId
      */
     protected int setView() {
         return 0;
     }
 
-    protected void initView(){
+    protected void initView() {
     }
 
     /**
@@ -47,6 +50,5 @@ public abstract class BaseDialog extends Dialog {
         void onNegativeButtonClick(Dialog dialog);
 
     }
-
 
 }
