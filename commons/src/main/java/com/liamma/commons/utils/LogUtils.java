@@ -6,7 +6,7 @@ import com.liamma.commons.Constants;
 
 
 /**
- * A simple Logger.
+ * A simple Logger for Android.
  * Created by Liam on 2017/12/6.
  */
 public final class LogUtils {
@@ -30,7 +30,6 @@ public final class LogUtils {
     // Returns a string which consist of class name and method name and so on.
     private static String getLogInfo() {
         StackTraceElement[] elements = new Throwable().getStackTrace();
-
         int offset = getStackOffset(elements);
         StackTraceElement element = elements[offset];
 
@@ -56,21 +55,21 @@ public final class LogUtils {
 
     /**
      * Outputs log of level "i".
-     * Only use when you want to display in the release versions.
+     * Only use when you want to show logs in the release versions.
      */
-    public static void xi(String log) {
+    public static void ri(String log) {
         Log.i(TAG, log);
     }
 
     /**
      * Outputs log of level "e".
-     * Only use when you want to display in the release versions.
+     * Only use when you want to show logs in the release versions.
      */
-    public static void xe(String log) {
+    public static void re(String log) {
         Log.e(TAG, log);
     }
 
-    // Below methods are for debugging.
+    // Below methods are for debugging and can be turned off by set DEBUG false.
 
     public static void i(String log) {
         i(TAG, log);

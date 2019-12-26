@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.liamma.commons.ActivitiesManager;
-import com.liamma.commons.common.StatusBarUtils;
 import com.liamma.commons.utils.ClickUtils;
 import com.liamma.commons.utils.KeyboardUtils;
 import com.liamma.commons.utils.LogUtils;
@@ -32,27 +31,25 @@ import butterknife.Unbinder;
  */
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    protected static String TAG;
+    protected static String TAG = "";
 
     protected Context context;
+    protected Unbinder unbinder;
     @Nullable
     protected Bundle extras;
-    protected Unbinder unbinder;
     protected LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // No Title at the top of screen.
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        // TODO: set status bar color.
-        StatusBarUtils.setBarColor(this);
-
+        // set status bar color, or set it in subActivity.
+        // StatusBarUtils.setBarColor(this);
+        ActivitiesManager.getInstance().addActivity(this);
         hideLoading();
+
         TAG = this.getClass().getSimpleName();
         LogUtils.d(" ---> onCreate");
-
-        ActivitiesManager.getInstance().addActivity(this);
 
         prepare();
         initContentView();
@@ -64,7 +61,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     /**
-     * Do some work before init content view.
+     * Preparations for Activity which should be done before initiating content view,
+     * override this method in sub Activity.
      */
     protected void prepare() {
     }

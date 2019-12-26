@@ -1,5 +1,7 @@
 package com.liamma.commons.utils;
 
+import androidx.annotation.Nullable;
+
 import java.io.Closeable;
 import java.io.IOException;
 
@@ -17,7 +19,7 @@ public final class IOUtils {
     /**
      * Closes the IO streams.
      */
-    public static void close(final Closeable... closeables) {
+    public static void close(@Nullable final Closeable... closeables) {
         if (EmptyUtils.isEmpty(closeables)) return;
 
         for (Closeable closeable : closeables) {
@@ -34,7 +36,7 @@ public final class IOUtils {
     /**
      * Closes the IO steam quietly.
      */
-    public static void closeQuietly(final Closeable... closeables) {
+    public static void closeQuietly(@Nullable final Closeable... closeables) {
         if (EmptyUtils.isEmpty(closeables)) return;
 
         for (Closeable closeable : closeables) {
@@ -43,8 +45,8 @@ public final class IOUtils {
                     closeable.close();
                 }
             } catch (IOException e) {
-                // swallow
                 // e.printStackTrace();
+                // swallow
             }
         }
     }

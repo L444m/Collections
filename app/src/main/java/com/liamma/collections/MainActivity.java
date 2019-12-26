@@ -25,6 +25,7 @@ import com.liamma.commons.adapters.RecyclerViewHolder;
 import com.liamma.commons.common.SpannableEditor;
 import com.liamma.commons.utils.DateTimeUtils;
 import com.liamma.commons.utils.FormatUtils;
+import com.liamma.commons.utils.LogUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -43,8 +44,8 @@ public class MainActivity extends BaseToolsActivity {
 
     private static final String TAG = "MainActivity";
 
-    @BindView(R.id.ll_layout)
-    LinearLayout linearLayout;
+//    @BindView(R.id.ll_layout)
+//    LinearLayout linearLayout;
 
     @BindView(R.id.tv_main_msg)
     TextView showMessage;
@@ -65,7 +66,6 @@ public class MainActivity extends BaseToolsActivity {
 
     @Override
     protected void initView() {
-        super.initView();
         start.setOnClickListener(this);
 
         // lambda
@@ -77,6 +77,7 @@ public class MainActivity extends BaseToolsActivity {
     protected void initData() {
         // setNormalSpinner();
         initRecyclerView();
+        testLogger();
     }
 
     @Override
@@ -103,6 +104,12 @@ public class MainActivity extends BaseToolsActivity {
             default:
                 break;
         }
+    }
+
+    private void testLogger() {
+        String s = "123";
+        LogUtils.i("---> s == " + s);
+        LogUtils.d("this is a debug log message.");
     }
 
     // 初始化 RecyclerView .
