@@ -1,4 +1,4 @@
-package com.liamma.commons.image;
+package com.liamma.commons.common.image;
 
 /**
  * Interface of image loader.
