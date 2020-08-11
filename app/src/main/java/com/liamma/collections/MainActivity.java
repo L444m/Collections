@@ -4,31 +4,19 @@ import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.liamma.collections.dialog.BaseDialogFragment;
-import com.liamma.collections.event.MessageEvent;
-import com.liamma.collections.widget.CustomSpinner;
-import com.liamma.commons.frameworks.mvp.BaseToolsActivity;
-import com.liamma.commons.adapters.RecyclerViewAdapter;
-import com.liamma.commons.adapters.RecyclerViewHolder;
-import com.liamma.commons.common.SpannableEditor;
 import com.liamma.commons.utils.DateTimeUtils;
 import com.liamma.commons.utils.FormatUtils;
 import com.liamma.commons.utils.LogUtils;
-
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -37,73 +25,22 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 
-
-public class MainActivity extends BaseToolsActivity {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-//    @BindView(R.id.ll_layout)
-//    LinearLayout linearLayout;
-
-    @BindView(R.id.tv_main_msg)
-    TextView showMessage;
-
-    @BindView(R.id.btn_main_start)
-    Button start;
-
-    @BindView(R.id.sp_main_spinner)
-    CustomSpinner<String> spinner;
-
-    @BindView(R.id.rv_main_list)
-    RecyclerView recyclerView;
+    private TextView tvStartAnimator;
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.activity_main;
-    }
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-    @Override
-    protected void initView() {
-        start.setOnClickListener(this);
-
-        // lambda
-        // start.setOnClickListener(v -> ToastUtils.showShort(MainActivity.this, "click"));
-        // showMessage.setText("testDataColor");
-    }
-
-    @Override
-    protected void initData() {
-        // setNormalSpinner();
-        initRecyclerView();
-        testLogger();
-    }
-
-    @Override
-    public void onClick(View view) {
-        super.onClick(view);
-
-        int id = view.getId();
-        switch (id) {
-            case R.id.btn_main_start:
-
-                // Toast.makeText(this, "功能正常", Toast.LENGTH_LONG).show();
-                // changeTextAttr();
-
-                // Logger.d("testing message.");
-                // Intent intent = new Intent(this, StatusMode.class);
-                // startActivity(intent);
-
-                // startShowDialogFragment();
-
-                // testDoubleDecimal();
-                testBigDecimal();
-
-                break;
-            default:
-                break;
-        }
+        tvStartAnimator = findViewById(R.id.tv_main_start_animator);
+        tvStartAnimator.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, AnimatorActivity.class));
+        });
     }
 
     private void testLogger() {
@@ -113,7 +50,7 @@ public class MainActivity extends BaseToolsActivity {
     }
 
     // 初始化 RecyclerView .
-    private void initRecyclerView() {
+    /*private void initRecyclerView() {
         LinearLayoutManager llm = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         DividerItemDecoration did = new DividerItemDecoration(this, llm.getOrientation());
         recyclerView.setLayoutManager(llm);
@@ -143,7 +80,7 @@ public class MainActivity extends BaseToolsActivity {
 
         // adapter 设置数据 after setAdapter .
         adapter.setDataSet(dataSet);
-    }
+    }*/
 
     private void testDoubleDecimal() {
         float ff = 1056.12345678901234567899F;
@@ -165,14 +102,6 @@ public class MainActivity extends BaseToolsActivity {
     private void startShowDialogFragment() {
         BaseDialogFragment dialogFragment = new BaseDialogFragment();
         dialogFragment.show(getFragmentManager(), "test");
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(MessageEvent event) {
-        if ("test".equals(event.message)) {
-            Log.i(TAG, "onMessageEvent: deal with event.");
-            showMessage.setText("message has changed by second.");
-        }
     }
 
     private void showAlertDialog() {
@@ -219,7 +148,7 @@ public class MainActivity extends BaseToolsActivity {
         // R.layout.my_spinner_item
 //        ArrayAdapter<String> adapter =
 //                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, strings);
-        spinner.setDataSet(strings);
+        //spinner.setDataSet(strings);
 
         /*
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -264,12 +193,12 @@ public class MainActivity extends BaseToolsActivity {
     }
 
     // 使用 Spannable 更改 text 中的文字样式。
-    private void changeTextAttr() {
+    /*private void changeTextAttr() {
         String text = showMessage.getText().toString();
         SpannableEditor spannableEditor = new SpannableEditor(this, text);
         spannableEditor.setTextSize(24, "test");
         showMessage.setText(spannableEditor.build());
-    }
+    }*/
 
     // 测试多种不同的字符串拼接方法的速度。
     private void compareStrings() {

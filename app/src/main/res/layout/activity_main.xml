@@ -3,35 +3,31 @@
     android:id="@+id/ll_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
 
     <TextView
-        android:id="@+id/tv_main_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="show message" />
-
-    <Button
-        android:id="@+id/btn_main_start"
+        android:id="@+id/tv_main_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="start" />
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Start testing"
+        android:textSize="16sp"
+        android:textColor="@color/red"/>
 
-    <com.liamma.collections.widget.CustomSpinner
-        android:id="@+id/sp_main_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:minWidth="90dp"
-        android:minHeight="28dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_main_list"
+    <TextView
+        android:id="@+id/tv_main_start_animator"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp" />
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/grey"
+        android:gravity="center"
+        android:text="Test Animation"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp" />
+
+
 
 </LinearLayout>
