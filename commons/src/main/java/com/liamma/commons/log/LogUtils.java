@@ -1,4 +1,4 @@
-package com.liamma.commons.common.log;
+package com.liamma.commons.log;
 
 // 增加 priority 的设置。
 public final class LogUtils {
