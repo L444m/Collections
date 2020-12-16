@@ -1,4 +1,4 @@
-package com.liamma.commons.common;
+package com.liamma.commons.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;

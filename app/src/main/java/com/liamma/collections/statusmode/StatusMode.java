@@ -6,7 +6,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.liamma.collections.R;
-import com.liamma.commons.common.StatusBarUtils;
+import com.liamma.commons.utils.StatusBarUtils;
 
 
 /**

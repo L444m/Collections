@@ -5,7 +5,6 @@ import android.view.View;
 
 import androidx.annotation.IdRes;
 
-
 /**
  * Created by Liam on 2019/1/4
  */

@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
 /**
  * Indicates whether the specified "Collection" is empty or not.
  * Created by Liam on 2017/12/6.
@@ -23,13 +22,13 @@ public final class EmptyUtils {
     // Empty string.
     public static final String EMPTY_STRING = "";
 
-    // Empty map / list / set, use Collections class to retrieve an empty instance.
+    // Empty map, list, set, use Collections class to retrieve an empty instance.
     public static final Map EMPTY_MAP = Collections.EMPTY_MAP;
     public static final List EMPTY_LIST = Collections.EMPTY_LIST;
     public static final Set EMPTY_SET = Collections.EMPTY_SET;
 
     private EmptyUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated");
+        throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
     /**
@@ -135,32 +134,32 @@ public final class EmptyUtils {
     /**
      * Indicates whether the SparseArray is empty or not.
      *
-     * @param sparseArray SparseArray
+     * @param array SparseArray
      * @return {@code true} if the specified SparseArray is null or empty, otherwise {@code false}.
      */
-    public static boolean isEmpty(@Nullable SparseArray sparseArray) {
-        return sparseArray == null || sparseArray.size() == 0;
+    public static boolean isEmpty(@Nullable SparseArray array) {
+        return array == null || array.size() == 0;
     }
 
     /**
      * @see EmptyUtils#isEmpty(SparseArray)
      */
-    public static boolean isEmpty(@Nullable SparseIntArray sparseIntArray) {
-        return sparseIntArray == null || sparseIntArray.size() == 0;
+    public static boolean isEmpty(@Nullable SparseIntArray array) {
+        return array == null || array.size() == 0;
     }
 
     /**
      * @see EmptyUtils#isEmpty(SparseArray)
      */
-    public static boolean isEmpty(@Nullable SparseLongArray sparseLongArray) {
-        return sparseLongArray == null || sparseLongArray.size() == 0;
+    public static boolean isEmpty(@Nullable SparseLongArray array) {
+        return array == null || array.size() == 0;
     }
 
     /**
      * @see EmptyUtils#isEmpty(SparseArray)
      */
-    public static boolean isEmpty(@Nullable SparseBooleanArray sparseBooleanArray) {
-        return sparseBooleanArray == null || sparseBooleanArray.size() == 0;
+    public static boolean isEmpty(@Nullable SparseBooleanArray array) {
+        return array == null || array.size() == 0;
     }
 
 }

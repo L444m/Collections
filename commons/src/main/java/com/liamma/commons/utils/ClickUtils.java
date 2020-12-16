@@ -6,7 +6,6 @@ import androidx.annotation.Nullable;
 
 import com.liamma.commons.R;
 
-
 /**
  * Created by Liam on 2019/7/29.
  */
@@ -16,12 +15,14 @@ public final class ClickUtils {
     public static final long CLICK_DURATION = 200;
 
     private ClickUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated");
+        throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
     private static boolean isValid(@Nullable final View view, final long duration) {
-        if (view == null) return false;
-        // object tag could be null.
+        if (view == null) {
+            return false;
+        }
+
         Object tag = view.getTag(TAG_CLICK);
         long current = System.currentTimeMillis();
 

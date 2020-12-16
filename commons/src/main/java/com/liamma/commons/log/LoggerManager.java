@@ -1,4 +1,4 @@
-package com.liamma.commons.common.log;
+package com.liamma.commons.log;
 
 import android.util.Log;
 

@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-
 /**
  * Utility methods for Bitmap.
  * Created by Liam on 2017/12/7.
@@ -67,8 +66,7 @@ public final class BitmapUtils {
      * @return Bitmap
      * @throws IOException IOException
      */
-    public static Bitmap getRatioBitmap(Context context, Uri imgUri, int wPixel, int hPixel)
-            throws IOException {
+    public static Bitmap getRatioBitmap(Context context, Uri imgUri, int wPixel, int hPixel) throws IOException {
 
         BitmapFactory.Options boundsOptions = new BitmapFactory.Options();
         boundsOptions.inJustDecodeBounds = true;

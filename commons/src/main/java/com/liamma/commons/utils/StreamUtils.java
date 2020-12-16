@@ -11,7 +11,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Objects;
 
-
 /**
  * Utility methods for operating of stream.
  * Created by Liam on 2017/12/6.
