@@ -26,7 +26,7 @@ public class HeaderInterceptor implements Interceptor {
     }
 
     public HeaderInterceptor(@Nullable Map<String, Object> headers) {
-        if (!EmptyUtils.isEmpty(headers)) {
+        if (EmptyUtils.isNotEmpty(headers)) {
             this.headers.putAll(headers);
         }
     }
@@ -41,7 +41,7 @@ public class HeaderInterceptor implements Interceptor {
 
         Request.Builder builder = chain.request().newBuilder();
 
-        if (!EmptyUtils.isEmpty(headers)) {
+        if (EmptyUtils.isNotEmpty(headers)) {
             for (Map.Entry<String, Object> entry : headers.entrySet()) {
                 builder.addHeader(entry.getKey(), String.valueOf(entry.getValue()));
             }

@@ -65,12 +65,9 @@ public final class StreamUtils {
      * @return {@code true} if writing successfully, otherwise {@code false}.
      * @throws IOException IOException
      */
-    public static boolean write(@NonNull OutputStream out, @Nullable byte[] bytes)
-            throws IOException {
+    public static boolean write(@NonNull OutputStream out, @Nullable byte[] bytes) throws IOException {
         Objects.requireNonNull(out, "OutputStream is null");
-
         if (EmptyUtils.isEmpty(bytes)) {
-            //
             return true;
         }
 
@@ -83,7 +80,6 @@ public final class StreamUtils {
             bos.write(bytes);
             bos.flush();
             return true;
-
         } finally {
             IOUtils.closeQuietly(bos);
         }

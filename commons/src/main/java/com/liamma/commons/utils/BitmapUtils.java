@@ -32,7 +32,6 @@ public final class BitmapUtils {
 
     public static String bitmapToString(@Nullable Bitmap bitmap) {
         byte[] bytes = bitmapToBytes(bitmap);
-
         if (EmptyUtils.isEmpty(bytes)) {
             return "";
         } else {
@@ -67,14 +66,15 @@ public final class BitmapUtils {
      * @throws IOException IOException
      */
     public static Bitmap getRatioBitmap(Context context, Uri imgUri, int wPixel, int hPixel) throws IOException {
-
         BitmapFactory.Options boundsOptions = new BitmapFactory.Options();
         boundsOptions.inJustDecodeBounds = true;
         // default : Bitmap.Config.ARGB_8888
         boundsOptions.inPreferredConfig = Bitmap.Config.RGB_565;
         InputStream inputStream = context.getContentResolver().openInputStream(imgUri);
         BitmapFactory.decodeStream(inputStream, null, boundsOptions);
-        if (inputStream != null) inputStream.close();
+        if (inputStream != null) {
+            inputStream.close();
+        }
 
         int w = boundsOptions.outWidth;
         int h = boundsOptions.outHeight;
@@ -86,7 +86,9 @@ public final class BitmapUtils {
         options.inSampleSize = scale;
         inputStream = context.getContentResolver().openInputStream(imgUri);
         Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, options);
-        if (inputStream != null) inputStream.close();
+        if (inputStream != null) {
+            inputStream.close();
+        }
 
         return bitmap;
     }

@@ -74,10 +74,10 @@ public final class SpannableEditor {
      *
      * @return SpannableEditor for chaining use.
      */
-//    public SpannableEditor setTextColor(@ColorInt int textColor, String... subTextArray) {
-//        setSpan(new ForegroundColorSpan(textColor), subTextArray);
-//        return this;
-//    }
+    /*public SpannableEditor setTextColor(@ColorInt int textColor, String... subTextArray) {
+        setSpan(new ForegroundColorSpan(textColor), subTextArray);
+        return this;
+    }*/
 
 
     public SpannableEditor setTextColor(int textColor, String... subTextArray) {
@@ -159,11 +159,9 @@ public final class SpannableEditor {
      *
      * @return SpannableEditor for chaining use.
      */
-    public SpannableEditor setTextBgImage(@DrawableRes int resId, int start, int end,
-                                          int width, int height) {
+    public SpannableEditor setTextBgImage(@DrawableRes int resId, int start, int end, int width, int height) {
         Drawable drawable = this.context.getResources().getDrawable(resId);
         drawable.setBounds(0, 0, width, height);
-
         setSpan(new ImageSpan(drawable, ImageSpan.ALIGN_BASELINE), start, end);
         return this;
     }
@@ -173,11 +171,9 @@ public final class SpannableEditor {
      *
      * @return SpannableEditor for chaining use.
      */
-    public SpannableEditor setTextBgImage(@DrawableRes int resId, int width, int height,
-                                          String... subTextArray) {
+    public SpannableEditor setTextBgImage(@DrawableRes int resId, int width, int height, String... subTextArray) {
         Drawable drawable = this.context.getResources().getDrawable(resId);
         drawable.setBounds(0, 0, width, height);
-
         setSpan(new ImageSpan(drawable, ImageSpan.ALIGN_BASELINE), subTextArray);
         return this;
     }
@@ -207,7 +203,7 @@ public final class SpannableEditor {
      *
      * @return SpannableEditor for chaining use.
      */
-    public SpannableEditor setTextItali(int start, int end) {
+    public SpannableEditor setTextItalic(int start, int end) {
         return setTextTypeface(Typeface.ITALIC, start, end);
     }
 
@@ -216,7 +212,7 @@ public final class SpannableEditor {
      *
      * @return SpannableEditor for chaining use.
      */
-    public SpannableEditor setTextItali(String... subTextArray) {
+    public SpannableEditor setTextItalic(String... subTextArray) {
         return setTextTypeface(Typeface.ITALIC, subTextArray);
     }
 

@@ -14,8 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.liamma.collections.dialog.BaseDialogFragment;
+import com.liamma.commons.utils.BigDecimalUtils;
 import com.liamma.commons.utils.DateTimeUtils;
-import com.liamma.commons.utils.FormatUtils;
 import com.liamma.commons.utils.LogUtils;
 
 import java.math.BigDecimal;
@@ -252,17 +252,16 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "testBigDecimal: scale1 = " + bigDecimal1.scale());
 
         Log.i(TAG, "testBigDecimal: dd toString = " + Double.valueOf(dd));
-        Log.i(TAG, "testBigDecimal: dd = " + FormatUtils.to8(dd));
+        Log.i(TAG, "testBigDecimal: dd = " + BigDecimalUtils.to8(dd));
 
-        Log.i(TAG, "testBigDecimal: d0 = " + FormatUtils.to8(new BigDecimal(d0)));
-        Log.i(TAG, "testBigDecimal: d1 = " + FormatUtils.to8(new BigDecimal(d1)));
-        Log.i(TAG, "testBigDecimal: d2 = " + FormatUtils.to8(new BigDecimal(d2)));
-        Log.i(TAG, "testBigDecimal: d3 = " + FormatUtils.to8(new BigDecimal(d3)));
-        Log.i(TAG, "testBigDecimal: d4 = " + FormatUtils.to8(new BigDecimal(d4)));
-        Log.i(TAG, "testBigDecimal: d5 = " + FormatUtils.to8(new BigDecimal(d5)));
-        Log.i(TAG, "testBigDecimal: d6 = " + FormatUtils.to8(new BigDecimal(d6)));
-        Log.i(TAG, "testBigDecimal: d7 = " + FormatUtils.to8(new BigDecimal(d7)));
-
+        Log.i(TAG, "testBigDecimal: d0 = " + BigDecimalUtils.to8(new BigDecimal(d0)));
+        Log.i(TAG, "testBigDecimal: d1 = " + BigDecimalUtils.to8(new BigDecimal(d1)));
+        Log.i(TAG, "testBigDecimal: d2 = " + BigDecimalUtils.to8(new BigDecimal(d2)));
+        Log.i(TAG, "testBigDecimal: d3 = " + BigDecimalUtils.to8(new BigDecimal(d3)));
+        Log.i(TAG, "testBigDecimal: d4 = " + BigDecimalUtils.to8(new BigDecimal(d4)));
+        Log.i(TAG, "testBigDecimal: d5 = " + BigDecimalUtils.to8(new BigDecimal(d5)));
+        Log.i(TAG, "testBigDecimal: d6 = " + BigDecimalUtils.to8(new BigDecimal(d6)));
+        Log.i(TAG, "testBigDecimal: d7 = " + BigDecimalUtils.to8(new BigDecimal(d7)));
     }
 
 

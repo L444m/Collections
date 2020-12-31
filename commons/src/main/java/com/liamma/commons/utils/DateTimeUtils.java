@@ -98,7 +98,9 @@ public final class DateTimeUtils {
      * @return a formatted String
      */
     public static String formatDate(@Nullable Date date, @NonNull String pattern, @NonNull Locale locale) {
-        if (date == null) return "";
+        if (date == null) {
+            return "";
+        }
         SimpleDateFormat sdf = new SimpleDateFormat(pattern, locale);
         return sdf.format(date);
     }
@@ -122,8 +124,6 @@ public final class DateTimeUtils {
     public static boolean isSameDay(long timestamp1, long timestamp2) {
         long diff;
         diff = Math.abs(timestamp1 - timestamp2);
-        // diff = timestamp1 >= timestamp2 ?
-        //        timestamp1 - timestamp2 : timestamp2 - timestamp1;
         return diff < MILLS_IN_DAY && toDay(timestamp1) == toDay(timestamp2);
     }
 
@@ -168,7 +168,6 @@ public final class DateTimeUtils {
         LogUtils.i("new TimeZone ID = " + newTimeZone.getID());
 
         LogUtils.i("current US time : " + sdf.format(new Date()));
-
     }
 
 }

@@ -91,7 +91,9 @@ public final class StringUtils {
      * Returns the reversed string.
      */
     public static String reverse(String s) {
-        if (isBlank(s)) return s;
+        if (isBlank(s)) {
+            return s;
+        }
 
         int len = s.length();
         int mid = len >> 1;
@@ -110,7 +112,7 @@ public final class StringUtils {
      * Returns this string with the first letter in upper case.
      */
     public static String upperFirstLetter(String s) {
-        if (isEmpty(s) || Character.isUpperCase(s.charAt(0))) {
+        if (isBlank(s) || Character.isUpperCase(s.charAt(0))) {
             return s;
         }
         return String.valueOf((char) (s.charAt(0) - 32)) + s.substring(1);

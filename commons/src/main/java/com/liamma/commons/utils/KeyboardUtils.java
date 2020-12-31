@@ -27,7 +27,9 @@ public final class KeyboardUtils {
      */
     public static void hideSoftKeyboard(@NonNull Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm == null) return;
+        if (imm == null) {
+            return;
+        }
 
         View view = activity.getCurrentFocus();
         if (view == null) {
@@ -44,7 +46,9 @@ public final class KeyboardUtils {
      */
     public static void hideSoftKeyboard(@NonNull Context context, View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm == null) return;
+        if (imm == null) {
+            return;
+        }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
@@ -69,7 +73,9 @@ public final class KeyboardUtils {
 
         View view = window.getDecorView();
         final InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm == null) return;
+        if (imm == null) {
+            return;
+        }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
