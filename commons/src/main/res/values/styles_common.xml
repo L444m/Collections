@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Custom" />
+
+    <!-- Layout -->
+
+    <style name="Custom.Layout" />
+
+    <style name="Custom.Layout.MatchMatch">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Custom.Layout.WrapWrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Custom.Layout.MatchWrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Custom.Layout.WrapMatch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Custom.Layout.MatchAuto">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="Custom.Layout.AutoMatch">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Custom.Layout.MatchMatch.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Custom.Layout.MatchMatch.Horizontal">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Custom.Layout.MatchMatch.Bg">
+        <item name="background">@color/black</item>
+    </style>
+
+    <style name="Custom.Layout.MatchMatch.Vertical.Bg">
+        <item name="background">@color/black</item>
+    </style>
+
+    <style name="Custom.Layout.MatchMatch.Horizontal.Bg">
+        <item name="background">@color/black</item>
+    </style>
+
+
+    <!-- Divider -->
+
+    <style name="Custom.Divider">
+        <item name="android:background">@color/grey</item>
+    </style>
+
+    <style name="Custom.Divider.Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
+    <style name="Custom.Divider.Vertical">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Custom.Divider.Horizontal.Padding">
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+    </style>
+
+
+    <!-- TextView appearance -->
+
+    <style name="Custom.Text">
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Custom.Text.Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Custom.Text.Content">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+
+    <!-- Image appearance -->
+
+    <style name="Custom.Image" />
+
+
+</resources>
