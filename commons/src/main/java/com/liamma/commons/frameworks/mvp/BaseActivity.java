@@ -24,7 +24,6 @@ import org.greenrobot.eventbus.EventBus;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-
 /**
  * Base activity.
  * Created by Liam on 2018/07/12.

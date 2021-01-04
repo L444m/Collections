@@ -13,8 +13,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Utility methods for SharedPreferences.
- * Created by Liam on 2019/1/10
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2019/1/10 00:00
+ * DESCRIPTION: Utility methods for SharedPreferences.
  */
 @SuppressWarnings("ApplySharedPref")
 public final class SPUtils {
@@ -29,9 +31,9 @@ public final class SPUtils {
     public static final float DEFAULT_VALUE_FLOAT = -1F;
     public static final boolean DEFAULT_VALUE_BOOLEAN = false;
 
-    // Caches all SPUtils instances.
-    private static HashMap<String, SPUtils> spUtilsMap = new HashMap<>();
-    private SharedPreferences sp;
+    // Caches all SPUtils instances in a map.
+    private static final HashMap<String, SPUtils> spUtilsMap = new HashMap<>();
+    private SharedPreferences sp = null;
 
     /**
      * Private constructor, prevents from being instantiated outside.
