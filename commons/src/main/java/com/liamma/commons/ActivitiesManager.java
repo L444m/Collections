@@ -7,16 +7,20 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.liamma.commons.utils.EmptyUtils;
+
 import java.util.LinkedList;
 
 /**
- * Used to manager all activities and exit this app.
- * Created by Liam on 2019/1/10
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2019/1/10 14:01
+ * DESCRIPTION: This class is used to manager all activities and exit app.
  */
 public final class ActivitiesManager {
 
-    private static LinkedList<Activity> activityStack;
     private static volatile ActivitiesManager instance = null;
+    private LinkedList<Activity> activityStack;
 
     /**
      * Constructs a new ActivitiesManager instance.
@@ -28,6 +32,7 @@ public final class ActivitiesManager {
     }
 
     // singleton
+    @NonNull
     public static ActivitiesManager getInstance() {
         if (instance == null) {
             synchronized (ActivitiesManager.class) {
@@ -51,8 +56,13 @@ public final class ActivitiesManager {
     /**
      * Gets current activity instance (the latest activity added).
      */
+    @Nullable
     public Activity getCurrentActivity() {
-        return activityStack.getLast();
+        if (EmptyUtils.isNotEmpty(activityStack)) {
+            return activityStack.getLast();
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -69,19 +79,19 @@ public final class ActivitiesManager {
      * @param activity Activity
      */
     public void finishActivity(@Nullable Activity activity) {
-        if (activity != null) {
-            activityStack.remove(activity);
-            activity.finish();
-            activity = null;
-        }
+        if (activity == null) return;
+        activityStack.remove(activity);
+        activity.finish();
+        activity = null;
     }
 
     /**
      * Finishes the specified activity instance according to Class object.
      */
     public void finishActivity(@Nullable Class<?> clazz) {
+        if (clazz == null) return;
         for (Activity activity : activityStack) {
-            if (activity.getClass().equals(clazz)) {
+            if (clazz.equals(activity.getClass())) {
                 finishActivity(activity);
             }
         }
