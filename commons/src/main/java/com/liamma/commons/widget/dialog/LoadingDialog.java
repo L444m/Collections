@@ -24,7 +24,7 @@ public class LoadingDialog extends Dialog {
         this.context = context;
         dialog = this;
 
-        dialog.setContentView(R.layout.dialog_loading);
+        dialog.setContentView(R.layout.common_dialog_loading);
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(false);
         //dialog.show();

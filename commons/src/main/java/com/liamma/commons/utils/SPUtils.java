@@ -10,6 +10,7 @@ import com.liamma.commons.App;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -104,6 +105,70 @@ public final class SPUtils {
      */
     public SharedPreferences.Editor getEditor() {
         return sp.edit();
+    }
+
+    public void put(@NonNull String key, @Nullable Object value, boolean isCommit) {
+        SharedPreferences.Editor editor = getEditor();
+        if (value instanceof String) {
+            editor.putString(key, (String)value);
+        } else if (value instanceof Set<?>) {
+            // risky of ? type parameter.
+            editor.putStringSet(key, (Set<String>) value);
+        } else if (value instanceof Integer) {
+            editor.putInt(key, (Integer) value);
+        } else if (value instanceof Long) {
+            editor.putLong(key, (Long) value);
+        } else if (value instanceof Float) {
+            editor.putFloat(key, (Float) value);
+        } else if (value instanceof Boolean) {
+            editor.putBoolean(key, (Boolean) value);
+        } else {
+            LogUtils.e("value = " + value + ", cannot put the type of value in SharePreference.");
+            return;
+        }
+        if (isCommit) {
+            editor.commit();
+        } else {
+            editor.apply();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> T get(@NonNull String key, @NonNull T defaultValue) {
+        // Plan A：
+        Map<String, ?> map = sp.getAll();
+        try {
+            Object o = map.get(key);
+            return (T) o;
+        } catch (Exception e) {
+            LogUtils.e("class cast exception.");
+            return defaultValue;
+        }
+
+        // Plan B:
+        /*
+        try {
+            if (defaultValue instanceof String) {
+                sp.getString(key, (String) defaultValue);
+            } else if (defaultValue instanceof Set<?>) {
+                sp.getStringSet(key, (Set<String>) defaultValue);
+            } else if (defaultValue instanceof Integer) {
+                sp.getInt(key, (Integer) defaultValue);
+            } else if (defaultValue instanceof Long) {
+                sp.getLong(key, (Long) defaultValue);
+            } else if (defaultValue instanceof Float) {
+                sp.getFloat(key, (Float) defaultValue);
+            } else if (defaultValue instanceof Boolean) {
+                sp.getBoolean(key, (Boolean) defaultValue);
+            } else {
+                LogUtils.e("value = " + defaultValue);
+                return defaultValue;
+            }
+        } catch (Exception e) {
+            LogUtils.e("cast exception");
+        }
+        return defaultValue;
+         */
     }
 
     /**
