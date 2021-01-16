@@ -5,12 +5,14 @@ import androidx.annotation.Nullable;
 
 import java.util.Map;
 
-
 /**
  * Url Utils.
  * Created by Liam on 2018/7/17.
  */
 public final class UrlUtils {
+
+    public static final String SCHEME_HTTP = "http://";
+    public static final String SCHEME_HTTPS = "https://";
 
     private UrlUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
@@ -41,6 +43,26 @@ public final class UrlUtils {
     }
 
     public static Map<String, Object> getParams(String url) {
+        return null;
+    }
+
+    public static String getBaseUrl(String url) {
+        return null;
+    }
+
+    public static String getScheme(String url) {
+        return null;
+    }
+
+    public static String getDomain(String url) {
+        return null;
+    }
+
+    public static String getIpAddress(String url) {
+        return null;
+    }
+
+    public static String getPort(String url) {
         return null;
     }
 
