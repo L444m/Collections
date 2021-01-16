@@ -23,7 +23,6 @@ public final class UrlUtils {
      * @param params  Parameters
      */
     public static String appendParams(@NonNull String baseUrl, @Nullable Map<String, ?> params) {
-
         if (EmptyUtils.isEmpty(params)) return baseUrl;
 
         StringBuilder sb = new StringBuilder();
@@ -39,6 +38,10 @@ public final class UrlUtils {
         String result = sb.toString();
         // del the last &.
         return result.substring(0, result.length() - 1);
+    }
+
+    public static Map<String, Object> getParams(String url) {
+        return null;
     }
 
 }
