@@ -1,6 +1,11 @@
 package com.liamma.commons.log;
 
-// 增加 priority 的设置。
+/**
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2021/1/22 14:02
+ * DESCRIPTION: Utility class for using log function easily.
+ */
 public final class LogUtils {
 
     public static final String TAG = "LogUtils";
@@ -52,18 +57,6 @@ public final class LogUtils {
 
     public static void v(String message) {
         v(TAG, message);
-    }
-
-    public static void f(Class<? extends ILog> clazz, String tag, String message) {
-        LoggerManager.getInstance().getLogger(clazz).f(tag, message);
-    }
-
-    public static void f(String tag, String message) {
-        LoggerManager.getInstance().getLogger().f(tag, message);
-    }
-
-    public static void f(String message) {
-        f(TAG, message);
     }
 
 }

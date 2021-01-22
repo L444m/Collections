@@ -8,16 +8,58 @@ package com.liamma.commons.log;
  */
 public interface ILog {
 
-    void i(String tag, String message);
+    /**
+     * Log level : Verbose.
+     * @param tag
+     * @param msg
+     */
+    void v(String tag, String msg);
 
-    void d(String tag, String message);
+    void v(String tag, String msg, Throwable tr);
 
-    void v(String tag, String message);
+    /**
+     * Log level : Debug.
+     * @param tag
+     * @param msg
+     */
+    void d(String tag, String msg);
 
-    void w(String tag, String message);
+    void d(String tag, String msg, Throwable tr);
 
-    void e(String tag, String message);
+    /**
+     * Log level : Info.
+     * @param tag
+     * @param msg
+     */
+    void i(String tag, String msg);
 
-    void f(String tag, String message);
+    void i(String tag, String msg, Throwable tr);
+
+    /**
+     * Log level : Warning.
+     * @param tag
+     * @param msg
+     */
+    void w(String tag, String msg);
+
+    void w(String tag, String msg, Throwable tr);
+
+    /**
+     * Log level : Error.
+     * @param tag
+     * @param msg
+     */
+    void e(String tag, String msg);
+
+    void e(String tag, String msg, Throwable tr);
+
+    /**
+     * Log level : Asset.
+     * @param tag
+     * @param msg
+     */
+    void wtf(String tag, String msg);
+
+    void wtf(String tag, String msg, Throwable tr);
 
 }

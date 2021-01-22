@@ -5,6 +5,7 @@ import android.util.Log;
 import com.liamma.commons.utils.EmptyUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public final class LoggerManager {
 
@@ -12,6 +13,8 @@ public final class LoggerManager {
 
     private static volatile LoggerManager instance = null;
     private ILog defaultLogger;
+    private ILog customLogger;
+    private HashMap<String, ILog> loggers;
     private ArrayList<ILog> customLoggers;
 
     private LoggerManager() {
@@ -46,6 +49,17 @@ public final class LoggerManager {
         if (customLoggers == null) {
             customLoggers = new ArrayList<>();
         }
+    }
+
+    public void addCustomLogger(String loggerName, ILog logger) {
+
+        if (loggerName == null) {
+            loggers.put(loggerName, logger);
+        }
+    }
+
+    public void setCustomLogger() {
+
     }
 
     /**
@@ -118,6 +132,7 @@ public final class LoggerManager {
     }
 
     public ILog getLogger(final Class<? extends ILog> clazz) {
+
         return null;
     }
 

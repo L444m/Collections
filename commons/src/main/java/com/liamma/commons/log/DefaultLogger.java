@@ -3,32 +3,62 @@ package com.liamma.commons.log;
 public class DefaultLogger implements ILog {
 
     @Override
-    public void i(String tag, String message) {
+    public void v(String tag, String msg) {
 
     }
 
     @Override
-    public void d(String tag, String message) {
+    public void v(String tag, String msg, Throwable tr) {
 
     }
 
     @Override
-    public void v(String tag, String message) {
+    public void d(String tag, String msg) {
 
     }
 
     @Override
-    public void w(String tag, String message) {
+    public void d(String tag, String msg, Throwable tr) {
 
     }
 
     @Override
-    public void e(String tag, String message) {
+    public void i(String tag, String msg) {
 
     }
 
     @Override
-    public void f(String tag, String message) {
+    public void i(String tag, String msg, Throwable tr) {
+
+    }
+
+    @Override
+    public void w(String tag, String msg) {
+
+    }
+
+    @Override
+    public void w(String tag, String msg, Throwable tr) {
+
+    }
+
+    @Override
+    public void e(String tag, String msg) {
+
+    }
+
+    @Override
+    public void e(String tag, String msg, Throwable tr) {
+
+    }
+
+    @Override
+    public void wtf(String tag, String msg) {
+
+    }
+
+    @Override
+    public void wtf(String tag, String msg, Throwable tr) {
 
     }
 }
