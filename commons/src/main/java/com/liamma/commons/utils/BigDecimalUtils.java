@@ -22,12 +22,54 @@ public final class BigDecimalUtils {
         return null;
     }
 
-    public static BigDecimal safeAdd(BigDecimal bd1, BigDecimal... bd2) {
-        if (bd1 == null) {
-            bd1 = BigDecimal.ZERO;
+    /**
+     * +
+     */
+    public static BigDecimal add(@Nullable BigDecimal bd1, @Nullable BigDecimal... bd2) {
+        if (bd1 == null) bd1 = BigDecimal.ZERO;
+        if (EmptyUtils.isEmpty(bd2)) return bd1;
+
+        BigDecimal result = bd1;
+        for (BigDecimal bigDecimal : bd2) {
+            if (bd1 != null) result = bd1.add(bigDecimal);
         }
-        return null;
+        return result;
     }
+
+    public static BigDecimal subtract(@Nullable BigDecimal bd1, @Nullable BigDecimal... bd2) {
+        if (bd1 == null) bd1 = BigDecimal.ZERO;
+        if (EmptyUtils.isEmpty(bd2)) return bd1;
+
+        BigDecimal result = bd1;
+        for (BigDecimal bd : bd2) {
+            if (bd != null) result = bd1.subtract(bd);
+        }
+        return result;
+    }
+
+    public static BigDecimal multiply(@Nullable BigDecimal bd1, @Nullable BigDecimal... bd2) {
+        if (EmptyUtils.isEmpty(bd2)) return bd1 != null ? bd1 : BigDecimal.ZERO;
+        if (bd1 == null) bd1 = BigDecimal.ONE;
+
+        BigDecimal result = bd1;
+        for (BigDecimal bd : bd2) {
+            if (bd != null) result = bd1.multiply(bd);
+        }
+        return result;
+    }
+
+    public static BigDecimal divide(@Nullable BigDecimal bd1, @Nullable BigDecimal... bd2) {
+        if (EmptyUtils.isEmpty(bd2)) return bd1 != null ? bd1 : BigDecimal.ZERO;
+        if (bd1 == null) bd1 = BigDecimal.ONE;
+
+        BigDecimal result = bd1;
+        for (BigDecimal bd : bd2) {
+            if (bd != null && !bd.equals(BigDecimal.ZERO)) result = bd1.divide(bd);
+        }
+        return result;
+    }
+
+
 
     /**
      * 格式化为 (最多) 8 位小数。

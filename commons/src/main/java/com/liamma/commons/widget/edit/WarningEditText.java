@@ -1,4 +1,4 @@
-package com.liamma.commons.widget;
+package com.liamma.commons.widget.edit;
 
 import android.content.Context;
 import android.view.ViewGroup;
@@ -44,6 +44,5 @@ public class WarningEditText extends ViewGroup {
 
         tvWarningText = new TextView(context);
     }
-
 
 }

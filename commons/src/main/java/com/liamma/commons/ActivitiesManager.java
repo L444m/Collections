@@ -58,18 +58,17 @@ public final class ActivitiesManager {
      */
     @Nullable
     public Activity getCurrentActivity() {
-        if (EmptyUtils.isNotEmpty(activityStack)) {
-            return activityStack.getLast();
-        } else {
+        if (EmptyUtils.isEmpty(activityStack)) {
             return null;
         }
+        return activityStack.getLast();
     }
 
     /**
      * Finishes current activity instance (the latest activity added).
      */
     public void finishActivity() {
-        Activity activity = activityStack.getLast();
+        Activity activity = getCurrentActivity();
         finishActivity(activity);
     }
 
@@ -122,14 +121,15 @@ public final class ActivitiesManager {
             am.restartPackage(context.getPackageName());
             System.exit(0);
         } catch (Exception e) {
+            // swallow
         }
     }
 
     /**
      * @return size of Activity stack.
      */
-    public int activitiesStackSize() {
-        return activityStack == null ? 0 : activityStack.size();
+    public int getStackSize() {
+        return activityStack != null ? activityStack.size() : 0;
     }
 
 }

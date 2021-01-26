@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.liamma.commons.App;
+import com.liamma.commons.BaseApplication;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -40,7 +40,7 @@ public final class SPUtils {
      * Private constructor, prevents from being instantiated outside.
      */
     private SPUtils(final String spName) {
-        sp = App.getInstance().getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
+        sp = BaseApplication.getInstance().getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
     }
 
     /**

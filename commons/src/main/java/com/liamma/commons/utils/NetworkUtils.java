@@ -1,5 +1,6 @@
 package com.liamma.commons.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -10,7 +11,7 @@ import android.telephony.TelephonyManager;
 import androidx.annotation.CheckResult;
 import androidx.annotation.Nullable;
 
-import com.liamma.commons.App;
+import com.liamma.commons.BaseApplication;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -42,11 +43,12 @@ public final class NetworkUtils {
      *
      * @return NetworkInfo, or null if no default network is active current now.
      */
+    @SuppressLint("MissingPermission")
     @Nullable
     @CheckResult
     private static NetworkInfo getNetworkInfo() {
         ConnectivityManager cm =
-                (ConnectivityManager) App.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager) BaseApplication.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm == null ? null : cm.getActiveNetworkInfo();
     }
 
@@ -79,7 +81,7 @@ public final class NetworkUtils {
      * Need permission {@code "android.permission.ACCESS_WIFI_STATE"}
      */
     public static String getMacAddress() {
-        WifiManager wm = (WifiManager) App.getInstance()
+        WifiManager wm = (WifiManager) BaseApplication.getInstance()
                 .getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         String macAddress = "";
@@ -117,7 +119,7 @@ public final class NetworkUtils {
             }
 
         } else if (NET_TYPE_WIFI.equals(strNetworkType)) {
-            WifiManager wm = (WifiManager) App.getInstance()
+            WifiManager wm = (WifiManager) BaseApplication.getInstance()
                     .getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
             if (wm == null) return ip;
@@ -183,7 +185,7 @@ public final class NetworkUtils {
      */
     public static String getDetailMobileNetworkType() {
         TelephonyManager tm =
-                (TelephonyManager) App.getInstance().getSystemService(Context.TELEPHONY_SERVICE);
+                (TelephonyManager) BaseApplication.getInstance().getSystemService(Context.TELEPHONY_SERVICE);
 
         if (tm == null) return NET_TYPE_UNKNOWN;
 

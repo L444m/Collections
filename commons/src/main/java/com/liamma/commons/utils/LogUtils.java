@@ -15,7 +15,7 @@ public final class LogUtils {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    private static final boolean DEBUG = Constants.DEBUG;
+    private static final boolean DEBUG = Constants.LOG_DEBUG_ENABLE;
     private static final String TAG = "LogUtils";
 
     private static String[] prefix = {". ", " ."};

@@ -1,5 +1,8 @@
 package com.liamma.commons.log;
 
+import com.liamma.commons.BuildConfig;
+import com.liamma.commons.Constants;
+
 /**
  * @author Liam
  * @version 1.0
@@ -12,6 +15,24 @@ public final class LogUtils {
 
     private LogUtils() {
         throw new UnsupportedOperationException("cannot be instantiated...");
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public static boolean isDebugEnable() {
+        if (Constants.LOG_DEBUG_ENABLE != null) {
+            return Constants.LOG_DEBUG_ENABLE;
+        } else {
+            return BuildConfig.DEBUG;
+        }
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public static boolean isInfoEnable() {
+        if (Constants.LOG_INFO_ENABLE != null) {
+            return Constants.LOG_INFO_ENABLE;
+        } else {
+            return BuildConfig.DEBUG;
+        }
     }
 
     public static void addLogger(ILog logger) {

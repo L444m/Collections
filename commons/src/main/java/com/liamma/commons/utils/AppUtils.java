@@ -2,8 +2,10 @@ package com.liamma.commons.utils;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+
+import com.liamma.commons.BuildConfig;
+import com.liamma.commons.Constants;
 
 /**
  * Created by Liam on 2019/3/14
@@ -12,6 +14,15 @@ public final class AppUtils {
 
     private AppUtils() {
         throw new UnsupportedOperationException("cannot be instantiated.");
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public static boolean isDebug() {
+        if (Constants.DEBUG != null) {
+            return Constants.DEBUG;
+        } else {
+            return BuildConfig.DEBUG;
+        }
     }
 
     /**
