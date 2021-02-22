@@ -13,7 +13,6 @@ import okhttp3.OkHttpClient;
  */
 public class HttpClient {
 
-
     private static volatile HttpClient instance = null;
     private OkHttpClient.Builder builder;
 

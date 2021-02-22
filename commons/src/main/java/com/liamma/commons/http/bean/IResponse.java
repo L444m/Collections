@@ -1,26 +1,29 @@
 package com.liamma.commons.http.bean;
 
 /**
- * Interface of Http Response，所有 response bean 对象的基础。
- * Created by Liam on 2018/7/15.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/7/15 00:00
+ * DESCRIPTION: Interface for all Http response。
  */
 public interface IResponse {
 
     /**
-     * 请求是否成功。
+     * Whether the http request is successful or not.
      *
-     * @return {@code true} response 成功。
+     * @return {@code true} means getting http response successfully, otherwise {@code false}.
      */
     boolean isSuccess();
 
     /**
-     * 是否是 null 数据。
+     * Whether the http response is null or not.
      *
-     * @return {@code true} 返回的数据为 null。
+     * @return {@code true} means that http response is null, otherwise {@code false}。
      */
     boolean isNull();
 
     /**
+     * Whether
      * 是否是验证错误。
      *
      * @return {@code true} response 为验证错误。
@@ -35,12 +38,12 @@ public interface IResponse {
     boolean isBizError();
 
     /**
-     * @return 返回状态码。
+     * @return status code。
      */
     int getStatusCode();
 
     /**
-     * @return 返回状态消息。
+     * @return status message。
      */
     String getStatusMsg();
 
