@@ -3,32 +3,19 @@ package com.liamma.commons.http;
 import com.liamma.commons.utils.DateTimeUtils;
 
 /**
- * ClassName:   HttpConfigs
- * Description: Configs in this class are used for http client setting.
- * Author:      Liam
- * Date:        2019/10/14 18:05
- * Version:     V1.0
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2019/10/14 18:05
+ * DESCRIPTION: All configurations that would be used when initiates a Http client.
  */
-public class HttpConfigs {
+public final class HttpConfigs {
 
-    // multiple urls for multiple http client setting.
-    public static final String[] baseUrls = new String[]{};
-    // optionals
-    public static final long connectTimeout = 10 * DateTimeUtils.SECOND;
-    public static final long readTimeout = 10 * DateTimeUtils.SECOND;
-    public static final long writeTimeout = 10 * DateTimeUtils.SECOND;
+    public static final long DEFAULT_CONNECT_TIME = 10 * DateTimeUtils.SECOND;
+    public static final long DEFAULT_READ_TIME = 10 * DateTimeUtils.SECOND;
+    public static final long DEFAULT_WRITE_TIME = 10 * DateTimeUtils.SECOND;
 
     private HttpConfigs() {
-        throw new UnsupportedOperationException("cannot be instantiated");
     }
-
-
-    public static final String BASE_URL = "";
-
-    public static final String[] BASE_URLS = new String[] {
-
-    };
-
 
     public static class Builder {
 
@@ -66,7 +53,5 @@ public class HttpConfigs {
             return this;
         }
     }
-
-
 
 }

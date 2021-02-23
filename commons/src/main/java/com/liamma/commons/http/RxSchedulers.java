@@ -15,7 +15,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-
 /**
  * Created by Liam on 2018/7/19.
  */
@@ -28,7 +27,6 @@ public class RxSchedulers {
         return upstream -> upstream
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
-
     }
 
     /**
@@ -54,7 +52,6 @@ public class RxSchedulers {
                     }
                 });
     }
-
 
     private static ProgressDialog progressDialog;
 
