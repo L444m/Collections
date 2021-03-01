@@ -45,7 +45,7 @@ public final class EmptyUtils {
     }
 
     /**
-     * Indicates whether the CharSequence is not empty.
+     * Indicates whether the CharSequence is <bold>not</bold> empty.
      *
      * @param sequence CharSequence
      * @return {@code true} if the specified sequence is not null or empty, otherwise {@code false}.
@@ -57,13 +57,19 @@ public final class EmptyUtils {
     /**
      * Indicates whether the Collection is empty or not.
      *
-     * @param collection Collection, for {@link List} or {@link Set}.
+     * @param collection Collection object
      * @return {@code true} if the specified Collection is null or empty, otherwise {@code false}.
      */
     public static boolean isEmpty(Collection<?> collection) {
         return collection == null || collection.isEmpty();
     }
 
+    /**
+     * Indicates whether the Collection is <bold>not</bold> empty.
+     *
+     * @param collection Collection object
+     * @return {@code true} if the specified Collection is not null or empty, otherwise {@code false}
+     */
     public static boolean isNotEmpty(Collection<?> collection) {
         return collection != null && !collection.isEmpty();
     }
