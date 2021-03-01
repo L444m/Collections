@@ -1,6 +1,7 @@
-package com.liamma.commons.http;
+package com.liamma.commons.http.okhttp;
 
-import com.liamma.commons.http.interceptor.HttpLoggingInterceptor;
+import com.liamma.commons.http.HttpConfigs;
+import com.liamma.commons.http.okhttp.interceptor.HttpLoggingInterceptor;
 import com.liamma.commons.utils.EmptyUtils;
 
 import java.util.ArrayList;
@@ -16,20 +17,20 @@ import okhttp3.OkHttpClient;
  * DATE: Created on 2018/7/16 00:00
  * DESCRIPTION: This class is used to create OkHttpClient instance.
  */
-public class HttpClientManager {
+public class OkHttpClientManager {
 
-    private static volatile HttpClientManager instance = null;
+    private static volatile OkHttpClientManager instance = null;
     private OkHttpClient okHttpClient;
 
-    private HttpClientManager() {
+    private OkHttpClientManager() {
         createOkHttpClient();
     }
 
-    public static HttpClientManager getInstance() {
+    public static OkHttpClientManager getInstance() {
         if (instance == null) {
-            synchronized (HttpClientManager.class) {
+            synchronized (OkHttpClientManager.class) {
                 if (instance == null) {
-                    instance = new HttpClientManager();
+                    instance = new OkHttpClientManager();
                 }
             }
         }

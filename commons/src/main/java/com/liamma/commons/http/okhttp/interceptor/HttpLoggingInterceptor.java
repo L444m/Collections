@@ -1,4 +1,4 @@
-package com.liamma.commons.http.interceptor;
+package com.liamma.commons.http.okhttp.interceptor;
 
 /*
  * Copyright (C) 2015 Square, Inc.

@@ -1,4 +1,4 @@
-package com.liamma.commons.http.interceptor;
+package com.liamma.commons.http.okhttp.interceptor;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

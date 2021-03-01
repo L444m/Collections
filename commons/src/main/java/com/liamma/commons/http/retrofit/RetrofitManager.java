@@ -1,7 +1,9 @@
-package com.liamma.commons.http;
+package com.liamma.commons.http.retrofit;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.liamma.commons.http.okhttp.OkHttpClientManager;
 
 import java.util.HashMap;
 
@@ -45,12 +47,12 @@ public class RetrofitManager {
     }
 
     private synchronized Retrofit createRetrofit(@NonNull String baseUrl) {
-        return createRetrofit(baseUrl, HttpClientManager.getInstance().getOkHttpClient());
+        return createRetrofit(baseUrl, OkHttpClientManager.getInstance().getOkHttpClient());
     }
 
     private synchronized Retrofit createRetrofit(@NonNull String baseUrl, @Nullable OkHttpClient okHttpClient) {
         if (okHttpClient == null) {
-            okHttpClient = HttpClientManager.getInstance().getOkHttpClient();
+            okHttpClient = OkHttpClientManager.getInstance().getOkHttpClient();
         }
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())

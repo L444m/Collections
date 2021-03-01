@@ -10,9 +10,9 @@ import com.liamma.commons.utils.DateTimeUtils;
  */
 public final class HttpConfigs {
 
-    public static final long DEFAULT_CONNECT_TIME = 10 * DateTimeUtils.SECOND;
-    public static final long DEFAULT_READ_TIME = 10 * DateTimeUtils.SECOND;
-    public static final long DEFAULT_WRITE_TIME = 10 * DateTimeUtils.SECOND;
+    public static final long DEFAULT_CONNECT_TIME = 20 * DateTimeUtils.SECOND;
+    public static final long DEFAULT_READ_TIME = 20 * DateTimeUtils.SECOND;
+    public static final long DEFAULT_WRITE_TIME = 20 * DateTimeUtils.SECOND;
 
     private HttpConfigs() {
     }

@@ -13,19 +13,19 @@ import io.reactivex.disposables.Disposable;
  * Base observer for deal with responses.
  * Created by Liam on 2018/7/19.
  */
-public abstract class BaseObserver<T> implements Observer<ResponseEntity<T>> {
+public abstract class RxResponseObserver<T> implements Observer<ResponseEntity<T>> {
 
     private Context context;
     private ProgressDialog progressDialog;
     private Disposable disposable;
 
     // 不带进度条。
-    public BaseObserver(Context context) {
+    public RxResponseObserver(Context context) {
         this.context = context.getApplicationContext();
     }
 
     // 带有进度条效果的。
-    public BaseObserver(Context context, boolean showProgress) {
+    public RxResponseObserver(Context context, boolean showProgress) {
         this.context = context.getApplicationContext();
         if (showProgress) {
             progressDialog = new ProgressDialog(this.context);
@@ -75,6 +75,7 @@ public abstract class BaseObserver<T> implements Observer<ResponseEntity<T>> {
 
     /**
      * response 异常时的处理。
+     *
      * @param code   错误 code
      * @param errMsg 错误 message
      */

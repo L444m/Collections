@@ -1,4 +1,4 @@
-package com.liamma.commons.http;
+package com.liamma.commons.http.retrofit;
 
 import android.app.ProgressDialog;
 import android.content.Context;
