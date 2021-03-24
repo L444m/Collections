@@ -14,12 +14,11 @@ import com.liamma.commons.utils.EmptyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Base adapter for RecyclerView or ListView.
  * Created by Liam on 2018/7/31
  */
-public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
+public abstract class CommonRVAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     private Context context;
     private int layoutId;
@@ -36,15 +35,15 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
         void onItemLongClick(View view, int position);
     }
 
-    public RecyclerViewAdapter(@NonNull Context context, @NonNull int layoutId) {
+    public CommonRVAdapter(@NonNull Context context, @NonNull int layoutId) {
         this(context, layoutId, null);
     }
 
-    public RecyclerViewAdapter(@NonNull Context context, @LayoutRes int layoutId,
-                               @Nullable List<T> dataSet) {
+    public CommonRVAdapter(@NonNull Context context, @LayoutRes int layoutId,
+                           @Nullable List<T> dataSet) {
         this.context = context;
         this.layoutId = layoutId;
-        this.dataSet = dataSet == null ? new ArrayList<T>(): dataSet;
+        this.dataSet = dataSet == null ? new ArrayList<T>() : dataSet;
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {

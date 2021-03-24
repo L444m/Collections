@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(did);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        RecyclerViewAdapter<String> adapter =
-                new RecyclerViewAdapter<String>(this, R.layout.main_list_item_simple_string) {
+        CommonRVAdapter<String> adapter =
+                new CommonRVAdapter<String>(this, R.layout.main_list_item_simple_string) {
                     @Override
                     protected void onBind(RecyclerViewHolder holder, String s, int position) {
                         holder.setText(R.id.tv_simple_string_text, s);
