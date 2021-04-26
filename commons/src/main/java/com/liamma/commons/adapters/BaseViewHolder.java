@@ -1,11 +1,11 @@
 package com.liamma.commons.adapters;
 
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +13,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
 /**
@@ -29,7 +30,7 @@ public abstract class BaseViewHolder {
     // All views indexed with their IDs.
     protected SparseArray<View> views;
 
-    public BaseViewHolder(View itemView) {
+    public BaseViewHolder(@NonNull View itemView) {
         this.itemView = itemView;
         this.views = new SparseArray<>();
     }
@@ -44,68 +45,89 @@ public abstract class BaseViewHolder {
         return (T) view;
     }
 
+    @NonNull
     public View getItemView() {
         return itemView;
     }
 
-    public BaseViewHolder setText(@IdRes int viewId, @NonNull CharSequence sequence) {
+    // Button extends TextView
+    // EditText extends TextView
+
+    @NonNull
+    public BaseViewHolder setText(@IdRes int viewId, @Nullable CharSequence sequence) {
         TextView textView = getView(viewId);
         textView.setText(sequence);
         return this;
     }
 
-    public BaseViewHolder setText(@IdRes int viewId, @StringRes int resId) {
+    @NonNull
+    public BaseViewHolder setText(@IdRes int viewId, @StringRes int stringResId) {
         TextView textView = getView(viewId);
-        textView.setText(resId);
+        textView.setText(stringResId);
         return this;
     }
 
-    public BaseViewHolder setButtonText(@IdRes int viewId, @NonNull CharSequence sequence) {
-        Button button = getView(viewId);
-        button.setText(sequence);
+    @NonNull
+    public BaseViewHolder setTextColor(@IdRes int viewId, @ColorInt int color) {
+        TextView textView = getView(viewId);
+        textView.setTextColor(color);
         return this;
     }
 
-    public BaseViewHolder setButtonText(@IdRes int viewId, @StringRes int resId) {
-        Button button = getView(viewId);
-        button.setText(resId);
+    @NonNull
+    public BaseViewHolder setTextColor(@IdRes int viewId, @NonNull ColorStateList colorStateList) {
+        TextView textView = getView(viewId);
+        textView.setTextColor(colorStateList);
         return this;
     }
 
+    @NonNull
+    public BaseViewHolder setTextSize(@IdRes int viewId, float textSize) {
+        TextView textView = getView(viewId);
+        textView.setTextSize(textSize);
+        return this;
+    }
+
+    @NonNull
+    public BaseViewHolder setTextSize(@IdRes int viewId, int unit, float size) {
+        TextView textView = getView(viewId);
+        textView.setTextSize(unit, size);
+        return this;
+    }
+
+    @NonNull
     public BaseViewHolder setImageResource(@IdRes int viewId, @DrawableRes int resId) {
         ImageView imageView = getView(viewId);
         imageView.setImageResource(resId);
         return this;
     }
 
+    @NonNull
     public BaseViewHolder setImageBitmap(@IdRes int viewId, @NonNull Bitmap bitmap) {
         ImageView imageView = getView(viewId);
         imageView.setImageBitmap(bitmap);
         return this;
     }
 
-    public BaseViewHolder setImageDrawable(@IdRes int viewId, @NonNull Drawable drawable) {
+    @NonNull
+    public BaseViewHolder setImageDrawable(@IdRes int viewId, @Nullable Drawable drawable) {
         ImageView imageView = getView(viewId);
         imageView.setImageDrawable(drawable);
         return this;
     }
 
+    @NonNull
     public BaseViewHolder setBackgroundColor(@IdRes int viewId, @ColorInt int color) {
         View view = getView(viewId);
         view.setBackgroundColor(color);
         return this;
     }
 
+    @NonNull
     public BaseViewHolder setBackgroundRes(@IdRes int viewId, @DrawableRes int resId) {
         View view = getView(viewId);
         view.setBackgroundResource(resId);
         return this;
-    }
-
-    public BaseViewHolder setTextColor(@IdRes int viewId, @ColorInt int color) {
-        TextView textView = getView(viewId);
-        textView.setTextColor(color);
-        return null;
     }
 
     public BaseViewHolder setVisible(@IdRes int viewId, boolean visible) {

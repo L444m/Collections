@@ -1,6 +1,7 @@
 package com.liamma.commons.adapters;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,14 +16,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Base adapter for RecyclerView or ListView.
- * Created by Liam on 2018/7/31
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/7/31 15:55
+ * DESCRIPTION: Base adapter for RecyclerView.
  */
-public abstract class CommonRVAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
+public abstract class CommonRvAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     private Context context;
-    private int layoutId;
+    private int layoutResId;
     private List<T> dataSet;
+    private LayoutInflater layoutInflater;
 
     private OnItemClickListener onItemClickListener;
     private OnItemLongClickListener onItemLongClickListener;
@@ -35,53 +39,46 @@ public abstract class CommonRVAdapter<T> extends RecyclerView.Adapter<RecyclerVi
         void onItemLongClick(View view, int position);
     }
 
-    public CommonRVAdapter(@NonNull Context context, @NonNull int layoutId) {
-        this(context, layoutId, null);
+    public CommonRvAdapter(@NonNull Context context, @LayoutRes int layoutResId) {
+        this(context, layoutResId, null);
     }
 
-    public CommonRVAdapter(@NonNull Context context, @LayoutRes int layoutId,
-                           @Nullable List<T> dataSet) {
+    public CommonRvAdapter(@NonNull Context context, @LayoutRes int layoutResId, @Nullable List<T> dataSet) {
         this.context = context;
-        this.layoutId = layoutId;
+        this.layoutResId = layoutResId;
         this.dataSet = dataSet == null ? new ArrayList<T>() : dataSet;
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
     }
 
-    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-        this.onItemLongClickListener = onItemLongClickListener;
+    public void setOnItemLongClickListener(OnItemLongClickListener listener) {
+        this.onItemLongClickListener = listener;
     }
 
-    /**
-     * Get data set.
-     */
+    public void setDataSet(@Nullable List<T> dataSet) {
+        if (dataSet == null) return;
+        this.dataSet = dataSet;
+        this.notifyDataSetChanged();
+    }
+
+    public void addDataSet(@Nullable List<T> dataSet) {
+        if (EmptyUtils.isEmpty(dataSet)) return;
+        int addStartIndex = this.dataSet.size();
+        this.dataSet.addAll(dataSet);
+        this.notifyItemRangeChanged(addStartIndex, dataSet.size());
+    }
+
     @NonNull
     public List<T> getDataSet() {
         return dataSet;
     }
 
-    /**
-     * Set new data set.
-     */
-    public void setDataSet(@Nullable List<T> dataSet) {
-        if (dataSet == null) return;
-        this.dataSet = dataSet;
-    }
-
-    /**
-     * Adds data set into this.
-     */
-    public void addDataSet(@Nullable List<T> dataSet) {
-        if (EmptyUtils.isEmpty(dataSet)) return;
-        this.dataSet.addAll(dataSet);
-    }
-
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return RecyclerViewHolder.getHolder(parent, layoutId);
+        return RecyclerViewHolder.getHolder(parent, layoutResId);
     }
 
     @Override
