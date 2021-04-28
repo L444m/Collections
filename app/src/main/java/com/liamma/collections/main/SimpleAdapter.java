@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import com.liamma.commons.adapters.CommonRvAdapter;
 import com.liamma.commons.adapters.RecyclerViewHolder;
 
-
 /**
  * Uses {@code android.R.layout.simple_list_item_1} to display a simple string data.
  * Created by Liam on 2019/1/4

@@ -1,4 +1,4 @@
-package com.liamma.collections.statusmode;
+package com.liamma.collections.main.ui;
 
 import android.os.Bundle;
 
@@ -8,16 +8,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.liamma.collections.R;
 import com.liamma.commons.utils.StatusBarUtils;
 
-
 /**
  * 沉浸式状态栏。
  */
-public class StatusMode extends AppCompatActivity {
+public class StatusModeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_status_mode);
+        setContentView(R.layout.main_activity_status_mode);
 
         // 隐藏 ActionBar
         ActionBar actionBar = getSupportActionBar();
@@ -37,7 +36,5 @@ public class StatusMode extends AppCompatActivity {
 //        }
 
         StatusBarUtils.setBarColor(this);
-
     }
-
 }

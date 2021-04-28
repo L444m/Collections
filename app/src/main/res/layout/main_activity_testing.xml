@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.ui.TestingActivity">
+
+    <TextView
+        android:id="@+id/tvShowMessage"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:text="Show Message"
+        android:textColor="@color/DarkGreen"
+        android:textSize="14sp"
+        tools:text="测试数据" />
+
+</RelativeLayout>

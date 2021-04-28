@@ -1,12 +1,13 @@
-package com.liamma.collections;
+package com.liamma.collections.main.ui;
 
+import com.liamma.collections.R;
 import com.liamma.commons.frameworks.mvp.BaseToolsActivity;
 
 public class AdapterActivity extends BaseToolsActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_adapter;
+        return R.layout.main_activity_adapter;
     }
 
     @Override
@@ -18,6 +19,5 @@ public class AdapterActivity extends BaseToolsActivity {
     protected void initData() {
         super.initData();
     }
-
 
 }

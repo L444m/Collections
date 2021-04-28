@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 
 import com.liamma.collections.R;
 
-
 /**
  * Created by Liam on 2018/8/9
  */

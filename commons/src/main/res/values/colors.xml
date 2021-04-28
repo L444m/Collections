@@ -2,17 +2,78 @@
 <resources>
 
     <!-- Basic colors -->
-    <color name="black">@android:color/black</color>
-    <color name="white">@android:color/white</color>
-    <color name="transparent">@android:color/transparent</color>
+
+    <!-- The color white, equivalent to 0xffffffff -->
+    <color name="white">#ffffffff</color>
+    <!-- The color black, equivalent to 0xff000000 -->
+    <color name="black">#ff000000</color>
+    <!-- Fully transparent, equivalent to 0x00000000 -->
+    <color name="transparent">#00000000</color>
     <color name="translucent">#80000000</color>
-    <color name="translucent_white">#80FFFFFF</color>
-    <color name="red">#FFFF0000</color>
-    <color name="green">#FF00FF00</color>
-    <color name="blue">#FF0000FF</color>
-    <color name="pink">#FFFFC0CB</color>
-    <color name="grey">#FF808080</color>
-    <color name="light_grey">#FFD3D3D3</color>
-    <color name="dark_grey">#FFA9A9A9</color>
+
+    <color name="Pink">#FFC0CB</color>
+    <color name="LightPink">#FFB6C1</color>
+    <color name="HotPink">#FF69B4</color>
+    <color name="DeepPink">#FF1493</color>
+    <color name="Violet">#EE82EE</color>
+    <color name="DarkViolet">#9400D3</color>
+    <color name="BlueViolet">#8A2BE2</color>
+    <color name="Magenta">#FF00FF</color>
+    <color name="DarkMagenta">#8B008B</color>
+    <color name="Purple">#800080</color>
+    <color name="MediumPurple">#9370DB</color>
+    <color name="Blue">#0000FF</color>
+    <color name="MediumBlue">#0000CD</color>
+    <color name="MidnightBlue">#191970</color>
+    <color name="Navy">#000080</color>
+    <color name="DarkBlue">#00008B</color>
+    <color name="LightBlue">#ADD8E6</color>
+    <color name="RoyalBlue">#4169E1</color>
+    <color name="AliceBlue">#F0F8FF</color>
+    <color name="SkyBlue">#87CEEB</color>
+    <color name="LightSkyBlue">#87CEFA</color>
+    <color name="DeepSkyBlue">#00BFFF</color>
+    <color name="Cyan">#00FFFF</color>
+    <color name="LightCyan">#E0FFFF</color>
+    <color name="DarkCyan">#008B8B</color>
+    <color name="Green">#00ff00</color>
+    <color name="LightGreen">#90EE90</color>
+    <color name="SpringGreen">#00FF7F</color>
+    <color name="SeaGreen">#2E8B57</color>
+    <color name="LightSeaGreen">#20B2AA</color>
+    <color name="DarkSeaGreen">#8FBC8F</color>
+    <color name="ForestGreen">#228B22</color>
+    <color name="DarkGreen">#006400</color>
+    <color name="DarkOliveGreen">#556B2F</color>
+    <color name="YellowGreen">#9ACD32</color>
+    <color name="Ivory">#FFFFF0</color>
+    <color name="LightYellow">#FFFFE0</color>
+    <color name="Yellow">#FFFF00</color>
+    <color name="Olive">#808000</color>
+    <color name="Gold">#FFD700</color>
+    <color name="Wheat">#F5DEB3</color>
+    <color name="Orange">#FFA500</color>
+    <color name="Tan">#D2B48C</color>
+    <color name="DarkOrange">#FF8C00</color>
+    <color name="Linen">#FAF0E6</color>
+    <color name="Peru">#CD853F</color>
+    <color name="Chocolate">#D2691E</color>
+    <color name="Coral">#FF7F50</color>
+    <color name="OrangeRed">#FF4500</color>
+    <color name="Tomato">#FF6347</color>
+    <color name="Snow">#FFFAFA</color>
+    <color name="IndianRed">#CD5C5C</color>
+    <color name="Red">#FF0000</color>
+    <color name="Brown">#A52A2A</color>
+    <color name="DarkRed">#8B0000</color>
+    <color name="Maroon">#800000</color>
+    <color name="WhiteSmoke">#F5F5F5</color>
+    <color name="GhostWhite">#F8F8FF</color>
+    <color name="LightGrey">#D3D3D3</color>
+    <color name="Silver">#C0C0C0</color>
+    <color name="DarkGrey">#A9A9A9</color>
+    <color name="Grey">#808080</color>
+
+    <!-- Basic colors ends-->
 
 </resources>

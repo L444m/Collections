@@ -17,10 +17,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity" />
-        <activity android:name=".RecyclerActivity" />
-        <activity android:name=".statusmode.StatusMode" />
-        <activity android:name=".AdapterActivity" />
-        <activity android:name=".AnimatorActivity"/>
+        <activity android:name=".main.ui.RecyclerActivity" />
+        <activity android:name=".main.ui.StatusModeActivity" />
+        <activity android:name=".main.ui.AdapterActivity" />
+        <activity android:name=".main.ui.AnimatorActivity"/>
+        <activity android:name=".main.ui.TestingActivity" />
     </application>
 
 </manifest>

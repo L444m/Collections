@@ -10,8 +10,6 @@ public interface ILog {
 
     /**
      * Log level : Verbose.
-     * @param tag
-     * @param msg
      */
     void v(String tag, String msg);
 
@@ -19,8 +17,6 @@ public interface ILog {
 
     /**
      * Log level : Debug.
-     * @param tag
-     * @param msg
      */
     void d(String tag, String msg);
 
@@ -28,8 +24,6 @@ public interface ILog {
 
     /**
      * Log level : Info.
-     * @param tag
-     * @param msg
      */
     void i(String tag, String msg);
 
@@ -37,8 +31,6 @@ public interface ILog {
 
     /**
      * Log level : Warning.
-     * @param tag
-     * @param msg
      */
     void w(String tag, String msg);
 
@@ -46,8 +38,6 @@ public interface ILog {
 
     /**
      * Log level : Error.
-     * @param tag
-     * @param msg
      */
     void e(String tag, String msg);
 
@@ -55,8 +45,6 @@ public interface ILog {
 
     /**
      * Log level : Asset.
-     * @param tag
-     * @param msg
      */
     void wtf(String tag, String msg);
 

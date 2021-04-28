@@ -22,7 +22,7 @@ import androidx.annotation.StringRes;
  * DATE: Created on 2019/1/4 14:32
  * DESCRIPTION: Base ViewHolder for ListView or RecyclerView.
  */
-public abstract class BaseViewHolder {
+public class BaseViewHolder {
 
     // The view of a single item in ListView or RecyclerView.
     protected View itemView;

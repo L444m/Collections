@@ -1,30 +1,23 @@
-package com.liamma.collections;
+package com.liamma.collections.main.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.liamma.commons.utils.LogUtils;
-
-import okhttp3.internal.Util;
+import com.liamma.collections.R;
+import com.liamma.collections.Utils;
 
 public class AnimatorActivity extends AppCompatActivity {
 
@@ -41,7 +34,7 @@ public class AnimatorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_animator);
+        setContentView(R.layout.main_activity_animator);
 
         vIndicator = findViewById(R.id.v_animator_move);
         rlTabs = findViewById(R.id.rl_animator_tabs);
@@ -90,9 +83,9 @@ public class AnimatorActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 imageView.setLayoutParams(params);
                 if (position == 0) {
-                    imageView.setBackgroundColor(getResources().getColor(R.color.green));
+                    imageView.setBackgroundColor(getResources().getColor(R.color.Green));
                 } else {
-                    imageView.setBackgroundColor(getResources().getColor(R.color.red));
+                    imageView.setBackgroundColor(getResources().getColor(R.color.Red));
                 }
                 container.addView(imageView);
                 return imageView;
@@ -154,7 +147,7 @@ public class AnimatorActivity extends AppCompatActivity {
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
 
-            paint.setColor(getResources().getColor(R.color.blue));
+            paint.setColor(getResources().getColor(R.color.LightBlue));
             currentPosition = viewPager.getCurrentItem();
             float left = currentPosition * Utils.dip2px(context, 150);
 

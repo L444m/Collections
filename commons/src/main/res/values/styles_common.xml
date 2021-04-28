@@ -63,7 +63,7 @@
     <!-- Divider -->
 
     <style name="Custom.Divider">
-        <item name="android:background">@color/grey</item>
+        <item name="android:background">@color/Grey</item>
     </style>
 
     <style name="Custom.Divider.Horizontal">
@@ -109,7 +109,7 @@
     </style>
 
     <style name="Custom.Text.Content">
-        <item name="android:textColor">@color/grey</item>
+        <item name="android:textColor">@color/Grey</item>
         <item name="android:textSize">13sp</item>
     </style>
 

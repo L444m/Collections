@@ -5,7 +5,6 @@ import com.liamma.collections.bean.Version;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 
-
 /**
  * ZhiHu api interface.
  * Created by Liam on 2018/7/19

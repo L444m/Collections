@@ -1,4 +1,4 @@
-package com.liamma.collections;
+package com.liamma.collections.widget;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.liamma.collections.R;
 
 /**
  * Created by Liam on 2020/7/3.

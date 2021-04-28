@@ -19,9 +19,9 @@ import java.util.List;
  * @author Liam
  * @version 1.0
  * DATE: Created on 2019/1/4 14:45
- * DESCRIPTION: Base common adapter for ListView.
+ * DESCRIPTION: Base common adapter for ListView or Spinner.
  */
-public class CommonLvAdapter<T> extends BaseAdapter {
+public abstract class CommonLvAdapter<T> extends BaseAdapter {
 
     protected Context context;
     @LayoutRes
@@ -71,6 +71,19 @@ public class CommonLvAdapter<T> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        BaseViewHolder viewHolder;
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(layoutId, parent, false);
+            viewHolder = new BaseViewHolder(convertView);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (BaseViewHolder) convertView.getTag();
+        }
+        // update item view with
+        convert(viewHolder, dataSet.get(position));
+        return convertView;
     }
+
+    public abstract void convert(BaseViewHolder viewHolder, T item);
+
 }
