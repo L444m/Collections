@@ -46,7 +46,8 @@ public class AnimatorActivity extends AppCompatActivity {
         vIndicator.setBackground(drawable);*/
 
         indicator = new Indicator(this, viewPager);
-        rlTabs.addView(indicator, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+        rlTabs.addView(indicator, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT));
         tab1.bringToFront();
         tab2.bringToFront();
 
@@ -80,7 +81,8 @@ public class AnimatorActivity extends AppCompatActivity {
             @Override
             public Object instantiateItem(@NonNull ViewGroup container, int position) {
                 ImageView imageView = new ImageView(AnimatorActivity.this);
-                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
                 imageView.setLayoutParams(params);
                 if (position == 0) {
                     imageView.setBackgroundColor(getResources().getColor(R.color.Green));
