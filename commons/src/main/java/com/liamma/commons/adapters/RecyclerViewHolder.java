@@ -187,27 +187,25 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public RecyclerViewHolder setOnClickListener(@IdRes int viewId,
-                                                 @NonNull View.OnClickListener listener) {
+    public RecyclerViewHolder setOnClickListener(@IdRes int viewId, @NonNull View.OnClickListener listener) {
         View view = getView(viewId);
         view.setOnClickListener(listener);
         return this;
     }
 
-    public RecyclerViewHolder setOnLongClickListener(@IdRes int viewId,
-                                                     @NonNull View.OnLongClickListener listener) {
+    public RecyclerViewHolder setOnLongClickListener(@IdRes int viewId, @NonNull View.OnLongClickListener listener) {
         View view = getView(viewId);
         view.setOnLongClickListener(listener);
         return this;
     }
 
-    public RecyclerViewHolder setOnTouchListener(@IdRes int viewId,
-                                                 @NonNull View.OnTouchListener listener) {
+    public RecyclerViewHolder setOnTouchListener(@IdRes int viewId, @NonNull View.OnTouchListener listener) {
         View view = getView(viewId);
         view.setOnTouchListener(listener);
         return this;
     }
 
+    @SuppressWarnings("rawtypes")
     public RecyclerViewHolder setOnItemClickListener(@IdRes int viewId,
                                                      @NonNull AdapterView.OnItemClickListener listener) {
         AdapterView adapterView = getView(viewId);
@@ -215,6 +213,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    @SuppressWarnings("rawtypes")
     public RecyclerViewHolder setOnItemLongClickListener(@IdRes int viewId,
                                                          @NonNull AdapterView.OnItemLongClickListener listener) {
         AdapterView adapterView = getView(viewId);
@@ -222,6 +221,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    @SuppressWarnings("rawtypes")
     public RecyclerViewHolder setOnItemSelectedClickListener(@IdRes int viewId,
                                                              @NonNull AdapterView.OnItemSelectedListener listener) {
         AdapterView adapterView = getView(viewId);

@@ -154,19 +154,25 @@ public class BaseViewHolder {
         return this;
     }
 
-    public BaseViewHolder setOnItemClickListener(@IdRes int viewId, @NonNull AdapterView.OnItemClickListener listener) {
+    @SuppressWarnings("rawtypes")
+    public BaseViewHolder setOnItemClickListener(@IdRes int viewId,
+                                                 @NonNull AdapterView.OnItemClickListener listener) {
         AdapterView adapterView = getView(viewId);
         adapterView.setOnItemClickListener(listener);
         return this;
     }
 
-    public BaseViewHolder setOnItemLongClickListener(@IdRes int viewId, @NonNull AdapterView.OnItemLongClickListener listener) {
+    @SuppressWarnings("rawtypes")
+    public BaseViewHolder setOnItemLongClickListener(@IdRes int viewId,
+                                                     @NonNull AdapterView.OnItemLongClickListener listener) {
         AdapterView adapterView = getView(viewId);
         adapterView.setOnItemLongClickListener(listener);
         return this;
     }
 
-    public BaseViewHolder setOnItemSelectedClickListener(@IdRes int viewId, @NonNull AdapterView.OnItemSelectedListener listener) {
+    @SuppressWarnings("rawtypes")
+    public BaseViewHolder setOnItemSelectedClickListener(@IdRes int viewId,
+                                                         @NonNull AdapterView.OnItemSelectedListener listener) {
         AdapterView adapterView = getView(viewId);
         adapterView.setOnItemSelectedListener(listener);
         return this;
