@@ -1,6 +1,5 @@
 package com.liamma.commons.utils;
 
-import android.app.Application;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -10,8 +9,8 @@ import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.liamma.commons.BaseApplication;
 import com.liamma.commons.BuildConfig;
+import com.liamma.commons.Commons;
 import com.liamma.commons.Constants;
 
 import java.io.File;
@@ -44,26 +43,12 @@ public final class AppUtils {
         }
     }
 
-    /**
-     * This method <strong>must</> return a non-null Application object, otherwise lots of other
-     * methods would throw NPE.
-     */
-    @NonNull
-    public static Application getApplication() {
-        Application application = BaseApplication.getInstance();
-        if (application == null) {
-            LogUtils.e("Application object is null.");
-            throw new IllegalStateException("Application is null");
-        }
-        return application;
-    }
-
     public static String getPackageName() {
-        return getApplication().getPackageName();
+        return Commons.getApp().getPackageName();
     }
 
     public static PackageManager getPackageManager() {
-        return getApplication().getPackageManager();
+        return Commons.getApp().getPackageManager();
     }
 
     /**
@@ -91,6 +76,31 @@ public final class AppUtils {
         }
     }
 
+    /**
+     * Returns the ApplicationInfo object of this application.
+     */
+    @Nullable
+    public static ApplicationInfo getApplicationInfo() {
+        return getApplicationInfo(getPackageName());
+    }
+
+    /**
+     * Returns an ApplicationInfo object of the specified package name.
+     */
+    @Nullable
+    public static ApplicationInfo getApplicationInfo(@Nullable final String packageName) {
+        if (StringUtils.isBlank(packageName)) {
+            LogUtils.e("Parameter of packageName is empty or blank.");
+            return null;
+        }
+        try {
+            return getPackageManager().getApplicationInfo(packageName, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            LogUtils.e("Cannot get application info, wrong package name.");
+            return null;
+        }
+    }
+
     @NonNull
     public static String getVersionName() {
         return getVersionName(getPackageName());
@@ -98,8 +108,8 @@ public final class AppUtils {
 
     @NonNull
     public static String getVersionName(@Nullable final String packageName) {
-        PackageInfo packageInfo = getPackageInfo(packageName);
-        return packageInfo == null ? "" : packageInfo.versionName;
+        PackageInfo info = getPackageInfo(packageName);
+        return info == null ? "" : info.versionName;
     }
 
     public static int getVersionCode() {
@@ -107,8 +117,8 @@ public final class AppUtils {
     }
 
     public static int getVersionCode(@Nullable final String packageName) {
-        PackageInfo packageInfo = getPackageInfo(packageName);
-        return packageInfo == null ? -1 : packageInfo.versionCode;
+        PackageInfo info = getPackageInfo(packageName);
+        return info == null ? -1 : info.versionCode;
     }
 
     public static long getLongVersionCode() {
@@ -117,8 +127,8 @@ public final class AppUtils {
 
     public static long getLongVersionCode(@Nullable final String packageName) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            PackageInfo packageInfo = getPackageInfo(packageName);
-            return packageInfo == null ? -1L : packageInfo.getLongVersionCode();
+            PackageInfo info = getPackageInfo(packageName);
+            return info == null ? -1L : info.getLongVersionCode();
         } else {
             LogUtils.e("App version must greater than or equal to 28 to get long version code.");
             return -1L;
@@ -132,15 +142,8 @@ public final class AppUtils {
 
     @NonNull
     public static String getAppName(@Nullable final String packageName) {
-        PackageInfo packageInfo = getPackageInfo(packageName);
-        if (packageInfo == null) {
-            return "";
-        }
-        ApplicationInfo applicationInfo = packageInfo.applicationInfo;
-        if (applicationInfo == null) {
-            return "";
-        }
-        return applicationInfo.loadLabel(getPackageManager()).toString();
+        ApplicationInfo appInfo = getApplicationInfo(packageName);
+        return appInfo == null ? "" : appInfo.loadLabel(getPackageManager()).toString();
     }
 
     @Nullable
@@ -150,15 +153,8 @@ public final class AppUtils {
 
     @Nullable
     public static Drawable getAppIcon(@Nullable final String packageName) {
-        PackageInfo packageInfo = getPackageInfo(packageName);
-        if (packageInfo == null) {
-            return null;
-        }
-        ApplicationInfo applicationInfo = packageInfo.applicationInfo;
-        if (applicationInfo == null) {
-            return null;
-        }
-        return applicationInfo.loadIcon(getPackageManager());
+        ApplicationInfo appInfo = getApplicationInfo(packageName);
+        return appInfo == null ? null : appInfo.loadIcon(getPackageManager());
     }
 
     @Nullable
@@ -168,15 +164,8 @@ public final class AppUtils {
 
     @Nullable
     public static Drawable getAppLogo(@Nullable final String packageName) {
-        PackageInfo packageInfo = getPackageInfo(packageName);
-        if (packageInfo == null) {
-            return null;
-        }
-        ApplicationInfo applicationInfo = packageInfo.applicationInfo;
-        if (applicationInfo == null) {
-            return null;
-        }
-        return applicationInfo.loadLogo(getPackageManager());
+        ApplicationInfo appInfo = getApplicationInfo(packageName);
+        return appInfo == null ? null : appInfo.loadLogo(getPackageManager());
     }
 
     /**
@@ -195,9 +184,18 @@ public final class AppUtils {
     }
 
     /**
-     *
+     * Whether the specified application is installed or not.
      */
     public static boolean isAppInstalled(@Nullable final String packageName) {
+        if (StringUtils.isBlank(packageName)) {
+            return false;
+        }
+        List<PackageInfo> packages = getPackageManager().getInstalledPackages(0);
+        for (PackageInfo packageInfo : packages) {
+            if (packageName.equals(packageInfo.packageName)) {
+                return true;
+            }
+        }
         return false;
     }
 

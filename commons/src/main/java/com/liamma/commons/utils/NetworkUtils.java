@@ -11,7 +11,7 @@ import android.telephony.TelephonyManager;
 import androidx.annotation.CheckResult;
 import androidx.annotation.Nullable;
 
-import com.liamma.commons.BaseApplication;
+import com.liamma.commons.Commons;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -48,7 +48,7 @@ public final class NetworkUtils {
     @CheckResult
     private static NetworkInfo getNetworkInfo() {
         ConnectivityManager cm =
-                (ConnectivityManager) BaseApplication.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager) Commons.getApp().getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm == null ? null : cm.getActiveNetworkInfo();
     }
 
@@ -81,8 +81,7 @@ public final class NetworkUtils {
      * Need permission {@code "android.permission.ACCESS_WIFI_STATE"}
      */
     public static String getMacAddress() {
-        WifiManager wm = (WifiManager) BaseApplication.getInstance()
-                .getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wm = (WifiManager) Commons.getApp().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         String macAddress = "";
         if (wm == null) return macAddress;
@@ -119,7 +118,7 @@ public final class NetworkUtils {
             }
 
         } else if (NET_TYPE_WIFI.equals(strNetworkType)) {
-            WifiManager wm = (WifiManager) BaseApplication.getInstance()
+            WifiManager wm = (WifiManager) Commons.getApp()
                     .getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
             if (wm == null) return ip;
@@ -185,7 +184,7 @@ public final class NetworkUtils {
      */
     public static String getDetailMobileNetworkType() {
         TelephonyManager tm =
-                (TelephonyManager) BaseApplication.getInstance().getSystemService(Context.TELEPHONY_SERVICE);
+                (TelephonyManager) Commons.getApp().getSystemService(Context.TELEPHONY_SERVICE);
 
         if (tm == null) return NET_TYPE_UNKNOWN;
 
