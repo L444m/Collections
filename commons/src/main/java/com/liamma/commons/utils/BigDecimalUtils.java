@@ -1,5 +1,6 @@
 package com.liamma.commons.utils;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.math.BigDecimal;
@@ -25,35 +26,53 @@ public final class BigDecimalUtils {
     /**
      * +
      */
-    public static BigDecimal add(@Nullable BigDecimal bd1, @Nullable BigDecimal... bd2) {
-        if (bd1 == null) bd1 = BigDecimal.ZERO;
-        if (EmptyUtils.isEmpty(bd2)) return bd1;
-
-        BigDecimal result = bd1;
-        for (BigDecimal bigDecimal : bd2) {
-            if (bd1 != null) result = bd1.add(bigDecimal);
+    @NonNull
+    public static BigDecimal add(@Nullable BigDecimal bd, @Nullable BigDecimal... bdArray) {
+        if (bd == null) {
+            bd = BigDecimal.ZERO;
+        }
+        if (EmptyUtils.isEmpty(bdArray)) {
+            return bd;
+        }
+        BigDecimal result = bd;
+        for (BigDecimal bigDecimal : bdArray) {
+            if (bigDecimal != null) {
+                result = result.add(bigDecimal);
+            }
         }
         return result;
     }
 
-    public static BigDecimal subtract(@Nullable BigDecimal bd1, @Nullable BigDecimal... bd2) {
-        if (bd1 == null) bd1 = BigDecimal.ZERO;
-        if (EmptyUtils.isEmpty(bd2)) return bd1;
-
-        BigDecimal result = bd1;
-        for (BigDecimal bd : bd2) {
-            if (bd != null) result = bd1.subtract(bd);
+    @NonNull
+    public static BigDecimal subtract(@Nullable BigDecimal bd, @Nullable BigDecimal... bdArray) {
+        if (bd == null) {
+            bd = BigDecimal.ZERO;
+        }
+        if (EmptyUtils.isEmpty(bdArray)) {
+            return bd;
+        }
+        BigDecimal result = bd;
+        for (BigDecimal bigDecimal : bdArray) {
+            if (bigDecimal != null) {
+                result = result.subtract(bd);
+            }
         }
         return result;
     }
 
-    public static BigDecimal multiply(@Nullable BigDecimal bd1, @Nullable BigDecimal... bd2) {
-        if (EmptyUtils.isEmpty(bd2)) return bd1 != null ? bd1 : BigDecimal.ZERO;
-        if (bd1 == null) bd1 = BigDecimal.ONE;
-
-        BigDecimal result = bd1;
-        for (BigDecimal bd : bd2) {
-            if (bd != null) result = bd1.multiply(bd);
+    public static BigDecimal multiply(@Nullable BigDecimal bd, @Nullable BigDecimal... bdArray) {
+        if (bd == null) {
+            LogUtils.d("Divisor is null, cannot exec multiply.");
+            return BigDecimal.ZERO;
+        }
+        if (EmptyUtils.isEmpty(bdArray)) {
+            return bd;
+        }
+        BigDecimal result = bd;
+        for (BigDecimal bigDecimal : bdArray) {
+            if (bigDecimal != null) {
+                result = result.multiply(bd);
+            }
         }
         return result;
     }
@@ -68,7 +87,6 @@ public final class BigDecimalUtils {
         }
         return result;
     }
-
 
 
     /**
