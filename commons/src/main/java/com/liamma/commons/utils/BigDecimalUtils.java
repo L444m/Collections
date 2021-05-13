@@ -19,8 +19,53 @@ public final class BigDecimalUtils {
         throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
-    public static BigDecimal strToBigDecimal(String s) {
-        return null;
+    public static BigDecimal fromString(String s) {
+        return new BigDecimal(s);
+    }
+
+    /**
+     * whether bd1 is equal to bd2.
+     *
+     * @return {@code true} if {@code bd1 == bd2}, otherwise {@code false}.
+     */
+    public static boolean isEqual(BigDecimal bd1, BigDecimal bd2) {
+        return false;
+    }
+
+    /**
+     * Whether bd1 is greater than bd2.
+     *
+     * @return {@code true} if {@code bd1 > bd2}, otherwise {@code false}.
+     */
+    public static boolean isGreater(BigDecimal bd1, BigDecimal bd2) {
+        return false;
+    }
+
+    /**
+     * Whether bd1 is less than bd2.
+     *
+     * @return {@code true} if {@code bd1 < bd2}, otherwise {@code false}.
+     */
+    public static boolean isLess(BigDecimal bd1, BigDecimal bd2) {
+        return false;
+    }
+
+    /**
+     * Whether bd1 is greater than or equal to bd2.
+     *
+     * @return {@code true} if {@code bd1 >= bd2}, otherwise {@code false}.
+     */
+    public static boolean isGreaterOrEqual(BigDecimal bd1, BigDecimal bd2) {
+        return false;
+    }
+
+    /**
+     * Whether bd1 is less than or equal to bd2.
+     *
+     * @return {@code true} if {@code bd1 <= bd2}, otherwise {@code false}.
+     */
+    public static boolean isLessOrEqual(BigDecimal bd1, BigDecimal bd2) {
+        return false;
     }
 
     /**
@@ -54,7 +99,7 @@ public final class BigDecimalUtils {
         BigDecimal result = bd;
         for (BigDecimal bigDecimal : bdArray) {
             if (bigDecimal != null) {
-                result = result.subtract(bd);
+                result = result.subtract(bigDecimal);
             }
         }
         return result;

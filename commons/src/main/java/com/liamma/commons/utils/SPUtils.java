@@ -22,7 +22,7 @@ import java.util.Set;
 @SuppressWarnings("ApplySharedPref")
 public final class SPUtils {
 
-    public static final String DEFAULT_SP_NAME = "default_sp";
+    public static final String DEFAULT_SP_NAME = "default_shared_preferences";
 
     // Default values for retrieving data from SharedPreferences.
     public static final String DEFAULT_VALUE_STRING = "";
@@ -34,10 +34,10 @@ public final class SPUtils {
 
     // Caches all SPUtils instances in a map.
     private static final HashMap<String, SPUtils> spUtilsMap = new HashMap<>();
-    private SharedPreferences sp = null;
+    private SharedPreferences sp;
 
     /**
-     * Private constructor, prevents from being instantiated outside.
+     * Private constructor, prevents from being instantiated outside of this class.
      */
     private SPUtils(final String spName) {
         sp = Commons.getApp().getSharedPreferences(spName, Context.MODE_PRIVATE);
@@ -46,20 +46,21 @@ public final class SPUtils {
     /**
      * Gets SPUtils instance with default SP name.
      */
-    public static SPUtils getInstance() {
-        return getInstance(null);
+    public static SPUtils getSPUtils() {
+        return getSPUtils(null);
     }
 
     /**
      * Gets SPUtils instance corresponding to the specified SP name.
      *
      * @param spName SharedPreferences name
+     * @return SPUtils instance
      */
-    public static SPUtils getInstance(@Nullable String spName) {
+    @NonNull
+    public static SPUtils getSPUtils(@Nullable String spName) {
         if (StringUtils.isBlank(spName)) {
             spName = DEFAULT_SP_NAME;
         }
-
         SPUtils spUtils = spUtilsMap.get(spName);
         if (spUtils == null) {
             spUtils = new SPUtils(spName);
@@ -73,7 +74,7 @@ public final class SPUtils {
      *
      * @param spName SharedPreferences name
      */
-    public static void removeInstance(@Nullable String spName) {
+    public static void removeSPUtils(@Nullable String spName) {
         if (StringUtils.isBlank(spName)) {
             spName = DEFAULT_SP_NAME;
         }
@@ -83,7 +84,7 @@ public final class SPUtils {
     /**
      * Removes all SPUtils instances.
      */
-    public static void removeAllInstance() {
+    public static void removeAllSPUtils() {
         spUtilsMap.clear();
     }
 
@@ -95,12 +96,14 @@ public final class SPUtils {
     }
 
     /**
-     * Gets SharedPreferences.Editor object.
+     * Gets SharedPreferences.Editor instance.
      * <p>
      * For chain use, example :
      * <code>
      * SPUtils.getInstance().getEditor
-     * .putString("key1", "value1").putString("key2", "value2").apply();
+     * .putString("key1", "value1")
+     * .putString("key2", "value2")
+     * .apply();
      * </code>
      */
     public SharedPreferences.Editor getEditor() {
@@ -110,7 +113,7 @@ public final class SPUtils {
     public void put(@NonNull String key, @Nullable Object value, boolean isCommit) {
         SharedPreferences.Editor editor = getEditor();
         if (value instanceof String) {
-            editor.putString(key, (String)value);
+            editor.putString(key, (String) value);
         } else if (value instanceof Set<?>) {
             // risky of ? type parameter.
             editor.putStringSet(key, (Set<String>) value);
@@ -173,9 +176,6 @@ public final class SPUtils {
 
     /**
      * Puts string value in SharedPreferences.
-     *
-     * @param key   String
-     * @param value String
      */
     public void putString(@NonNull String key, @Nullable String value) {
         putString(key, value, false);
@@ -184,8 +184,6 @@ public final class SPUtils {
     /**
      * Puts string value in SharedPreferences.
      *
-     * @param key      String
-     * @param value    String
      * @param isCommit {@code true} means {@code commit()};
      *                 {@code false} means {@code apply()}.
      */
@@ -199,8 +197,6 @@ public final class SPUtils {
 
     /**
      * Gets string value from SharedPreferences.
-     *
-     * @param key String
      */
     @Nullable
     public String getString(@NonNull String key) {
@@ -209,9 +205,6 @@ public final class SPUtils {
 
     /**
      * Gets string value from SharedPreferences.
-     *
-     * @param key          String
-     * @param defaultValue Default string value
      */
     @Nullable
     public String getString(@NonNull String key, @Nullable String defaultValue) {
@@ -219,20 +212,15 @@ public final class SPUtils {
     }
 
     /**
-     * Puts string set in SharedPreferences.
-     *
-     * @param key    String
-     * @param values {@code Set<String>}
+     * Puts string set value in SharedPreferences.
      */
     public void putStringSet(@NonNull String key, @Nullable Set<String> values) {
         putStringSet(key, values, false);
     }
 
     /**
-     * Puts string set in SharedPreferences.
+     * Puts string set value in SharedPreferences.
      *
-     * @param key      String
-     * @param values   {@code Set<String>}
      * @param isCommit {@code true} means {@code commit()};
      *                 {@code false} means {@code apply()}.
      */
@@ -245,9 +233,7 @@ public final class SPUtils {
     }
 
     /**
-     * Gets string set from SharedPreferences.
-     *
-     * @param key String
+     * Gets string set value from SharedPreferences.
      */
     @Nullable
     public Set<String> getStringSet(@NonNull String key) {

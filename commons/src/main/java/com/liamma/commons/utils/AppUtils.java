@@ -43,6 +43,7 @@ public final class AppUtils {
         }
     }
 
+    // maybe return null.
     public static String getPackageName() {
         return Commons.getApp().getPackageName();
     }
@@ -52,7 +53,7 @@ public final class AppUtils {
     }
 
     /**
-     * Returns the PackageInfo object of this application.
+     * Returns the {@link PackageInfo} object of this application.
      */
     @Nullable
     public static PackageInfo getPackageInfo() {
@@ -60,12 +61,12 @@ public final class AppUtils {
     }
 
     /**
-     * Returns a PackageInfo object of the specified package name.
+     * Returns a {@link PackageInfo} object of the specified package name.
      */
     @Nullable
     public static PackageInfo getPackageInfo(@Nullable final String packageName) {
         if (StringUtils.isBlank(packageName)) {
-            LogUtils.e("Parameter of packageName is empty or blank.");
+            LogUtils.e("Argument of packageName is empty or blank.");
             return null;
         }
         try {
@@ -77,7 +78,7 @@ public final class AppUtils {
     }
 
     /**
-     * Returns the ApplicationInfo object of this application.
+     * Returns the {@link ApplicationInfo} object of this application.
      */
     @Nullable
     public static ApplicationInfo getApplicationInfo() {
@@ -85,12 +86,12 @@ public final class AppUtils {
     }
 
     /**
-     * Returns an ApplicationInfo object of the specified package name.
+     * Returns an {@link ApplicationInfo} object of the specified package name.
      */
     @Nullable
     public static ApplicationInfo getApplicationInfo(@Nullable final String packageName) {
         if (StringUtils.isBlank(packageName)) {
-            LogUtils.e("Parameter of packageName is empty or blank.");
+            LogUtils.e("Argument of packageName is empty or blank.");
             return null;
         }
         try {
@@ -168,6 +169,10 @@ public final class AppUtils {
         return appInfo == null ? null : appInfo.loadLogo(getPackageManager());
     }
 
+    public static String[] getMetaData(@Nullable final String... keys) {
+        return null;
+    }
+
     /**
      * Gets all installed packages which exclude system apps.
      */
@@ -199,7 +204,34 @@ public final class AppUtils {
         return false;
     }
 
+    /**
+     * Whether the specified application is a system app.
+     * Do not need to check "this app", because you know you app isn't. LOL
+     */
+    public static boolean isAppSystem(@Nullable final String packageName) {
+        ApplicationInfo appInfo = getApplicationInfo(packageName);
+        return appInfo != null && (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+    }
+
+    /**
+     * Whether the specified application is in debug mode or not.
+     * This method is used for other applications, use {@link AppUtils#isDebug()} to check this app.
+     */
+    public static boolean isAppDebug(@Nullable final String packageName) {
+        ApplicationInfo appInfo = getApplicationInfo(packageName);
+        return appInfo != null && (appInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+    }
+
+    public static boolean isAppRoot(@Nullable final String packageName) {
+        // To be completed.
+        return false;
+    }
+
     public static void installApp(@Nullable final String filePath) {
+        File file = FileUtils.getFile(filePath);
+        if (file == null) {
+            return;
+        }
 
     }
 

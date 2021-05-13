@@ -3,13 +3,12 @@ package com.liamma.commons.utils;
 /**
  * @author Liam
  * @version 1.0
- * DATE: Created on 2018/4/12 16:43
- * DESCRIPTION: Utility methods.
+ * DATE: Created on 2021/5/13 16:35
+ * DESCRIPTION:
  */
-public final class Utils {
+public class ValidatorUtils {
 
-    private Utils() {
+    private ValidatorUtils() {
         throw new UnsupportedOperationException("cannot be instantiated.");
     }
-
 }

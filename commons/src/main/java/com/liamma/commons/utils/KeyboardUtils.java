@@ -1,13 +1,13 @@
 package com.liamma.commons.utils;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
 /**
  * Keyboard Utils.
