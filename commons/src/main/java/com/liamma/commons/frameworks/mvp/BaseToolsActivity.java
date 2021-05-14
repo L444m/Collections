@@ -8,9 +8,9 @@ public abstract class BaseToolsActivity extends BaseActivity {
 
     @Override
     protected void initContentView() {
+        super.initContentView();
 
         // 另外处理 inflater 等。
-
     }
 
 }

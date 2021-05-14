@@ -39,6 +39,11 @@ public class TestingActivity extends BaseToolsActivity {
         tvShowMessage = findViewById(R.id.tvShowMessage);
     }
 
+    @Override
+    protected void initData() {
+        testBigDecimal();
+    }
+
     /**
      * 测试 Logger 的调用。
      */
@@ -64,26 +69,6 @@ public class TestingActivity extends BaseToolsActivity {
     private void startShowDialogFragment() {
         BaseDialogFragment dialogFragment = new BaseDialogFragment();
         dialogFragment.show(getFragmentManager(), "test");
-    }
-
-    /**
-     * 测试 BigDecimal 数据格式化。
-     */
-    private void testDoubleDecimal() {
-        float ff = 1056.12345678901234567899F;
-        double ss = 1056.12345678901234567899D;
-        // Log.i(TAG, "testDoubleDecimal: " + String.valueOf(ff));
-        // Log.i(TAG, "testDoubleDecimal: " + String.valueOf(ss));
-
-        BigDecimal big = new BigDecimal("1056.12345678901234567899");
-
-        DecimalFormat df2 = new DecimalFormat("0.00");
-        DecimalFormat df4 = new DecimalFormat("0.0000");
-        DecimalFormat df6 = new DecimalFormat("0.000000");
-
-        Log.i(TAG, df2.format(big.setScale(2, RoundingMode.DOWN)));
-        Log.i(TAG, df4.format(big.setScale(2, RoundingMode.DOWN)));
-        Log.i(TAG, df6.format(big.setScale(2, RoundingMode.DOWN)));
     }
 
     /**
@@ -126,7 +111,25 @@ public class TestingActivity extends BaseToolsActivity {
      * 测试 BigDecimal 的计算方法。
      */
     private void testBigDecimal() {
-        double dd = 123123123.456456456456D;
+        int a = 101;
+        long b = 101L;
+        float c = 101f;
+        double d = 101d;
+        String s = "101";
+
+        BigDecimal bd1 = new BigDecimal(a);
+        BigDecimal bd2 = new BigDecimal(b);
+        BigDecimal bd3 = new BigDecimal(c);     // use double
+        BigDecimal bd4 = new BigDecimal(d);
+        BigDecimal bd5 = new BigDecimal(s);
+
+        LogUtils.d("bd1 = " + bd1.toPlainString());
+        LogUtils.d("bd2 = " + bd2.toPlainString());
+        LogUtils.d("bd3 = " + bd3.toPlainString());
+        LogUtils.d("bd4 = " + bd4.toPlainString());
+        LogUtils.d("bd5 = " + bd5.toPlainString());
+
+        /*double dd = 123123123.456456456456D;
         String d0 = "123123123123123.456456456456";
         String d1 = "123456789.1234567";
         String d2 = "113";
@@ -152,7 +155,7 @@ public class TestingActivity extends BaseToolsActivity {
         Log.i(TAG, "testBigDecimal: d4 = " + BigDecimalUtils.to8(new BigDecimal(d4)));
         Log.i(TAG, "testBigDecimal: d5 = " + BigDecimalUtils.to8(new BigDecimal(d5)));
         Log.i(TAG, "testBigDecimal: d6 = " + BigDecimalUtils.to8(new BigDecimal(d6)));
-        Log.i(TAG, "testBigDecimal: d7 = " + BigDecimalUtils.to8(new BigDecimal(d7)));
+        Log.i(TAG, "testBigDecimal: d7 = " + BigDecimalUtils.to8(new BigDecimal(d7)));*/
     }
 
     /**

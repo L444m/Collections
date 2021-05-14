@@ -10,9 +10,9 @@ public final class Constants {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    public static final Boolean DEBUG = null;
-    public static final Boolean LOG_DEBUG_ENABLE = null;
-    public static final Boolean LOG_INFO_ENABLE = null;
+    public static final Boolean DEBUG = true;
+    public static final Boolean LOG_DEBUG_ENABLE = true;
+    public static final Boolean LOG_INFO_ENABLE = true;
 
     public static final String BASE_URL = "";
 

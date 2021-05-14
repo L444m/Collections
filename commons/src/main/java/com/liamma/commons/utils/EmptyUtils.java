@@ -15,7 +15,7 @@ import java.util.Set;
  * @author Liam
  * @version 1.0
  * DATE: Created on 2017/12/6 00:05
- * DESCRIPTION: Indicates whether the specified "Collection" is empty or not.
+ * DESCRIPTION: Indicates whether the specified "collection" is empty or not.
  */
 public final class EmptyUtils {
 
@@ -35,7 +35,7 @@ public final class EmptyUtils {
     }
 
     /**
-     * Indicates whether the CharSequence is empty or not.
+     * Indicates whether the {@link CharSequence} is empty or not.
      *
      * @param sequence CharSequence
      * @return {@code true} if the specified sequence is null or empty, otherwise {@code false}.
@@ -44,48 +44,36 @@ public final class EmptyUtils {
         return sequence == null || sequence.length() == 0;
     }
 
-    /**
-     * Indicates whether the CharSequence is <bold>not</bold> empty.
-     *
-     * @param sequence CharSequence
-     * @return {@code true} if the specified sequence is not null or empty, otherwise {@code false}.
-     */
     public static boolean isNotEmpty(CharSequence sequence) {
         return sequence != null && sequence.length() != 0;
     }
 
     /**
-     * Indicates whether the Collection is empty or not.
+     * Indicates whether the {@link Collection} is empty or not.
      *
      * @param collection Collection object
-     * @return {@code true} if the specified Collection is null or empty, otherwise {@code false}.
+     * @return {@code true} if the specified collection is null or empty, otherwise {@code false}.
      */
     public static boolean isEmpty(Collection<?> collection) {
-        return collection == null || collection.isEmpty();
+        return collection == null || collection.size() == 0;
     }
 
-    /**
-     * Indicates whether the Collection is <bold>not</bold> empty.
-     *
-     * @param collection Collection object
-     * @return {@code true} if the specified Collection is not null or empty, otherwise {@code false}
-     */
     public static boolean isNotEmpty(Collection<?> collection) {
-        return collection != null && !collection.isEmpty();
+        return collection != null && collection.size() != 0;
     }
 
     /**
-     * Indicates whether the Map is empty or not.
+     * Indicates whether the {@link Map} is empty or not.
      *
      * @param map Map
      * @return {@code true} if the specified map is null or empty, otherwise {@code false}.
      */
     public static boolean isEmpty(Map<?, ?> map) {
-        return map == null || map.isEmpty();
+        return map == null || map.size() == 0;
     }
 
     public static boolean isNotEmpty(Map<?, ?> map) {
-        return map != null && !map.isEmpty();
+        return map != null && map.size() != 0;
     }
 
     /**
@@ -195,7 +183,7 @@ public final class EmptyUtils {
     }
 
     /**
-     * Indicates whether the SparseArray is empty or not.
+     * Indicates whether the {@link SparseArray} is empty or not.
      *
      * @param array SparseArray
      * @return {@code true} if the specified SparseArray is null or empty, otherwise {@code false}.
@@ -204,12 +192,6 @@ public final class EmptyUtils {
         return array == null || array.size() == 0;
     }
 
-    /**
-     * Indicates whether the SparseArray is not empty.
-     *
-     * @param array SparseArray
-     * @return {@code true} if the specified SparseArray is not null or empty, otherwise {@code false}.
-     */
     public static boolean isNotEmpty(SparseArray<?> array) {
         return array != null && array.size() != 0;
     }
@@ -221,9 +203,6 @@ public final class EmptyUtils {
         return array == null || array.size() == 0;
     }
 
-    /**
-     * @see EmptyUtils#isNotEmpty(SparseArray)
-     */
     public static boolean isNotEmpty(SparseIntArray array) {
         return array != null && array.size() != 0;
     }
@@ -235,9 +214,6 @@ public final class EmptyUtils {
         return array == null || array.size() == 0;
     }
 
-    /**
-     * @see EmptyUtils#isNotEmpty(SparseArray)
-     */
     public static boolean isNotEmpty(SparseLongArray array) {
         return array != null && array.size() != 0;
     }
@@ -249,9 +225,6 @@ public final class EmptyUtils {
         return array == null || array.size() == 0;
     }
 
-    /**
-     * @see EmptyUtils#isNotEmpty(SparseArray)
-     */
     public static boolean isNotEmpty(SparseBooleanArray array) {
         return array != null && array.size() != 0;
     }

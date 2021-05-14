@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
  * @author Liam
  * @version 1.0
  * DATE: Created on 2020/12/30 10:05
- * DESCRIPTION: 大数据计算方法。
+ * DESCRIPTION: Calculation
  */
 public final class BigDecimalUtils {
 
@@ -19,8 +19,18 @@ public final class BigDecimalUtils {
         throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
-    public static BigDecimal fromString(String s) {
-        return new BigDecimal(s);
+    @NonNull
+    public static BigDecimal fromString(@Nullable String s) {
+        if (EmptyUtils.isEmpty(s)) {
+            LogUtils.e("String value is empty.");
+            return BigDecimal.ZERO;
+        }
+        try {
+            return new BigDecimal(s);
+        } catch (NumberFormatException e) {
+            LogUtils.e("This string does not contain a valid number.");
+            return BigDecimal.ZERO;
+        }
     }
 
     /**

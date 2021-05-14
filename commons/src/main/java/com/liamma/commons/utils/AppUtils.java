@@ -223,20 +223,16 @@ public final class AppUtils {
     }
 
     public static boolean isAppRoot(@Nullable final String packageName) {
-        // To be completed.
         return false;
     }
 
     public static void installApp(@Nullable final String filePath) {
-        File file = FileUtils.getFile(filePath);
-        if (file == null) {
-            return;
-        }
-
     }
 
     public static void installApp(@Nullable final File file) {
+    }
 
+    public static void uninstallApp(@Nullable String packageName) {
     }
 
 }

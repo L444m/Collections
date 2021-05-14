@@ -3,16 +3,16 @@ package com.liamma.commons.utils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 /**
- * Utility methods for String.
- * Created by Liam on 2017/12/6.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2017/12/6 10:59
+ * DESCRIPTION: Utility methods for String.
+ * Most methods are suitable for {@link CharSequence}, which can be used {@link android.text.Editable} /
+ * {@link android.text.Spannable} / {@link StringBuilder} / {@link StringBuffer} and so on.
  */
 public final class StringUtils {
 
@@ -21,57 +21,58 @@ public final class StringUtils {
     }
 
     /**
-     * Indicates whether the String is empty.
+     * Indicates whether the {@link CharSequence} is empty or not.
      *
-     * @param s String
-     * @return {@code true} if the specified string is null or empty, otherwise {@code false}.
+     * @param sequence CharSequence
+     * @return {@code true} if the specified CharSequence is null or empty, otherwise {@code false}.
      */
-    public static boolean isEmpty(String s) {
-        return s == null || s.length() == 0;
+    public static boolean isEmpty(@Nullable CharSequence sequence) {
+        return sequence == null || sequence.length() == 0;
     }
 
     /**
-     * Indicates whether the String is not empty.
+     * Indicates whether the {@link CharSequence} is <bold>not</> empty.
      *
-     * @param s String
-     * @return {@code true} if the specified string is not null and not empty, otherwise {@code false}.
+     * @param sequence CharSequence
+     * @return {@code true} if the specified CharSequence is not null or empty, otherwise {@code false}.
      */
-    public static boolean isNotEmpty(String s) {
-        return s != null && s.length() != 0;
+    public static boolean isNotEmpty(@Nullable CharSequence sequence) {
+        return sequence != null && sequence.length() != 0;
     }
 
     /**
-     * Indicates whether the string is blank.
-     *
-     * @param s String
-     * @return {@code true} if the specified string is null or blank, otherwise {@code false}.
+     * Indicates whether the {@link CharSequence} is blank or not.
      */
-    public static boolean isBlank(String s) {
-        return s == null || s.trim().length() == 0;
+    public static boolean isBlank(@Nullable CharSequence sequence) {
+        return sequence == null || sequence.toString().trim().length() == 0;
+    }
+
+    /**
+     * Indicates whether the {@link CharSequence} is <bold>not</> blank.
+     */
+    public static boolean isNotBlank(@Nullable CharSequence sequence) {
+        return sequence != null && sequence.toString().trim().length() != 0;
     }
 
     /**
      * Returns an empty string if it's null.
      */
-    public static String nullToEmpty(String s) {
-        return s == null ? "" : s;
+    @NonNull
+    public static String nullToEmpty(@Nullable CharSequence sequence) {
+        return sequence == null ? "" : sequence.toString();
     }
 
     /**
-     * Returns the length of an string safely even though it's null.
+     * Returns the length of a {@link CharSequence} instance safely even though it's null.
      */
-    public static int length(String s) {
-        return s == null ? 0 : s.length();
+    public static int getLength(@Nullable CharSequence sequence) {
+        return sequence == null ? 0 : sequence.length();
     }
 
     /**
-     * Indicates whether the two strings is equal.
-     *
-     * @param a CharSequence
-     * @param b CharSequence
-     * @return {@code true} if two CharSequences are equals, otherwise {@code false}.
+     * Indicates whether the content of two {@link CharSequence} object is equal or not.
      */
-    public static boolean equals(CharSequence a, CharSequence b) {
+    public static boolean equals(@Nullable CharSequence a, @Nullable CharSequence b) {
         if (a == b) return true;
         int length;
         if (a != null && b != null && (length = a.length()) == b.length()) {
@@ -90,7 +91,8 @@ public final class StringUtils {
     /**
      * Returns the reversed string.
      */
-    public static String reverse(String s) {
+    @Nullable
+    public static String reverse(@Nullable String s) {
         if (isBlank(s)) {
             return s;
         }
@@ -99,7 +101,6 @@ public final class StringUtils {
         int mid = len >> 1;
         char[] chars = s.toCharArray();
         char c;
-
         for (int i = 0; i < mid; i++) {
             c = chars[i];
             chars[i] = chars[len - i - 1];
@@ -109,9 +110,10 @@ public final class StringUtils {
     }
 
     /**
-     * Returns this string with the first letter in upper case.
+     * Returns a string with the first letter in upper case.
      */
-    public static String upperFirstLetter(String s) {
+    @Nullable
+    public static String upperFirstLetter(@Nullable String s) {
         if (isBlank(s) || Character.isUpperCase(s.charAt(0))) {
             return s;
         }
@@ -119,9 +121,10 @@ public final class StringUtils {
     }
 
     /**
-     * Returns this string with the first letter in lower case.
+     * Returns a string with the first letter in lower case.
      */
-    public static String lowerFirstLetter(String s) {
+    @Nullable
+    public static String lowerFirstLetter(@Nullable String s) {
         if (isEmpty(s) || Character.isLowerCase(s.charAt(0))) {
             return s;
         }
@@ -134,48 +137,15 @@ public final class StringUtils {
      * @param s String
      * @return a string with all special characters removed
      */
-    public static String removeAllSpecialChars(@NonNull String s) {
+    @Nullable
+    public static String removeAllSpecialChars(@Nullable String s) {
+        if (isBlank(s)) {
+            return s;
+        }
         String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(s);
         return matcher.replaceAll("");
-    }
-
-    /**
-     * Splits a string into string list.
-     *
-     * @param s         String
-     * @param separator String
-     */
-    public static List<String> stringToList(@Nullable String s, @NonNull String separator) {
-        if (isEmpty(s)) {
-            return new ArrayList<>();
-        }
-        String[] strings = s.split(separator);
-        return new ArrayList<>(Arrays.asList(strings));
-    }
-
-    /**
-     * Converts a string list to string.
-     *
-     * @param list      {@code List<String>}
-     * @param separator String
-     */
-    public static String listToString(@Nullable List<String> list, @Nullable String separator) {
-        if (EmptyUtils.isEmpty(list)) {
-            return EmptyUtils.EMPTY_STRING;
-        }
-
-        boolean appendSeparator = separator != null;
-        StringBuilder sb = new StringBuilder();
-
-        for (String s : list) {
-            sb.append(s);
-            if (appendSeparator) {
-                sb.append(separator);
-            }
-        }
-        return sb.toString();
     }
 
 }
