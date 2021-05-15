@@ -3,7 +3,7 @@ package com.liamma.commons.frameworks.mvp.base;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.liamma.commons.utils.LogUtils;
+import com.liamma.commons.log.LogUtils;
 
 import java.lang.ref.WeakReference;
 

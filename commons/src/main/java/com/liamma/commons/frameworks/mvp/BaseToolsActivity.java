@@ -1,8 +1,10 @@
 package com.liamma.commons.frameworks.mvp;
 
 /**
- * 封装带有基本功能，如 ToolsBar,Dialog,Toast 等的 Activity。
- * Created by Liam on 2018/07/12.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/07/12 15:43
+ * DESCRIPTION: Base activity with tool bar function.
  */
 public abstract class BaseToolsActivity extends BaseActivity {
 

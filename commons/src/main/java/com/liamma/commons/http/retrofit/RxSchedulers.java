@@ -3,7 +3,7 @@ package com.liamma.commons.http.retrofit;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import com.liamma.commons.utils.LogUtils;
+import com.liamma.commons.log.LogUtils;
 import com.liamma.commons.utils.NetworkUtils;
 import com.liamma.commons.utils.ToastUtils;
 

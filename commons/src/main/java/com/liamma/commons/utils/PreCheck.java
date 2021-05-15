@@ -1,5 +1,7 @@
 package com.liamma.commons.utils;
 
+import com.liamma.commons.log.LogUtils;
+
 /**
  * @author Liam
  * @version 1.0

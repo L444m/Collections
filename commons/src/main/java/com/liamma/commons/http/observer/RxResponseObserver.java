@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 
 import com.liamma.commons.http.bean.ResponseEntity;
-import com.liamma.commons.utils.LogUtils;
+import com.liamma.commons.log.LogUtils;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

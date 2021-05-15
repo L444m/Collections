@@ -11,43 +11,43 @@ public interface ILog {
     /**
      * Log level : Verbose.
      */
-    void v(String tag, String msg);
+    void v(String tag, String log);
 
-    void v(String tag, String msg, Throwable tr);
+    void v(String tag, String log, Throwable tr);
 
     /**
      * Log level : Debug.
      */
-    void d(String tag, String msg);
+    void d(String tag, String log);
 
-    void d(String tag, String msg, Throwable tr);
+    void d(String tag, String log, Throwable tr);
 
     /**
      * Log level : Info.
      */
-    void i(String tag, String msg);
+    void i(String tag, String log);
 
-    void i(String tag, String msg, Throwable tr);
+    void i(String tag, String log, Throwable tr);
 
     /**
      * Log level : Warning.
      */
-    void w(String tag, String msg);
+    void w(String tag, String log);
 
-    void w(String tag, String msg, Throwable tr);
+    void w(String tag, String log, Throwable tr);
 
     /**
      * Log level : Error.
      */
-    void e(String tag, String msg);
+    void e(String tag, String log);
 
-    void e(String tag, String msg, Throwable tr);
+    void e(String tag, String log, Throwable tr);
 
     /**
      * Log level : Asset.
      */
-    void wtf(String tag, String msg);
+    void wtf(String tag, String log);
 
-    void wtf(String tag, String msg, Throwable tr);
+    void wtf(String tag, String log, Throwable tr);
 
 }

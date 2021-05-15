@@ -3,6 +3,8 @@ package com.liamma.commons.utils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.liamma.commons.log.LogUtils;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;

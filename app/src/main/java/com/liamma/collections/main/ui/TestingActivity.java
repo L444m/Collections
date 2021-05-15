@@ -9,15 +9,12 @@ import androidx.appcompat.app.AlertDialog;
 import com.liamma.collections.R;
 import com.liamma.collections.dialog.BaseDialogFragment;
 import com.liamma.commons.frameworks.mvp.BaseToolsActivity;
-import com.liamma.commons.utils.BigDecimalUtils;
+import com.liamma.commons.log.LogUtils;
 import com.liamma.commons.utils.DateTimeUtils;
-import com.liamma.commons.utils.LogUtils;
 import com.liamma.commons.utils.SpannableEditor;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.Timestamp;
-import java.text.DecimalFormat;
 
 /**
  * @author Liam

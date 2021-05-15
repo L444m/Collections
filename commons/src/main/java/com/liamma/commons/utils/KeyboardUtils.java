@@ -9,6 +9,8 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 
+import com.liamma.commons.log.LogUtils;
+
 /**
  * Keyboard Utils.
  * Created by Liam on 2019/10/31.

@@ -17,10 +17,17 @@
         android:progressDrawable="@drawable/common_bg_web_progress"
         android:visibility="gone" />
 
-    <!-- Layout for inflating content view. -->
-    <FrameLayout
-        android:id="@+id/flBaseContainer"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srlRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <!-- Layout for inflating content view. -->
+        <FrameLayout
+            android:id="@+id/flBaseContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

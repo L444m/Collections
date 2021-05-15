@@ -1,5 +1,7 @@
 package com.liamma.commons.log;
 
+import androidx.annotation.Nullable;
+
 import com.liamma.commons.BuildConfig;
 import com.liamma.commons.Constants;
 
@@ -14,7 +16,7 @@ public final class LogUtils {
     public static final String TAG = "LogUtils";
 
     private LogUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated...");
+        throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -35,84 +37,138 @@ public final class LogUtils {
         }
     }
 
-    public static void addLogger(ILog logger) {
+    public static void addLogger(@Nullable ILog logger) {
         LoggerManager.getInstance().addCustomLogger(logger);
     }
 
-    public static void addLogger(int index, ILog logger) {
+    public static void addLogger(int index, @Nullable ILog logger) {
         LoggerManager.getInstance().addCustomLogger(index, logger);
     }
 
-    public static void v(Class<? extends ILog> clazz, String tag, String message) {
-        LoggerManager.getInstance().getLogger(clazz).v(tag, message);
+    // ------------------- LOG level : verbose ------------------- //
+
+    public static void v(String log) {
+        v(TAG, log);
     }
 
-    public static void v(String tag, String message) {
-        LoggerManager.getInstance().getLogger().v(tag, message);
+    public static void v(String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger().v(tag, log);
+        }
     }
 
-    public static void v(String message) {
-        v(TAG, message);
+    public static void v(Class<? extends ILog> clazz, String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger(clazz).v(tag, log);
+        }
     }
 
-    public static void d(Class<? extends ILog> clazz, String tag, String message) {
-        LoggerManager.getInstance().getLogger(clazz).d(tag, message);
+    public static void v(String tag, String log, Throwable tr) {
     }
 
-    public static void d(String tag, String message) {
-        LoggerManager.getInstance().getLogger().d(tag, message);
+    // ------------------- LOG level : debug ------------------- //
+
+    public static void d(String log) {
+        d(TAG, log);
     }
 
-    public static void d(String message) {
-        d(TAG, message);
+    public static void d(String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger().d(tag, log);
+        }
     }
 
-    public static void i(Class<? extends ILog> clazz, String tag, String message) {
-        LoggerManager.getInstance().getLogger(clazz).i(tag, message);
+    public static void d(Class<? extends ILog> clazz, String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger(clazz).d(tag, log);
+        }
     }
 
-    public static void i(String tag, String message) {
-        LoggerManager.getInstance().getLogger().i(tag, message);
+    public static void d(String tag, String log, Throwable tr) {
     }
 
-    public static void i(String message) {
-        i(TAG, message);
+    // ------------------- LOG level : Info ------------------- //
+
+    public static void i(String log) {
+        i(TAG, log);
     }
 
-    public static void w(Class<? extends ILog> clazz, String tag, String message) {
-        LoggerManager.getInstance().getLogger(clazz).w(tag, message);
+    public static void i(String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger().i(tag, log);
+        }
     }
 
-    public static void w(String tag, String message) {
-        LoggerManager.getInstance().getLogger().w(tag, message);
+    public static void i(Class<? extends ILog> clazz, String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger(clazz).i(tag, log);
+        }
     }
 
-    public static void w(String message) {
-        w(TAG, message);
+    public static void i(String tag, String log, Throwable tr) {
     }
 
-    public static void e(Class<? extends ILog> clazz, String tag, String message) {
-        LoggerManager.getInstance().getLogger(clazz).e(tag, message);
+    // ------------------- LOG level : Warn ------------------- //
+
+    public static void w(String log) {
+        w(TAG, log);
     }
 
-    public static void e(String tag, String message) {
-        LoggerManager.getInstance().getLogger().e(tag, message);
+    public static void w(String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger().w(tag, log);
+        }
     }
 
-    public static void e(String message) {
-        e(TAG, message);
+    public static void w(Class<? extends ILog> clazz, String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger(clazz).w(tag, log);
+        }
     }
 
-    public static void wtf(Class<? extends ILog> clazz, String tag, String message) {
-        LoggerManager.getInstance().getLogger(clazz).wtf(tag, message);
+    public static void w(String tag, String log, Throwable tr) {
     }
 
-    public static void wtf(String tag, String message) {
-        LoggerManager.getInstance().getLogger().wtf(tag, message);
+    // ------------------- LOG level : Error ------------------- //
+
+    public static void e(String log) {
+        e(TAG, log);
     }
 
-    public static void wtf(String message) {
-        wtf(TAG, message);
+    public static void e(String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger().e(tag, log);
+        }
+    }
+
+    public static void e(Class<? extends ILog> clazz, String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger(clazz).e(tag, log);
+        }
+    }
+
+    public static void e(String tag, String log, Throwable tr) {
+    }
+
+    // ------------------- LOG level : Asset ------------------- //
+
+    public static void wtf(String log) {
+        wtf(TAG, log);
+    }
+
+    public static void wtf(String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger().wtf(tag, log);
+        }
+    }
+
+    public static void wtf(Class<? extends ILog> clazz, String tag, String log) {
+        if (isDebugEnable()) {
+            LoggerManager.getInstance().getLogger(clazz).wtf(tag, log);
+        }
+    }
+
+    public static void wtf(String tag, String log, Throwable tr) {
     }
 
 }

@@ -13,9 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.liamma.commons.ActivitiesManager;
+import com.liamma.commons.log.LogUtils;
 import com.liamma.commons.utils.ClickUtils;
 import com.liamma.commons.utils.KeyboardUtils;
-import com.liamma.commons.utils.LogUtils;
 import com.liamma.commons.utils.ToastUtils;
 import com.liamma.commons.widget.dialog.LoadingDialog;
 
@@ -25,8 +25,10 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Base activity.
- * Created by Liam on 2018/07/12.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/07/12 10:12
+ * DESCRIPTION: Base activity.
  */
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,20 +44,20 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        // set status bar color, or set it in subActivity.
-        // StatusBarUtils.setBarColor(this);
+        // Set status bar color, or set it in sub activity.
+        //StatusBarUtils.setBarColor(this);
         ActivitiesManager.getInstance().addActivity(this);
         hideLoading();
 
         TAG = this.getClass().getSimpleName();
+        this.context = this;
+        this.extras = getIntent().getExtras();
         LogUtils.d(" ---> onCreate");
 
         prepare();
         initContentView();
-        this.context = this;
         // ButterKnife initiation should be processed after setting content view.
         this.unbinder = ButterKnife.bind(this);
-        this.extras = getIntent().getExtras();
         doBusiness();
     }
 
@@ -67,7 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     /**
-     * Initiates the UI, show content of Layout resource.
+     * Initiates the UI, show content of layout resource.
      */
     protected void initContentView() {
         if (getLayoutId() == 0) {
@@ -87,7 +89,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     /**
      * Returns the layout resource Id.
-     * Subclass which is not abstract **must** override it and provide a corresponding layout id.
+     * Subclass which is not abstract <>must</> override it and provide a corresponding layout id.
      */
     @CheckResult
     @LayoutRes
@@ -131,10 +133,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onDestroy() {
         LogUtils.d(" ---> onDestroy");
-
-        unbinder.unbind();
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
         ActivitiesManager.getInstance().finishActivity(this);
-
         super.onDestroy();
     }
 
@@ -153,21 +155,23 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     /**
-     * 处理点击事件。
-     * 子类如果重写本方法处理点击事件，则为 非安全 ，没有处理“快速点击”。
+     * Handles the click events.
+     * It's "unsafe" to override this method in sub class to handle click events because this method
+     * does not filter "double click".
      *
      * @param v View
      */
     @Override
     public void onClick(View v) {
-        if (ClickUtils.isValidClick(v)) {
+        if (ClickUtils.isValid(v)) {
             onSafeClick(v);
         }
     }
 
     /**
-     * 处理点击事件。
-     * 子类如果生写本方法处理点击事件，则为 安全，已经过滤了“快速点击”。
+     * Handles the click events.
+     * It's "safe" to override this method in sub class to handle click event as this method has
+     * filtered "double click".
      *
      * @param v View
      */
@@ -178,13 +182,15 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         startActivity(intent);
     }
 
-    protected void quickStartActivity(@NonNull Class clazz, @Nullable Bundle bundle) {
+    protected void quickStartActivity(@NonNull Class<?> clazz, @Nullable Bundle bundle) {
         Intent intent = new Intent(this, clazz);
-        if (bundle != null) intent.putExtras(bundle);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
         startActivity(intent);
     }
 
-    protected void quickStartActivity(@NonNull Class clazz) {
+    protected void quickStartActivity(@NonNull Class<?> clazz) {
         quickStartActivity(clazz, null);
     }
 
@@ -196,7 +202,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         ToastUtils.showShort(this, message);
     }
 
-    protected void hideSoftKeyboard(View v) {
+    protected void hideKeyboard(View v) {
         KeyboardUtils.hideSoftKeyboard(this);
     }
 

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.liamma.commons.utils.LogUtils;
+import com.liamma.commons.log.LogUtils;
 
 /**
  * @author Liam
