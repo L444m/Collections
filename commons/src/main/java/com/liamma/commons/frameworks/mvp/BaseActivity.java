@@ -73,7 +73,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         if (getLayoutId() == 0) {
             throw new IllegalArgumentException("must set layout id in activity.");
         }
-
         setContentView(getLayoutId());
     }
 
