@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.liamma.commons.ActivitiesManager;
+import com.liamma.commons.events.CommonMessageEvent;
 import com.liamma.commons.log.LogUtils;
 import com.liamma.commons.utils.ClickUtils;
 import com.liamma.commons.utils.KeyboardUtils;
@@ -20,6 +21,8 @@ import com.liamma.commons.utils.ToastUtils;
 import com.liamma.commons.widget.dialog.LoadingDialog;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -176,6 +179,15 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
      * @param v View
      */
     protected void onSafeClick(View v) {
+    }
+
+    /**
+     * Handles the received message event.
+     *
+     * @param messageEvent MessageEvent
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(CommonMessageEvent messageEvent) {
     }
 
     protected void quickStartActivity(@NonNull Intent intent) {

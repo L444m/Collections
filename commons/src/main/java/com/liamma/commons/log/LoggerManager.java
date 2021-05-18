@@ -2,29 +2,37 @@ package com.liamma.commons.log;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.liamma.commons.utils.EmptyUtils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2021/5/17 14:04
+ * DESCRIPTION:
+ */
 public final class LoggerManager {
 
     private static final String TAG = "LoggerManager";
 
     private static volatile LoggerManager instance = null;
-    private ILog defaultLogger;
-    private ILog customLogger;
     private HashMap<String, ILog> loggers;
-    private ArrayList<ILog> customLoggers;
+    private ILog defaultLogger;
 
     private LoggerManager() {
+        if (loggers == null) {
+            loggers = new HashMap<>();
+        } else {
+            loggers.clear();
+        }
         if (defaultLogger == null) {
             defaultLogger = new DefaultLogger();
-        }
-        if (customLoggers == null) {
-            customLoggers = new ArrayList<>();
-        } else {
-            customLoggers.clear();
+            // Puts default logger in loggers array.
+            loggers.put(defaultLogger.getClass().getSimpleName(), defaultLogger);
         }
     }
 
@@ -39,27 +47,77 @@ public final class LoggerManager {
         return instance;
     }
 
-    private synchronized void initDefaultLogger() {
+    /**
+     * Recreates a new DefaultLogger instance if error occurs when initiating this class.
+     */
+    private void checkDefaultLoggerNotNull() {
         if (defaultLogger == null) {
-            defaultLogger = new DefaultLogger();
+            synchronized (this) {
+                if (defaultLogger == null) {
+                    Log.e(TAG, "Default logger is null.");
+                    defaultLogger = new DefaultLogger();
+                }
+            }
         }
     }
 
-    private void checkCustomLoggersNotNull() {
-        if (customLoggers == null) {
-            customLoggers = new ArrayList<>();
+    private void checkLoggersNotNull() {
+        if (loggers == null) {
+            loggers = new HashMap<>();
         }
     }
 
-    public void addCustomLogger(String loggerName, ILog logger) {
-
-        if (loggerName == null) {
-            loggers.put(loggerName, logger);
+    public void addLogger(@Nullable Class<? extends ILog> clazz) {
+        if (clazz == null) {
+            Log.e(TAG, "Argument clazz is null.");
+            return;
         }
+        ILog logger = null;
+        try {
+            logger = clazz.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        addLogger(null, logger);
     }
 
-    public void setCustomLogger() {
+    public void addLogger(@Nullable ILog logger) {
+        addLogger(null, logger);
+    }
 
+    public void addLogger(@Nullable String loggerName, @Nullable ILog logger) {
+        if (logger == null) {
+            Log.e(TAG, "Logger is null, cannot put it in loggers array.");
+            return;
+        }
+        if (EmptyUtils.isEmpty(loggerName)) {
+            Log.e(TAG, "Logger name is empty, use logger's class name instead.");
+            loggerName = logger.getClass().getSimpleName();
+        }
+        loggers.put(loggerName, logger);
+    }
+
+    public void setDefaultLogger(@Nullable ILog logger) {
+        if (logger == null) {
+            Log.e(TAG, "Default logger is null.");
+            return;
+        }
+        this.defaultLogger = logger;
+        this.loggers.put(logger.getClass().getSimpleName(), logger);
+    }
+
+    public void setDefaultLogger(@Nullable Class<? extends ILog> clazz) {
+        if (clazz == null) {
+            Log.e(TAG, "Argument clazz is null.");
+            return;
+        }
+        ILog logger = null;
+        try {
+            logger = clazz.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        setDefaultLogger(logger);
     }
 
     /**
@@ -67,11 +125,9 @@ public final class LoggerManager {
      *
      * @return ILog Default logger
      */
+    @NonNull
     public ILog getDefaultLogger() {
-        if (defaultLogger == null) {
-            Log.e(TAG, "defaultLogger == null, error occurred when instantiating LoggerManager.");
-            initDefaultLogger();
-        }
+        checkDefaultLoggerNotNull();
         return defaultLogger;
     }
 
@@ -80,25 +136,26 @@ public final class LoggerManager {
      *
      * @return ILog Customized logger
      */
-    public ArrayList<ILog> getCustomLoggers() {
-        checkCustomLoggersNotNull();
-        return customLoggers;
+    @NonNull
+    public HashMap<String, ILog> getLoggers() {
+        checkLoggersNotNull();
+        return loggers;
     }
 
     /**
      * return the first custom logger.
      */
-    public ILog getCustomLogger() {
-        checkCustomLoggersNotNull();
+    /*public ILog getCustomLogger() {
+        checkLoggersNotNull();
         if (EmptyUtils.isNotEmpty(customLoggers)) {
             return customLoggers.get(0);
         } else {
             return null;
         }
-    }
+    }*/
 
-    public ILog getCustomLogger(final Class<? extends ILog> clazz) {
-        checkCustomLoggersNotNull();
+    /*public ILog getCustomLogger(final Class<? extends ILog> clazz) {
+        checkLoggersNotNull();
         if (clazz == null) {
             return getCustomLogger();
         }
@@ -110,30 +167,22 @@ public final class LoggerManager {
             }
         }
         return getCustomLogger();
-    }
-
-    public synchronized void addCustomLogger(int index, ILog logger) {
-        checkCustomLoggersNotNull();
-        customLoggers.add(index, logger);
-    }
-
-    public synchronized void addCustomLogger(ILog logger) {
-        checkCustomLoggersNotNull();
-        customLoggers.add(logger);
-    }
-
+    }*/
     public ILog getLogger() {
-        if (customLoggers != null) {
-            return getCustomLogger();
-        } else {
-            // customLogger == null, means that user has not set a customized logger.
-            return getDefaultLogger();
-        }
+        // Gets default logger.
+        return getDefaultLogger();
     }
 
     public ILog getLogger(final Class<? extends ILog> clazz) {
-
-        return null;
+        String loggerName = clazz.getSimpleName();
+        checkLoggersNotNull();
+        ILog logger = loggers.get(loggerName);
+        if (logger != null) {
+            return logger;
+        }
+        addLogger(clazz);
+        logger = loggers.get(loggerName);
+        return logger;
     }
 
 }

@@ -109,10 +109,10 @@ public class TestingActivity extends BaseToolsActivity {
      */
     private void testBigDecimal() {
         int a = 101;
-        long b = 101L;
-        float c = 101f;
-        double d = 101d;
-        String s = "101";
+        long b = 1005325L;
+        float c = 101.786512f;      // 101.7865142822265625
+        double d = 101.1234567890d; // 101.1234567890000022316598915494978427886962890625
+        String s = "101.1234567890";
 
         BigDecimal bd1 = new BigDecimal(a);
         BigDecimal bd2 = new BigDecimal(b);
@@ -120,11 +120,11 @@ public class TestingActivity extends BaseToolsActivity {
         BigDecimal bd4 = new BigDecimal(d);
         BigDecimal bd5 = new BigDecimal(s);
 
-        LogUtils.d("bd1 = " + bd1.toPlainString());
-        LogUtils.d("bd2 = " + bd2.toPlainString());
-        LogUtils.d("bd3 = " + bd3.toPlainString());
-        LogUtils.d("bd4 = " + bd4.toPlainString());
-        LogUtils.d("bd5 = " + bd5.toPlainString());
+        LogUtils.d("int bd1 = " + bd1.toPlainString());
+        LogUtils.d("long bd2 = " + bd2.toPlainString());
+        LogUtils.d("float bd3 = " + bd3.toPlainString());
+        LogUtils.d("double bd4 = " + bd4.toPlainString());
+        LogUtils.d("string bd5 = " + bd5.toPlainString());
 
         /*double dd = 123123123.456456456456D;
         String d0 = "123123123123123.456456456456";

@@ -38,11 +38,11 @@ public final class LogUtils {
     }
 
     public static void addLogger(@Nullable ILog logger) {
-        LoggerManager.getInstance().addCustomLogger(logger);
+        LoggerManager.getInstance().addLogger(logger);
     }
 
-    public static void addLogger(int index, @Nullable ILog logger) {
-        LoggerManager.getInstance().addCustomLogger(index, logger);
+    public static void addLogger(String loggerName, @Nullable ILog logger) {
+        LoggerManager.getInstance().addLogger(loggerName, logger);
     }
 
     // ------------------- LOG level : verbose ------------------- //
