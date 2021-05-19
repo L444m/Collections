@@ -21,6 +21,14 @@ public final class BigDecimalUtils {
         throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
+    public static BigDecimal fromInt(int value) {
+        return new BigDecimal(value);
+    }
+
+    public static BigDecimal fromLong(long value) {
+        return new BigDecimal(value);
+    }
+
     @NonNull
     public static BigDecimal fromString(@Nullable String s) {
         if (EmptyUtils.isEmpty(s)) {
@@ -30,7 +38,7 @@ public final class BigDecimalUtils {
         try {
             return new BigDecimal(s);
         } catch (NumberFormatException e) {
-            LogUtils.e("This string does not contain a valid number.");
+            LogUtils.e("The string does not contain a valid number.");
             return BigDecimal.ZERO;
         }
     }

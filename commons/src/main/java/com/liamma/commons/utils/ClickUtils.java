@@ -23,7 +23,7 @@ public final class ClickUtils {
     }
 
     /**
-     * Whether this click action is valid.
+     * Whether this click event is valid.
      *
      * @param view the view on which is clicked
      */
@@ -32,10 +32,11 @@ public final class ClickUtils {
     }
 
     /**
-     * Whether this click action is valid.
+     * Whether this click event is valid.
      *
      * @param view     the view on which is clicked
      * @param interval time interval
+     * @return {@code true} means click event is valid and ok to respond to, otherwise {@code false}.
      */
     public static boolean isValid(@Nullable final View view, final long interval) {
         if (view == null) {
