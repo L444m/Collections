@@ -65,7 +65,7 @@ public final class StringUtils {
     /**
      * Returns the length of a {@link CharSequence} instance safely even though it's null.
      */
-    public static int getLength(@Nullable CharSequence sequence) {
+    public static int length(@Nullable CharSequence sequence) {
         return sequence == null ? 0 : sequence.length();
     }
 

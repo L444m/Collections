@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,7 +26,51 @@ public final class CollectionUtils {
     }
 
     /**
-     * Converts elements array to List.
+     * Returns the size of the given collection, or 0 if null.
+     */
+    public static int size(@Nullable Collection<?> collection) {
+        return collection == null ? 0 : collection.size();
+    }
+
+    /**
+     * Returns the size of the given map, or 0 if null.
+     */
+    public static int size(@Nullable Map<?, ?> map) {
+        return map == null ? 0 : map.size();
+    }
+
+    /**
+     * Returns an empty mutable list if the specified list is null.
+     *
+     * @return an empty {@code ArrayList} instance
+     */
+    @NonNull
+    public static <T> List<T> nullToEmpty(@Nullable List<T> list) {
+        return list == null ? new ArrayList<>() /*Collections.emptyList()*/ : list;
+    }
+
+    /**
+     * Returns an empty mutable set if the specified set is null.
+     *
+     * @return an empty {@code HashSet} instance
+     */
+    @NonNull
+    public static <T> Set<T> nullToEmpty(@Nullable Set<T> set) {
+        return set == null ? new HashSet<>() /*Collections.emptySet()*/ : set;
+    }
+
+    /**
+     * Returns an empty mutable map if the specified map is null.
+     *
+     * @return an empty {@code HashMap} instance
+     */
+    @NonNull
+    public static <K, V> Map<K, V> nullToEmpty(@Nullable Map<K, V> map) {
+        return map == null ? new HashMap<>() /*Collections.emptyMap()*/ : map;
+    }
+
+    /**
+     * Converts an element array to a {@code ArrayList}.
      */
     @NonNull
     public static <T> List<T> toList(@Nullable T... array) {
@@ -36,23 +82,16 @@ public final class CollectionUtils {
         return list;
     }
 
-    @NonNull
-    public static <T> T[] toArray(@Nullable T... array) {
-        return array;
-    }
-
-    public static <K, V> Map<K, V> toMap(K[] keys, V[] values) {
-        return null;
-    }
-
+    /**
+     * Converts a element array to a {@code HashSet}.
+     */
     public static <T> Set<T> toSet(@Nullable T... array) {
-        return null;
-    }
-
-    public static <T> void remove(@Nullable Collection<T> collection, @Nullable T... items) {
-        if (EmptyUtils.isEmpty(collection) || EmptyUtils.isEmpty(items)) {
-            return;
+        Set<T> set = new HashSet<>();
+        if (EmptyUtils.isEmpty(array)) {
+            return set;
         }
+        Collections.addAll(set, array);
+        return set;
     }
 
     /**
