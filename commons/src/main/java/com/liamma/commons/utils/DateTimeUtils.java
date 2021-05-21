@@ -12,10 +12,11 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-
 /**
- * Date and Time utils.
- * Created by Liam on 2017/12/6.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2017/12/6 14:44
+ * DESCRIPTION: Date and Time utils.
  */
 public final class DateTimeUtils {
 
@@ -23,17 +24,31 @@ public final class DateTimeUtils {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    public static final long SECOND = 1000L;
+    // time unit in second
+    public static final long SECOND = 1L;
+    public static final long HALF_MINUTE = 30 * SECOND;
     public static final long MINUTE = 60 * SECOND;
+    public static final long HALF_HOUR = 30 * MINUTE;
     public static final long HOUR = 60 * MINUTE;
+    public static final long HALF_DAY = 12 * HOUR;
     public static final long DAY = 24 * HOUR;
+    public static final long WEEK = 7 * DAY;
+    public static final long HALF_MONTH = 15 * DAY;
+    public static final long MONTH = 30 * DAY;
     public static final long YEAR = 365 * DAY;
 
-    public static final long HALF_HOUR = 30 * MINUTE;
-    public static final long HALF_DAY = 12 * HOUR;
-
-    private static final long SECONDS_IN_DAY = 24 * 60 * 60;
-    private static final long MILLS_IN_DAY = 1000 * SECONDS_IN_DAY;
+    // time unit in millisecond
+    public static final long SECOND_IN_MILLI = 1000L;
+    public static final long HALF_MINUTE_IN_MILLI = 30 * SECOND_IN_MILLI;
+    public static final long MINUTE_IN_MILLI = 60 * SECOND_IN_MILLI;
+    public static final long HALF_HOUR_IN_MILLI = 30 * MINUTE_IN_MILLI;
+    public static final long HOUR_IN_MILLI = 60 * MINUTE_IN_MILLI;
+    public static final long HALF_DAY_IN_MILLI = 12 * HOUR_IN_MILLI;
+    public static final long DAY_IN_MILLI = 24 * HOUR_IN_MILLI;
+    public static final long WEEK_IN_MILLI = 7 * DAY_IN_MILLI;
+    public static final long HALF_MONTH_IN_MILLI = 15 * DAY_IN_MILLI;
+    public static final long MONTH_IN_MILLI = 30 * DAY_IN_MILLI;
+    public static final long YEAR_IN_MILLI = 365 * DAY_IN_MILLI;
 
     // patterns
     public static final String DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss";
@@ -120,13 +135,13 @@ public final class DateTimeUtils {
     }
 
     private static long toDay(long timestamp) {
-        return (timestamp + TimeZone.getDefault().getOffset(timestamp)) / MILLS_IN_DAY;
+        return (timestamp + TimeZone.getDefault().getOffset(timestamp)) / DAY_IN_MILLI;
     }
 
     public static boolean isSameDay(long timestamp1, long timestamp2) {
         long diff;
         diff = Math.abs(timestamp1 - timestamp2);
-        return diff < MILLS_IN_DAY && toDay(timestamp1) == toDay(timestamp2);
+        return diff < DAY_IN_MILLI && toDay(timestamp1) == toDay(timestamp2);
     }
 
     public static boolean isSameDay(long timestamp) {

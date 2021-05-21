@@ -85,6 +85,7 @@ public final class CollectionUtils {
     /**
      * Converts a element array to a {@code HashSet}.
      */
+    @NonNull
     public static <T> Set<T> toSet(@Nullable T... array) {
         Set<T> set = new HashSet<>();
         if (EmptyUtils.isEmpty(array)) {
@@ -116,29 +117,72 @@ public final class CollectionUtils {
         return s.split(separator);
     }
 
+    /**
+     * Converts a String array into a String.
+     */
+    @NonNull
     public static String arrayToString(@Nullable String[] array, @Nullable String separator) {
         if (EmptyUtils.isEmpty(array)) {
             return EmptyUtils.EMPTY_STRING;
         }
+
         boolean appendSeparator = separator != null;
         StringBuilder sb = new StringBuilder();
-
-        return null;
-    }
-
-    public static String listToString(@Nullable List<String> list, @Nullable String separator) {
-        if (EmptyUtils.isEmpty(list)) {
-            return EmptyUtils.EMPTY_STRING;
-        }
-        boolean appendSeparator = separator != null;
-        StringBuilder sb = new StringBuilder();
-        for (String s : list) {
-            sb.append(s);
-            if (appendSeparator) {
+        int length = array.length;
+        for (int i = 0; i < length; i++) {
+            sb.append(array[i]);
+            if (appendSeparator && i != (length - 1)) {
                 sb.append(separator);
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * Converts a String list into a String.
+     */
+    @NonNull
+    public static String listToString(@Nullable List<String> list, @Nullable String separator) {
+        if (EmptyUtils.isEmpty(list)) {
+            return EmptyUtils.EMPTY_STRING;
+        }
+
+        boolean appendSeparator = separator != null;
+        StringBuilder sb = new StringBuilder();
+        int size = list.size();
+        for (int i = 0; i < size; i++) {
+            sb.append(list.get(i));
+            if (appendSeparator && i != (size - 1)) {
+                sb.append(separator);
+            }
+        }
+        return sb.toString();
+    }
+
+    @NonNull
+    public static <T> List<T> intersection(@Nullable Collection<T> c1, @Nullable Collection<T> c2) {
+        List<T> result = new ArrayList<>();
+        if (EmptyUtils.isEmpty(c1) || EmptyUtils.isEmpty(c2)) {
+            return result;
+        }
+
+        return result;
+    }
+
+    public static <T> List<T> union(@Nullable Collection<T> c1, @Nullable Collection<T> c2) {
+        List<T> result = new ArrayList<>();
+        if (EmptyUtils.isEmpty(c1) && EmptyUtils.isEmpty(c2)) {
+            return result;
+        }
+        if (EmptyUtils.isEmpty(c1)) {
+            result.addAll(c2);
+            return result;
+        }
+        if (EmptyUtils.isEmpty(c2)) {
+            result.addAll(c1);
+            return result;
+        }
+        return result;
     }
 
 }
