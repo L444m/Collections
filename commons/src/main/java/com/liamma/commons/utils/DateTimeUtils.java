@@ -54,66 +54,79 @@ public final class DateTimeUtils {
     public static final String DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss";
     public static final String PATTERN_YYYY_MM_DD_HH_MM = "yyyy-MM-dd HH:mm";
     public static final String PATTERN_YYYY_MM_DD = "yyyy-MM-dd";
+    public static final String PATTERN_YYYY_MM = "yyyy-MM";
     public static final String PATTERN_MM_DD = "MM-dd";
+    public static final String PATTERN_HH_MM = "HH:mm";
 
-    // Returns current timestamp value.
-    private static long currentTimestamp() {
-        return System.currentTimeMillis();
-    }
-
-    /**
-     * Returns current timestamp in String formatTimestamp.
-     */
-    public static String getStringTimestamp() {
-        return String.valueOf(currentTimestamp());
-    }
-
+    @NonNull
     public static String formatTimestamp() {
-        return formatTimestamp(currentTimestamp());
+        return formatTimestamp(System.currentTimeMillis());
     }
 
+    @NonNull
     public static String formatTimestamp(long timestamp) {
-        return formatTimestamp(timestamp, DEFAULT_PATTERN);
+        return formatTimestamp(timestamp, DEFAULT_PATTERN, null);
     }
 
-    public static String formatTimestamp(long timestamp, @NonNull String pattern) {
-        return formatTimestamp(timestamp, pattern, Locale.getDefault());
+    @NonNull
+    public static String formatTimestamp(@NonNull String pattern) {
+        return formatTimestamp(System.currentTimeMillis(), pattern, null);
+    }
+
+    public static String formatTimestamp(@Nullable String strTimestamp, @Nullable String pattern,
+                                         @Nullable Locale locale) {
+        if (EmptyUtils.isEmpty(strTimestamp)) {
+            return "";
+        }
+        try {
+            long timestamp = Long.parseLong(strTimestamp);
+            return formatTimestamp(timestamp, pattern, locale);
+        } catch (NumberFormatException e) {
+            return "";
+        }
     }
 
     /**
      * Formats a timestamp with the specified pattern and Locale.
-     *
-     * @param timestamp Long Timestamp
-     * @param pattern   pattern
-     * @param locale    Locale
-     * @return a formatted String
      */
-    public static String formatTimestamp(long timestamp, @NonNull String pattern, @NonNull Locale locale) {
+    @NonNull
+    public static String formatTimestamp(long timestamp, @Nullable String pattern, @Nullable Locale locale) {
+        if (EmptyUtils.isEmpty(pattern)) {
+            pattern = DEFAULT_PATTERN;
+        }
+        if (locale == null) {
+            locale = Locale.getDefault();
+        }
         Timestamp ts = new Timestamp(timestamp);
         SimpleDateFormat sdf = new SimpleDateFormat(pattern, locale);
+        SimpleDateFormat sdf2 = new SimpleDateFormat(pattern);
         return sdf.format(ts);
     }
 
+    @NonNull
     public static String formatDate() {
         return formatDate(new Date());
     }
 
+    @NonNull
     public static String formatDate(@Nullable Date date) {
         return formatDate(date, DEFAULT_PATTERN);
     }
 
+    @NonNull
+    public static String formatDate(@NonNull String pattern) {
+        return formatDate(new Date(), pattern);
+    }
+
+    @NonNull
     public static String formatDate(@Nullable Date date, @NonNull String pattern) {
         return formatDate(date, pattern, Locale.getDefault());
     }
 
     /**
      * Formats a Date object with the specified pattern and Locale.
-     *
-     * @param date    Date
-     * @param pattern pattern
-     * @param locale  Locale
-     * @return a formatted String
      */
+    @NonNull
     public static String formatDate(@Nullable Date date, @NonNull String pattern, @NonNull Locale locale) {
         if (date == null) {
             return "";
@@ -127,11 +140,23 @@ public final class DateTimeUtils {
     }
 
     public static String getCurrent() {
-        return getCurrent(DEFAULT_PATTERN);
+        return formatTimestamp(DEFAULT_PATTERN);
     }
 
     public static String getCurrentDate() {
-        return getCurrent(PATTERN_YYYY_MM_DD);
+        return formatTimestamp(PATTERN_MM_DD);
+    }
+
+    public static String getCurrentTime() {
+        return formatTimestamp(PATTERN_HH_MM);
+    }
+
+    public static long toTimestamp(@Nullable String strDate) {
+        return toTimestamp(strDate, DEFAULT_PATTERN);
+    }
+
+    public static long toTimestamp(@Nullable String strDate, @NonNull String pattern) {
+        return -1L;
     }
 
     private static long toDay(long timestamp) {
@@ -139,8 +164,7 @@ public final class DateTimeUtils {
     }
 
     public static boolean isSameDay(long timestamp1, long timestamp2) {
-        long diff;
-        diff = Math.abs(timestamp1 - timestamp2);
+        long diff = Math.abs(timestamp1 - timestamp2);
         return diff < DAY_IN_MILLI && toDay(timestamp1) == toDay(timestamp2);
     }
 
