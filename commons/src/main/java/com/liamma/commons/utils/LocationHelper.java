@@ -1,9 +1,11 @@
 package com.liamma.commons.utils;
 
 /**
- * Location helper.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2017/12/6 16:11
+ * DESCRIPTION: Location helper.
  * Gets detail location info by GaoDe SDK.
- * Created by Liam on 2017/12/6.
  */
 public final class LocationHelper {
 

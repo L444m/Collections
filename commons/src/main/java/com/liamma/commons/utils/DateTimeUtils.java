@@ -24,6 +24,14 @@ public final class DateTimeUtils {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
+    public enum TimeUnit {
+        MILLISECOND,
+        SECOND,
+        MINUTE,
+        HOUR,
+        DAY,
+    }
+
     // time unit in second
     public static final long SECOND = 1L;
     public static final long HALF_MINUTE = 30 * SECOND;
@@ -59,20 +67,26 @@ public final class DateTimeUtils {
     public static final String PATTERN_HH_MM = "HH:mm";
 
     @NonNull
-    public static String formatTimestamp() {
-        return formatTimestamp(System.currentTimeMillis());
-    }
-
-    @NonNull
     public static String formatTimestamp(long timestamp) {
-        return formatTimestamp(timestamp, DEFAULT_PATTERN, null);
+        return formatTimestamp(timestamp, null);
     }
 
     @NonNull
-    public static String formatTimestamp(@NonNull String pattern) {
-        return formatTimestamp(System.currentTimeMillis(), pattern, null);
+    public static String formatTimestamp(@Nullable String strTimestamp) {
+        return formatTimestamp(strTimestamp, null);
     }
 
+    @NonNull
+    public static String formatTimestamp(long timestamp, @Nullable String pattern) {
+        return formatTimestamp(timestamp, pattern, null);
+    }
+
+    @NonNull
+    public static String formatTimestamp(@Nullable String strTimestamp, @Nullable String pattern) {
+        return formatTimestamp(strTimestamp, pattern, null);
+    }
+
+    @NonNull
     public static String formatTimestamp(@Nullable String strTimestamp, @Nullable String pattern,
                                          @Nullable Locale locale) {
         if (EmptyUtils.isEmpty(strTimestamp)) {
@@ -87,7 +101,9 @@ public final class DateTimeUtils {
     }
 
     /**
-     * Formats a timestamp with the specified pattern and Locale.
+     * Converts a timestamp to string using the specified pattern and Locale.
+     *
+     * @return a formatted date string
      */
     @NonNull
     public static String formatTimestamp(long timestamp, @Nullable String pattern, @Nullable Locale locale) {
@@ -99,64 +115,88 @@ public final class DateTimeUtils {
         }
         Timestamp ts = new Timestamp(timestamp);
         SimpleDateFormat sdf = new SimpleDateFormat(pattern, locale);
-        SimpleDateFormat sdf2 = new SimpleDateFormat(pattern);
         return sdf.format(ts);
     }
 
     @NonNull
-    public static String formatDate() {
-        return formatDate(new Date());
-    }
-
-    @NonNull
     public static String formatDate(@Nullable Date date) {
-        return formatDate(date, DEFAULT_PATTERN);
+        return formatDate(date, null);
     }
 
     @NonNull
-    public static String formatDate(@NonNull String pattern) {
-        return formatDate(new Date(), pattern);
-    }
-
-    @NonNull
-    public static String formatDate(@Nullable Date date, @NonNull String pattern) {
-        return formatDate(date, pattern, Locale.getDefault());
+    public static String formatDate(@Nullable Date date, @Nullable String pattern) {
+        return formatDate(date, pattern, null);
     }
 
     /**
-     * Formats a Date object with the specified pattern and Locale.
+     * Converts a {@code Date} object to string using the specified pattern and Locale.
+     *
+     * @return a formatted date string
      */
     @NonNull
-    public static String formatDate(@Nullable Date date, @NonNull String pattern, @NonNull Locale locale) {
+    public static String formatDate(@Nullable Date date, @Nullable String pattern, @Nullable Locale locale) {
         if (date == null) {
             return "";
+        }
+        if (EmptyUtils.isEmpty(pattern)) {
+            pattern = DEFAULT_PATTERN;
+        }
+        if (locale == null) {
+            locale = Locale.getDefault();
         }
         SimpleDateFormat sdf = new SimpleDateFormat(pattern, locale);
         return sdf.format(date);
     }
 
-    public static String getCurrent(@NonNull String pattern) {
-        return formatDate(new Date(), pattern);
+    public static long dateToTimestamp(@Nullable Date date) {
+        return date == null ? 0L : date.getTime();
     }
 
-    public static String getCurrent() {
-        return formatTimestamp(DEFAULT_PATTERN);
+    public static long dateToTimestamp(@Nullable String strDate) {
+        return dateToTimestamp(strDate, null);
+    }
+
+    public static long dateToTimestamp(@Nullable String strDate, @Nullable String pattern) {
+        return dateToTimestamp(strDate, pattern, null);
+    }
+
+    public static long dateToTimestamp(@Nullable String strDate, @Nullable String pattern, @Nullable Locale locale) {
+        if (EmptyUtils.isEmpty(strDate)) {
+            return 0L;
+        }
+        if (EmptyUtils.isEmpty(pattern)) {
+            pattern = DEFAULT_PATTERN;
+        }
+        if (locale == null) {
+            locale = Locale.getDefault();
+        }
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(pattern, locale);
+            Date date = sdf.parse(strDate);
+            return date == null ? 0L : date.getTime();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0L;
+        }
+    }
+
+    /**
+     * Returns a string date
+     */
+    public static String getCurrent(@Nullable String pattern) {
+        return formatTimestamp(System.currentTimeMillis(), pattern);
+    }
+
+    public static String getCurrentDateTime() {
+        return getCurrent(DEFAULT_PATTERN);
     }
 
     public static String getCurrentDate() {
-        return formatTimestamp(PATTERN_MM_DD);
+        return getCurrent(PATTERN_MM_DD);
     }
 
     public static String getCurrentTime() {
-        return formatTimestamp(PATTERN_HH_MM);
-    }
-
-    public static long toTimestamp(@Nullable String strDate) {
-        return toTimestamp(strDate, DEFAULT_PATTERN);
-    }
-
-    public static long toTimestamp(@Nullable String strDate, @NonNull String pattern) {
-        return -1L;
+        return getCurrent(PATTERN_HH_MM);
     }
 
     private static long toDay(long timestamp) {
@@ -193,22 +233,6 @@ public final class DateTimeUtils {
             LogUtils.e("The server time cannot be parsed.");
             return getCurrent(targetPattern);
         }
-    }
-
-    public static void testTimeZone() {
-        TimeZone timeZone = TimeZone.getDefault();
-        LogUtils.i("current TimeZone displayName = " + timeZone.getDisplayName());
-        LogUtils.i("current TimeZone ID = " + timeZone.getID());
-
-        LogUtils.i("current TimeZone time : " + formatTimestamp());
-
-        SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_PATTERN, Locale.US);
-        TimeZone newTimeZone = TimeZone.getTimeZone("GMT");
-        sdf.setTimeZone(newTimeZone);
-        LogUtils.i("new TimeZone = " + newTimeZone.getDisplayName());
-        LogUtils.i("new TimeZone ID = " + newTimeZone.getID());
-
-        LogUtils.i("current US time : " + sdf.format(new Date()));
     }
 
 }

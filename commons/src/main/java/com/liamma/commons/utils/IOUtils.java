@@ -6,8 +6,10 @@ import java.io.Closeable;
 import java.io.IOException;
 
 /**
- * I/O Utils.
- * Created by Liam on 2018/4/17.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/4/17 15:50
+ * DESCRIPTION: I/O Utils.
  */
 public final class IOUtils {
 

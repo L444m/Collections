@@ -160,7 +160,7 @@ public class TestingActivity extends BaseToolsActivity {
      */
     private void compareInSecond() {
         String s1 = "2018-08-25 20:47:50";
-        int result = DateTimeUtils.formatTimestamp().compareTo(s1);
+        int result = DateTimeUtils.formatTimestamp(System.currentTimeMillis()).compareTo(s1);
 
         Timestamp timestamp = Timestamp.valueOf(s1);
         long value = timestamp.getTime();

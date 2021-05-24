@@ -215,7 +215,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     protected void hideKeyboard(View v) {
-        KeyboardUtils.hideSoftKeyboard(this);
+        KeyboardUtils.hideKeyboard(this);
     }
 
 }

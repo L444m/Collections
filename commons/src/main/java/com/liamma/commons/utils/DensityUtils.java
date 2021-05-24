@@ -3,9 +3,13 @@ package com.liamma.commons.utils;
 import android.content.Context;
 import android.util.TypedValue;
 
+import androidx.annotation.NonNull;
 
 /**
- * Created by Liam on 2018/8/31.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/8/31 15:11
+ * DESCRIPTION:
  */
 public final class DensityUtils {
 
@@ -16,32 +20,46 @@ public final class DensityUtils {
     /**
      * dp to px
      */
-    public static int dp2px(Context context, float dpVal) {
+    public static int dp2px(@NonNull final Context context, float dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                dpVal, context.getResources().getDisplayMetrics());
+                dp, context.getResources().getDisplayMetrics());
     }
 
     /**
      * sp to px
      */
-    public static int sp2px(Context context, float spVal) {
+    public static int sp2px(@NonNull final Context context, float sp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-                spVal, context.getResources().getDisplayMetrics());
+                sp, context.getResources().getDisplayMetrics());
     }
 
     /**
      * px to dp
      */
-    public static float px2dp(Context context, float pxVal) {
+    public static float px2dp(@NonNull final Context context, float px) {
         final float scale = context.getResources().getDisplayMetrics().density;
-        return (pxVal / scale);
+        return (px / scale);
     }
 
     /**
      * px to sp
      */
-    public static float px2sp(Context context, float pxVal) {
-        return (pxVal / context.getResources().getDisplayMetrics().scaledDensity);
+    public static float px2sp(@NonNull final Context context, float px) {
+        return (px / context.getResources().getDisplayMetrics().scaledDensity);
+    }
+
+    /**
+     * Returns screen width in pixels.
+     */
+    public static float getDeviceWidth(@NonNull final Context context) {
+        return context.getResources().getDisplayMetrics().widthPixels;
+    }
+
+    /**
+     * Returns screen height in pixels.
+     */
+    public static float getDeviceHeight(@NonNull final Context context) {
+        return context.getResources().getDisplayMetrics().heightPixels;
     }
 
 }

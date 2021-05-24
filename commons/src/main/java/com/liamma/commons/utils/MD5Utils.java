@@ -3,11 +3,12 @@ package com.liamma.commons.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-
 /**
- * MD5 utils.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2017/12/11 16:11
+ * DESCRIPTION: MD5 utils.
  * Converts an arbitrary number of bytes into a fixed-length (32bits) byte sequence.
- * Created by Liam on 2017/12/11.
  */
 public final class MD5Utils {
 

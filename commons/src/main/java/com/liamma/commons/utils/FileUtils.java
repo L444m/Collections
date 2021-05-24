@@ -25,6 +25,13 @@ public final class FileUtils {
 
     @Nullable
     public static File getFile(@Nullable String filePath) {
+        if (filePath == null) {
+            return null;
+        }
+        File file = new File(filePath);
+        if (!file.exists()) {
+
+        }
         return null;
     }
 

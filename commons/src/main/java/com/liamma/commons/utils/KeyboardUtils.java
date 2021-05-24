@@ -8,12 +8,15 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.liamma.commons.log.LogUtils;
 
 /**
- * Keyboard Utils.
- * Created by Liam on 2019/10/31.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2019/10/31 15:55
+ * DESCRIPTION: Keyboard Utils.
  */
 public final class KeyboardUtils {
 
@@ -24,15 +27,15 @@ public final class KeyboardUtils {
     /**
      * Hide soft keyboard in an Activity.
      * Be aware this method may dose not work when called from {@code Fragment}.
-     *
-     * @param activity Target Activity
      */
-    public static void hideSoftKeyboard(@NonNull Activity activity) {
+    public static void hideKeyboard(@Nullable final Activity activity) {
+        if (activity == null) {
+            return;
+        }
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null) {
             return;
         }
-
         View view = activity.getCurrentFocus();
         if (view == null) {
             view = new View(activity);
@@ -41,12 +44,12 @@ public final class KeyboardUtils {
     }
 
     /**
-     * Hide soft keyboard.
-     *
-     * @param context Context
-     * @param view    View
+     * Hide keyboard.
      */
-    public static void hideSoftKeyboard(@NonNull Context context, View view) {
+    public static void hideKeyboard(@Nullable final Context context, @Nullable View view) {
+        if (context == null) {
+            return;
+        }
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null) {
             return;
@@ -56,13 +59,11 @@ public final class KeyboardUtils {
 
     /**
      * Hide soft keyboard from a Fragment.
-     *
-     * @param fragment Fragment
      */
-    public static void hideSoftKeyboard(@NonNull Fragment fragment) {
+    public static void hideKeyboard(@NonNull Fragment fragment) {
         Activity activity = fragment.getActivity();
         if (activity == null) {
-            LogUtils.e("activity == null. cannot get activity from fragment.");
+            LogUtils.e("activity is null. cannot get activity from fragment.");
             return;
         }
 

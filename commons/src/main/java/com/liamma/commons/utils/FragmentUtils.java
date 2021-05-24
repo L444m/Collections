@@ -3,9 +3,11 @@ package com.liamma.commons.utils;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 
-
 /**
- * Created by Liam on 2019/1/14
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2019/1/14 15:36
+ * DESCRIPTION:
  */
 public final class FragmentUtils {
 

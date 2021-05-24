@@ -1,6 +1,5 @@
 package com.liamma.commons.utils;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -8,7 +7,6 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
-import androidx.annotation.CheckResult;
 import androidx.annotation.Nullable;
 
 import com.liamma.commons.Commons;
@@ -19,12 +17,29 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
 
-
 /**
- * Network utils.
- * Created by Liam on 2018/7/17.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/7/17 16:13
+ * DESCRIPTION: Network utils.
  */
 public final class NetworkUtils {
+
+
+    public enum NetType {
+        NET_2G("2g"),
+        NET_3G("3g");
+
+        private String name;
+
+        NetType(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
 
     // Defines network type name.
     public static final String NET_TYPE_2G = "2g";
@@ -44,12 +59,9 @@ public final class NetworkUtils {
      *
      * @return NetworkInfo, or null if no default network is active current now.
      */
-    @SuppressLint("MissingPermission")
     @Nullable
-    @CheckResult
     private static NetworkInfo getNetworkInfo() {
-        ConnectivityManager cm =
-                (ConnectivityManager) Commons.getApp().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) Commons.getApp().getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm == null ? null : cm.getActiveNetworkInfo();
     }
 
@@ -83,12 +95,11 @@ public final class NetworkUtils {
      */
     public static String getMacAddress() {
         WifiManager wm = (WifiManager) Commons.getApp().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-
-        String macAddress = "";
-        if (wm == null) return macAddress;
-
+        if (wm == null) {
+            return "";
+        }
         WifiInfo wifiInfo = wm.getConnectionInfo();
-        return wifiInfo == null ? macAddress : wifiInfo.getMacAddress();
+        return wifiInfo == null ? "" : wifiInfo.getMacAddress();
     }
 
     /**
