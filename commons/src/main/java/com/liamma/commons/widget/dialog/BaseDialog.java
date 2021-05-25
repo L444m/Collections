@@ -5,10 +5,11 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-
 /**
- * Base dialog.
- * Created by Liam on 2018/8/28.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/8/28 16:33
+ * DESCRIPTION:
  */
 public abstract class BaseDialog extends Dialog {
 
@@ -20,7 +21,7 @@ public abstract class BaseDialog extends Dialog {
     protected boolean cancelable;
     protected boolean cancelOnTouchOutside;
 
-    protected OnDialogClick onDialogClick;
+    protected OnDialogClickListener onDialogClickListener;
     protected OnDismissListener onDismissListener;
 
     public BaseDialog(@NonNull Context context) {
@@ -38,17 +39,6 @@ public abstract class BaseDialog extends Dialog {
     }
 
     protected void initView() {
-    }
-
-    /**
-     * A listener for
-     */
-    public interface OnDialogClick {
-
-        void onPositiveButtonClick(Dialog dialog);
-
-        void onNegativeButtonClick(Dialog dialog);
-
     }
 
 }

@@ -15,7 +15,7 @@ import java.util.Map;
 public class L1CacheManager {
 
     private static volatile L1CacheManager instance = null;
-    private Map<String, Object> memoryCache;
+    private Map<String, CacheObject<?>> memoryCache;
 
     private L1CacheManager() {
         if (memoryCache == null) {
@@ -37,16 +37,16 @@ public class L1CacheManager {
         return instance;
     }
 
-    public void put(@NonNull String key, @Nullable Object value) {
+    public void put(@NonNull String key, @Nullable CacheObject<?> value) {
         memoryCache.put(key, value);
     }
 
     @SuppressWarnings("unchecked")
-    public <T> T get(@NonNull String key, T defaultValue) {
-        Object o = memoryCache.get(key);
-        if (o != null) {
+    public <T> T get(@NonNull String key, @NonNull T defaultValue) {
+        CacheObject<?> cacheObject = memoryCache.get(key);
+        if (cacheObject != null) {
             try {
-                return (T) o;
+                return (T) cacheObject;
             } catch (Exception e) {
                 // swallow
                 return defaultValue;
