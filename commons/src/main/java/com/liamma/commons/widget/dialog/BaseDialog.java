@@ -21,7 +21,9 @@ public abstract class BaseDialog extends Dialog {
     protected Dialog dialog;
 
     private int layoutId;
+    // cancelable
     private boolean cancel = true;
+    // canceled on touch outside.
     private boolean cancelOutside = false;
 
     private int paddingLeft = 0;
@@ -88,6 +90,16 @@ public abstract class BaseDialog extends Dialog {
 
     public BaseDialog setGravity(int gravity) {
         this.gravity = gravity;
+        return this;
+    }
+
+    public BaseDialog setCancel(boolean cancel) {
+        this.cancel = cancel;
+        return this;
+    }
+
+    public BaseDialog setCancelOutside(boolean cancelOutside) {
+        this.cancelOutside = cancelOutside;
         return this;
     }
 
