@@ -15,8 +15,8 @@ public final class CacheUtils {
         throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
-    public static void putL1(@NonNull String key, @Nullable Object value) {
-        L1CacheManager.getInstance().put(key, value);
+    public static <T> void putL1(@NonNull String key, @Nullable T value) {
+        L1CacheManager.getInstance().put(key, CacheObject.newInstance(value, false, -1L));
     }
 
     public static <T> T getL1(@NonNull String key, T defaultValue) {
