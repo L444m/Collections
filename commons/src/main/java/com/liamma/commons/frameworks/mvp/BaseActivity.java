@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         // Set status bar color, or set it in sub activity.
         //StatusBarUtils.setBarColor(this);
-        ActivitiesManager.getInstance().addActivity(this);
+        ActivitiesManager.getInstance().add(this);
         hideLoading();
 
         TAG = this.getClass().getSimpleName();
@@ -139,7 +139,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         if (unbinder != null) {
             unbinder.unbind();
         }
-        ActivitiesManager.getInstance().finishActivity(this);
+        ActivitiesManager.getInstance().finish(this);
         super.onDestroy();
     }
 

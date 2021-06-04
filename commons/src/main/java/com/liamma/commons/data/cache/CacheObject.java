@@ -1,19 +1,25 @@
 package com.liamma.commons.data.cache;
 
+import java.io.Serializable;
+
 /**
  * @author Liam
  * @version 1.0
  * DATE: Created on 2021/5/13 16:47
  * DESCRIPTION:
  */
-public class CacheObject<T> {
+public class CacheObject<T extends Serializable> {
 
     private long create;
     private long expire = -1L;
     private boolean forever = false;
     private T data;
 
-    public static <T> CacheObject<T> newInstance(T t, boolean forever, long expire) {
+    public static <T extends Serializable> CacheObject<T> newInstance(T t) {
+        return newInstance(t, false, -1L);
+    }
+
+    public static <T extends Serializable> CacheObject<T> newInstance(T t, boolean forever, long expire) {
         CacheObject<T> cacheObject = new CacheObject<>();
         cacheObject.setForever(forever);
         cacheObject.setExpire(expire);

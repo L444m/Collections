@@ -1,8 +1,10 @@
 package com.liamma.commons;
 
 /**
- * Definition of all constant values。
- * Created by Liam on 2018/7/17.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/7/17 11:50
+ * DESCRIPTION: Definitions of all constant values。
  */
 public final class Constants {
 
@@ -10,15 +12,24 @@ public final class Constants {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    // whether app in debug mode.
+    /**
+     * Whether this app is in debug mode.
+     */
     public static final Boolean DEBUG = null;
 
-    // whether it enables to print DEBUG log.
+    /**
+     * Whether it enables to print DEBUG log.
+     */
     public static final Boolean LOG_DEBUG_ENABLE = null;
 
-    // whether it enables to print INFO log.
+    /**
+     * Whether it enables to print INFO log.
+     */
     public static final Boolean LOG_INFO_ENABLE = null;
 
+    /**
+     * Base URL for http requesting.
+     */
     public static final String BASE_URL = "";
 
 }

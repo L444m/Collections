@@ -10,14 +10,14 @@ import java.util.Map;
  * @author Liam
  * @version 1.0
  * DATE: Created on 2021/1/15 14:43
- * DESCRIPTION: L1 cache.
+ * DESCRIPTION: Cache objects or data in Memory, it is the first level cache in cache system.
  */
-public class L1CacheManager {
+public class MemoryCacheManager {
 
-    private static volatile L1CacheManager instance = null;
+    private static volatile MemoryCacheManager instance = null;
     private Map<String, CacheObject<?>> memoryCache;
 
-    private L1CacheManager() {
+    private MemoryCacheManager() {
         if (memoryCache == null) {
             memoryCache = new HashMap<>();
         } else {
@@ -26,11 +26,11 @@ public class L1CacheManager {
         }
     }
 
-    public static L1CacheManager getInstance() {
+    public static MemoryCacheManager getInstance() {
         if (instance == null) {
-            synchronized (L1CacheManager.class) {
+            synchronized (MemoryCacheManager.class) {
                 if (instance == null) {
-                    instance = new L1CacheManager();
+                    instance = new MemoryCacheManager();
                 }
             }
         }

@@ -3,6 +3,8 @@ package com.liamma.commons.data.cache;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.Serializable;
+
 /**
  * @author Liam
  * @version 1.0
@@ -15,19 +17,17 @@ public final class CacheUtils {
         throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
-    public static <T> void putL1(@NonNull String key, @Nullable T value) {
-        L1CacheManager.getInstance().put(key, CacheObject.newInstance(value, false, -1L));
+    public static <T extends Serializable> void putL1(@NonNull String key, @Nullable T value) {
+        MemoryCacheManager.getInstance().put(key, CacheObject.newInstance(value, false, -1L));
     }
 
-    public static <T> T getL1(@NonNull String key, T defaultValue) {
-        return L1CacheManager.getInstance().get(key, defaultValue);
+    public static <T extends Serializable> T getL1(@NonNull String key, T defaultValue) {
+        return MemoryCacheManager.getInstance().get(key, defaultValue);
     }
 
     public static void putL2() {
-
     }
 
     public static void putL3() {
-
     }
 }

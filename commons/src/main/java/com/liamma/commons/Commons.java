@@ -3,6 +3,7 @@ package com.liamma.commons;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.liamma.commons.log.LogUtils;
 
@@ -43,8 +44,7 @@ public final class Commons {
             LogUtils.e("Context is null, wrong argument.");
             throw new IllegalArgumentException("Context is null");
         }
-        Commons commons = Commons.getInstance();
-        commons.setAppContext(context.getApplicationContext());
+        Commons.getInstance().setAppContext(context.getApplicationContext());
     }
 
     /**
@@ -64,6 +64,7 @@ public final class Commons {
         return appContext;
     }
 
+    @Nullable
     public Context getAppContext() {
         return appContext;
     }
