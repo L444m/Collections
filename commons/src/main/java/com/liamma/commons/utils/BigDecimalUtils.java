@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
 public final class BigDecimalUtils {
 
     private BigDecimalUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static BigDecimal fromInt(int value) {

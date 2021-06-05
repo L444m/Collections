@@ -11,9 +11,11 @@ import android.view.WindowManager;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
-
 /**
- * 修改状态栏透明度及颜色。
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2021/6/5 16:33
+ * DESCRIPTION: 修改状态栏透明度及颜色。
  */
 public final class StatusBarUtils {
 

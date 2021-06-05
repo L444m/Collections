@@ -17,10 +17,11 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
-
 /**
- * Spannable editor, which is used to modify styles of parts of text string.
- * Created by Liam on 2018/4/26.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/4/26 16:33
+ * DESCRIPTION: Spannable editor, which is used to modify styles of parts of text string.
  */
 public final class SpannableEditor {
 
@@ -78,8 +79,6 @@ public final class SpannableEditor {
         setSpan(new ForegroundColorSpan(textColor), subTextArray);
         return this;
     }*/
-
-
     public SpannableEditor setTextColor(int textColor, String... subTextArray) {
         int begin = 0;
         int end = 0;

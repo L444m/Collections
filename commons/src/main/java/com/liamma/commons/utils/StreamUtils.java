@@ -12,8 +12,10 @@ import java.io.OutputStream;
 import java.util.Objects;
 
 /**
- * Utility methods for operating of stream.
- * Created by Liam on 2017/12/6.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2017/12/6 16:34
+ * DESCRIPTION: Utility methods for operating of stream.
  */
 public final class StreamUtils {
 

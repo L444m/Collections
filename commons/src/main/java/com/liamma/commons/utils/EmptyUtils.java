@@ -31,7 +31,7 @@ public final class EmptyUtils {
     public static final Set EMPTY_SET = Collections.EMPTY_SET;
 
     private EmptyUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     /**

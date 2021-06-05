@@ -16,7 +16,6 @@ public final class FragmentUtils {
     }
 
     public static void add(FragmentTransaction transaction, Fragment fragment) {
-
     }
 
 }

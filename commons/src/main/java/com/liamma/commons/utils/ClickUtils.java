@@ -19,7 +19,7 @@ public final class ClickUtils {
     public static final long CLICK_INTERVAL = 200L;
 
     private ClickUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     /**

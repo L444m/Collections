@@ -6,8 +6,10 @@ import androidx.annotation.Nullable;
 import java.util.Map;
 
 /**
- * Url Utils.
- * Created by Liam on 2018/7/17.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/7/17 16:36
+ * DESCRIPTION: Url Utils.
  */
 public final class UrlUtils {
 

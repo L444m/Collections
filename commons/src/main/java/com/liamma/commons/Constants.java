@@ -20,12 +20,12 @@ public final class Constants {
     /**
      * Whether it enables to print DEBUG log.
      */
-    public static final Boolean LOG_DEBUG_ENABLE = null;
+    public static final Boolean ENABLE_DEBUG_LOG = null;
 
     /**
      * Whether it enables to print INFO log.
      */
-    public static final Boolean LOG_INFO_ENABLE = null;
+    public static final Boolean ENABLE_INFO_LOG = null;
 
     /**
      * Base URL for http requesting.

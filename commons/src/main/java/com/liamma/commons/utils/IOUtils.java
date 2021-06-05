@@ -14,7 +14,7 @@ import java.io.IOException;
 public final class IOUtils {
 
     private IOUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     /**

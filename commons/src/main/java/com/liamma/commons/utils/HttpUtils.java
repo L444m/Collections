@@ -7,4 +7,9 @@ package com.liamma.commons.utils;
  * DESCRIPTION:
  */
 public class HttpUtils {
+
+    private HttpUtils() {
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }
+
 }

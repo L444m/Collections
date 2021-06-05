@@ -11,7 +11,7 @@ import com.liamma.commons.log.LogUtils;
 public final class PreCheck {
 
     private PreCheck() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static <T> T checkNotNull(T value, String message) {

@@ -21,9 +21,11 @@ import android.widget.FrameLayout.LayoutParams;
 
 import java.lang.reflect.Method;
 
-
 /**
- * Created by Administrator on 2017/11/2.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2017/11/2 16:35
+ * DESCRIPTION:
  */
 public class SystemBarTintManager {
     static {

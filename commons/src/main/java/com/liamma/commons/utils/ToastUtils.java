@@ -6,10 +6,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
-
 /**
- * Utility methods for showing toast.
- * Created by Liam on 2018/7/20.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/7/20 16:35
+ * DESCRIPTION: Utility methods for showing toast.
  */
 public final class ToastUtils {
 

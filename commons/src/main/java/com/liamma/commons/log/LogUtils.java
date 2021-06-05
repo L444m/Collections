@@ -21,8 +21,8 @@ public final class LogUtils {
 
     @SuppressWarnings("ConstantConditions")
     public static boolean isDebugEnable() {
-        if (Constants.LOG_DEBUG_ENABLE != null) {
-            return Constants.LOG_DEBUG_ENABLE;
+        if (Constants.ENABLE_DEBUG_LOG != null) {
+            return Constants.ENABLE_DEBUG_LOG;
         } else {
             return BuildConfig.DEBUG;
         }
@@ -30,8 +30,8 @@ public final class LogUtils {
 
     @SuppressWarnings("ConstantConditions")
     public static boolean isInfoEnable() {
-        if (Constants.LOG_INFO_ENABLE != null) {
-            return Constants.LOG_INFO_ENABLE;
+        if (Constants.ENABLE_INFO_LOG != null) {
+            return Constants.ENABLE_INFO_LOG;
         } else {
             return BuildConfig.DEBUG;
         }

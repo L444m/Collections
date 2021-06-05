@@ -13,8 +13,10 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Utility methods for Bitmap.
- * Created by Liam on 2017/12/7.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2017/12/7 16:26
+ * DESCRIPTION: Utility methods for Bitmap.
  */
 public final class BitmapUtils {
 

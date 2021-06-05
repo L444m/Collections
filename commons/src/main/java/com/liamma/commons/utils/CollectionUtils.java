@@ -22,7 +22,7 @@ import java.util.Set;
 public final class CollectionUtils {
 
     private CollectionUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     /**

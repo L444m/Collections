@@ -15,7 +15,7 @@ import com.liamma.commons.Commons;
 public final class Utils {
 
     private Utils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     private static void copyToClipBoard(String content) {

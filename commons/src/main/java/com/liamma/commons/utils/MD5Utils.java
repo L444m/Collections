@@ -7,8 +7,8 @@ import java.security.NoSuchAlgorithmException;
  * @author Liam
  * @version 1.0
  * DATE: Created on 2017/12/11 16:11
- * DESCRIPTION: MD5 utils.
- * Converts an arbitrary number of bytes into a fixed-length (32bits) byte sequence.
+ * DESCRIPTION: MD5 utils. Converts an arbitrary number of bytes into a fixed-length (32bits) byte
+ * sequence.
  */
 public final class MD5Utils {
 

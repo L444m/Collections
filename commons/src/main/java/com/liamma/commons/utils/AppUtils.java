@@ -27,7 +27,7 @@ import java.util.List;
 public final class AppUtils {
 
     private AppUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     /**

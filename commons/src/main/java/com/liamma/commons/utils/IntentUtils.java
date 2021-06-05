@@ -7,4 +7,9 @@ package com.liamma.commons.utils;
  * DESCRIPTION:
  */
 public class IntentUtils {
+
+    private IntentUtils() {
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }
+
 }

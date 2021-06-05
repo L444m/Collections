@@ -1,5 +1,6 @@
 package com.liamma.commons.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -24,7 +25,6 @@ import java.util.Enumeration;
  * DESCRIPTION: Network utils.
  */
 public final class NetworkUtils {
-
 
     public enum NetType {
         NET_2G("2g"),
@@ -59,6 +59,7 @@ public final class NetworkUtils {
      *
      * @return NetworkInfo, or null if no default network is active current now.
      */
+    @SuppressLint("MissingPermission")
     @Nullable
     private static NetworkInfo getNetworkInfo() {
         ConnectivityManager cm = (ConnectivityManager) Commons.getApp().getSystemService(Context.CONNECTIVITY_SERVICE);

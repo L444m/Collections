@@ -1,10 +1,12 @@
 package com.liamma.commons.utils;
 
 import android.text.Editable;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * @author Liam
@@ -15,35 +17,45 @@ import androidx.annotation.NonNull;
 public final class ViewUtils {
 
     private ViewUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static String getText(@NonNull TextView textView) {
-        CharSequence charSequence = textView.getText();
-        return charSequence == null ? "" : charSequence.toString();
+        return StringUtils.nullToEmpty(textView.getText());
     }
 
     public static String getTrimmedText(@NonNull TextView textView) {
-        CharSequence charSequence = textView.getText();
-        return charSequence == null ? "" : charSequence.toString().trim();
+        return StringUtils.nullToEmpty(textView.getText()).trim();
     }
 
-    public static boolean isEditNotEmpty(@NonNull EditText editText, String toast) {
-        if (EmptyUtils.isEmpty(editText.getText())) {
-            ToastUtils.showShort(editText.getContext(), toast);
-            return false;
-        } else {
+    /**
+     * Supports {@link Button}, {@link EditText} also.
+     */
+    public static boolean isEmpty(@Nullable String toast, @NonNull TextView textView) {
+        if (EmptyUtils.isEmpty(textView.getText())) {
+            if (EmptyUtils.isNotEmpty(toast)) {
+                // show warning toast message.
+            }
             return true;
+        } else {
+            return false;
         }
     }
 
-    public static boolean isEditNotEmpty(@NonNull EditText... editTexts) {
-        for (EditText editText : editTexts) {
-            if (EmptyUtils.isEmpty(editText.getText())) {
-                 return false;
+    /**
+     * Supports {@link Button}, {@link EditText} also.
+     * Checks multiple TextView and show same toast message only once.
+     */
+    public static boolean isEmpty(@Nullable String toast, @NonNull TextView... textViews) {
+        for (TextView textView : textViews) {
+            if (EmptyUtils.isEmpty(textView.getText())) {
+                if (EmptyUtils.isNotEmpty(toast)) {
+                    // show warning toast message.
+                }
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public static boolean isEditLengthValid(@NonNull EditText editText, int min, int max, String toast) {

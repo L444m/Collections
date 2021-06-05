@@ -9,6 +9,6 @@ package com.liamma.commons.utils;
 public class ValidatorUtils {
 
     private ValidatorUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 }

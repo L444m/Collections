@@ -1,8 +1,10 @@
 package com.liamma.commons.utils;
 
 /**
- * Utility methods for Package.
- * Created by Liam on 2019/12/25.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2019/12/25 16:32
+ * DESCRIPTION: Utility methods for Package.
  */
 public class PackageUtils {
 
