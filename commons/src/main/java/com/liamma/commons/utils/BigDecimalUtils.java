@@ -21,6 +21,10 @@ public final class BigDecimalUtils {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
+    /*
+    Do not create a BigDecimal object with a float or double because it may lose precision.
+     */
+
     public static BigDecimal fromInt(int value) {
         return new BigDecimal(value);
     }
@@ -32,24 +36,26 @@ public final class BigDecimalUtils {
     @NonNull
     public static BigDecimal fromString(@Nullable String s) {
         if (EmptyUtils.isEmpty(s)) {
-            LogUtils.e("String value is empty.");
             return BigDecimal.ZERO;
         }
         try {
             return new BigDecimal(s);
         } catch (NumberFormatException e) {
-            LogUtils.e("The string does not contain a valid number.");
+            LogUtils.e("String \"" + s + "\" does not contain a valid number.");
             return BigDecimal.ZERO;
         }
     }
 
     /**
-     * whether bd1 is equal to bd2.
+     * Whether bd1 is equal to bd2.
      *
      * @return {@code true} if {@code bd1 == bd2}, otherwise {@code false}.
      */
-    public static boolean isEqual(BigDecimal bd1, BigDecimal bd2) {
-        return false;
+    public static boolean isEqual(@Nullable BigDecimal bd1, @Nullable BigDecimal bd2) {
+        if (bd1 == null || bd2 == null) {
+            return false;
+        }
+        return bd1.equals(bd2);
     }
 
     /**
@@ -57,7 +63,7 @@ public final class BigDecimalUtils {
      *
      * @return {@code true} if {@code bd1 > bd2}, otherwise {@code false}.
      */
-    public static boolean isGreater(BigDecimal bd1, BigDecimal bd2) {
+    public static boolean isGreater(@Nullable BigDecimal bd1, @Nullable BigDecimal bd2) {
         return false;
     }
 
@@ -108,6 +114,9 @@ public final class BigDecimalUtils {
         return result;
     }
 
+    /**
+     * -
+     */
     @NonNull
     public static BigDecimal subtract(@Nullable BigDecimal bd, @Nullable BigDecimal... bdArray) {
         if (bd == null) {
@@ -125,9 +134,13 @@ public final class BigDecimalUtils {
         return result;
     }
 
+    /**
+     * x
+     */
+    @NonNull
     public static BigDecimal multiply(@Nullable BigDecimal bd, @Nullable BigDecimal... bdArray) {
         if (bd == null) {
-            LogUtils.d("Divisor is null, cannot exec multiply.");
+            LogUtils.d("Divisor is null, cannot execute multiply.");
             return BigDecimal.ZERO;
         }
         if (EmptyUtils.isEmpty(bdArray)) {
@@ -142,17 +155,107 @@ public final class BigDecimalUtils {
         return result;
     }
 
-    public static BigDecimal divide(@Nullable BigDecimal bd1, @Nullable BigDecimal... bd2) {
-        if (EmptyUtils.isEmpty(bd2)) return bd1 != null ? bd1 : BigDecimal.ZERO;
-        if (bd1 == null) bd1 = BigDecimal.ONE;
-
-        BigDecimal result = bd1;
-        for (BigDecimal bd : bd2) {
-            if (bd != null && !bd.equals(BigDecimal.ZERO)) result = bd1.divide(bd);
+    /**
+     * /
+     */
+    public static BigDecimal divide(@Nullable BigDecimal bd, @Nullable BigDecimal... bdArray) {
+        if (bd == null) {
+            LogUtils.d("Divisor is null, cannot execute multiply.");
+            return BigDecimal.ZERO;
+        }
+        if (EmptyUtils.isEmpty(bdArray)) {
+            return bd;
+        }
+        BigDecimal result = bd;
+        for (BigDecimal bigDecimal : bdArray) {
+            if (bigDecimal != null && !bigDecimal.equals(BigDecimal.ZERO)) {
+                result = result.divide(bigDecimal);
+            }
         }
         return result;
     }
 
+    /**
+     * Equals to method {@code to8NoComma(BigDecimal bigDecimal)}.
+     */
+    public static String to8(double value) {
+        try {
+            return to8(BigDecimal.valueOf(value));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return "0.00";
+        }
+    }
+
+    /**
+     * Equals to method {@code to8NoComma(BigDecimal bigDecimal)} .
+     */
+    public static String to8(String value) {
+        if (StringUtils.isEmpty(value)) {
+            return "0.00";
+        }
+        return to8(new BigDecimal(value));
+    }
+
+    /**
+     * 格式化为 (最多) 8 位小数，<strong>没有</strong> 逗号分隔。
+     * 当小数位大于 8 位时，格式为 8 位小数；小于 8 位时，则显示对应的位数。
+     *
+     * @param bigDecimal BigDecimal
+     * @return Formatted String
+     */
+    public static String to8(BigDecimal bigDecimal) {
+        if (bigDecimal == null) {
+            return "0.00";
+        }
+
+        int scale = bigDecimal.scale();
+        if (scale < 2) {
+            return bigDecimal.setScale(2, RoundingMode.HALF_UP).toPlainString();
+        } else if (scale <= 8) {
+            return bigDecimal.toPlainString();
+        } else {
+            return bigDecimal.setScale(8, RoundingMode.HALF_UP).toPlainString();
+        }
+    }
+
+    @NonNull
+    public static String toX(@Nullable BigDecimal bigDecimal, int scale) {
+        if (bigDecimal == null) {
+            return "0";
+        }
+        if (scale < 0) {
+            return bigDecimal.toString();
+        }
+        return "0";
+    }
+
+    /**
+     * Equals to method {@code to8(BigDecimal bigDecimal)} .
+     */
+    public static String to8WithCommon(double value) {
+        try {
+            return to8WithCommon(BigDecimal.valueOf(value));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return "0.00";
+        }
+    }
+
+    /**
+     * Equals to method {@code to8(BigDecimal bigDecimal)} .
+     */
+    public static String to8WithCommon(@Nullable String value) {
+        if (EmptyUtils.isEmpty(value)) {
+            return "0.00";
+        }
+        try {
+            return to8WithCommon(new BigDecimal(value));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return "0.00";
+        }
+    }
 
     /**
      * 格式化为 (最多) 8 位小数。
@@ -160,7 +263,7 @@ public final class BigDecimalUtils {
      *
      * @param bigDecimal BigDecimal
      */
-    public static String to8(@Nullable BigDecimal bigDecimal) {
+    public static String to8WithCommon(@Nullable BigDecimal bigDecimal) {
         if (bigDecimal == null) {
             return "0.00";
         }
@@ -179,75 +282,17 @@ public final class BigDecimalUtils {
         return df.format(bigDecimal);
     }
 
-    /**
-     * Equals to method {@code to8(BigDecimal bigDecimal)} .
-     */
-    public static String to8(@Nullable String value) {
-        if (EmptyUtils.isEmpty(value)) {
-            return "0.00";
+    @NonNull
+    private static String getZeroString(int scale) {
+        if (scale <= 0) {
+            return "0";
         }
-        try {
-            return to8(new BigDecimal(value));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            return "0.00";
+        StringBuilder sb = new StringBuilder();
+        sb.append("0.");
+        for (int i = 0; i < scale; i++) {
+            sb.append("0");
         }
-    }
-
-    /**
-     * Equals to method {@code to8(BigDecimal bigDecimal)} .
-     */
-    public static String to8(double value) {
-        try {
-            return to8(BigDecimal.valueOf(value));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            return "0.00";
-        }
-    }
-
-    /**
-     * 格式化为 (最多) 8 位小数，<strong>没有</strong> 逗号分隔。
-     * 当小数位大于 8 位时，格式为 8 位小数；小于 8 位时，则显示对应的位数。
-     *
-     * @param bigDecimal BigDecimal
-     * @return Formatted String
-     */
-    public static String to8NoComma(BigDecimal bigDecimal) {
-        if (bigDecimal == null) {
-            return "0.00";
-        }
-
-        int scale = bigDecimal.scale();
-        if (scale < 2) {
-            return bigDecimal.setScale(2, RoundingMode.HALF_UP).toPlainString();
-        } else if (scale <= 8) {
-            return bigDecimal.toPlainString();
-        } else {
-            return bigDecimal.setScale(8, RoundingMode.HALF_UP).toPlainString();
-        }
-    }
-
-    /**
-     * Equals to method {@code to8NoComma(BigDecimal bigDecimal)} .
-     */
-    public static String to8NoComma(String value) {
-        if (StringUtils.isEmpty(value)) {
-            return "0.00";
-        }
-        return to8NoComma(new BigDecimal(value));
-    }
-
-    /**
-     * Equals to method {@code to8NoComma(BigDecimal bigDecimal)} .
-     */
-    public static String to8NoComma(double value) {
-        try {
-            return to8NoComma(BigDecimal.valueOf(value));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            return "0.00";
-        }
+        return sb.toString();
     }
 
 }

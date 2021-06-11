@@ -43,7 +43,7 @@ public class SpinnerActivity extends BaseToolsActivity {
         spinner.setBackgroundColor(0x0);
         spinner.setAdapter(adapter);
         spinner.setPopupBackgroundResource(R.drawable.rounded_white_r5);
-        spinner.setDropDownVerticalOffset(DensityUtils.dp2px(this, 23));
+        spinner.setDropDownVerticalOffset(ScreenUtils.dp2px(this, 23));
 
 
         // set listener of spinner

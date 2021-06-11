@@ -171,6 +171,7 @@ public final class AppUtils {
     }
 
     public static String[] getMetaData(@Nullable final String... keys) {
+        // to be completed
         return null;
     }
 
@@ -224,16 +225,20 @@ public final class AppUtils {
     }
 
     public static boolean isAppRoot(@Nullable final String packageName) {
+        // to be completed
         return false;
     }
 
     public static void installApp(@Nullable final String filePath) {
+        // to be completed
     }
 
     public static void installApp(@Nullable final File file) {
+        // to be completed
     }
 
     public static void uninstallApp(@Nullable String packageName) {
+        // to be completed
     }
 
 }

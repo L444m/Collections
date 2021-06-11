@@ -8,7 +8,7 @@ import android.util.Log;
  * DATE: Created on 2021/5/15 11:30
  * DESCRIPTION: A simple Logger for Android.
  */
-public class DefaultLogger implements ILog {
+public class DefaultLogger extends AbstractLogger {
 
     private static final String TAG = "DefaultLogger";
 

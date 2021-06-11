@@ -4,6 +4,8 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 
+import androidx.annotation.Nullable;
+
 import com.liamma.commons.Commons;
 
 /**
@@ -18,7 +20,7 @@ public final class Utils {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    private static void copyToClipBoard(String content) {
+    private static void copyToClipBoard(@Nullable String content) {
         ClipboardManager cbm = (ClipboardManager) Commons.getApp().getSystemService(Context.CLIPBOARD_SERVICE);
         if (cbm == null) return;
         cbm.setPrimaryClip(ClipData.newPlainText(null, content));
