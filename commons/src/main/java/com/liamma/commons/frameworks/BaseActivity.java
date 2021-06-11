@@ -1,4 +1,4 @@
-package com.liamma.commons.frameworks.mvp;
+package com.liamma.commons.frameworks;
 
 import android.content.Context;
 import android.content.Intent;

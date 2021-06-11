@@ -1,4 +1,4 @@
-package com.liamma.commons.frameworks.mvp.base;
+package com.liamma.commons.frameworks.mvp;
 
 /**
  * The root interface of Presenter layer.

@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.liamma.collections.event.MessageEvent;
 import com.liamma.collections.event.MessageEvent2;
-import com.liamma.commons.frameworks.mvp.BaseToolsActivity;
+import com.liamma.commons.frameworks.BaseToolsActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

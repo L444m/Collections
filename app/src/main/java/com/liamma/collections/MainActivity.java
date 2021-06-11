@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.widget.Button;
 
 import com.liamma.collections.main.ui.TestingActivity;
-import com.liamma.commons.frameworks.mvp.BaseToolsActivity;
+import com.liamma.commons.frameworks.BaseToolsActivity;
 
 public class MainActivity extends BaseToolsActivity {
 

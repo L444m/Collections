@@ -1,7 +1,7 @@
 package com.liamma.collections.main.ui;
 
 import com.liamma.collections.R;
-import com.liamma.commons.frameworks.mvp.BaseToolsActivity;
+import com.liamma.commons.frameworks.BaseToolsActivity;
 
 import java.util.ArrayList;
 import java.util.List;

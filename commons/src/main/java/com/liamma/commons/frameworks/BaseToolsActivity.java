@@ -1,4 +1,4 @@
-package com.liamma.commons.frameworks.mvp;
+package com.liamma.commons.frameworks;
 
 /**
  * @author Liam

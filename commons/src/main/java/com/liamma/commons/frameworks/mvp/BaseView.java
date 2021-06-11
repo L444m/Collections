@@ -1,4 +1,4 @@
-package com.liamma.commons.frameworks.mvp.base;
+package com.liamma.commons.frameworks.mvp;
 
 /**
  * Base interface of view.

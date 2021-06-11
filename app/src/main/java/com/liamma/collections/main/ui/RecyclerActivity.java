@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.liamma.collections.R;
 import com.liamma.commons.adapters.BaseViewHolder;
 import com.liamma.commons.adapters.CommonLvAdapter;
-import com.liamma.commons.frameworks.mvp.BaseToolsActivity;
+import com.liamma.commons.frameworks.BaseToolsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
