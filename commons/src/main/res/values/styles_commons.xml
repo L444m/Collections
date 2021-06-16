@@ -3,6 +3,7 @@
 
     <style name="Commons" />
 
+
     <!-- Layout -->
 
     <style name="Commons.Layout" />
@@ -56,15 +57,15 @@
     </style>
 
     <style name="Commons.Layout.MatchMatch.Bg">
-        <item name="background">@color/black</item>
+        <item name="android:background">@color/black</item>
     </style>
 
     <style name="Commons.Layout.MatchMatch.Vertical.Bg">
-        <item name="background">@color/black</item>
+        <item name="android:background">@color/black</item>
     </style>
 
     <style name="Commons.Layout.MatchMatch.Horizontal.Bg">
-        <item name="background">@color/black</item>
+        <item name="android:background">@color/black</item>
     </style>
 
 
@@ -84,22 +85,22 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
-    <style name="Commons.Divider.Horizontal.Padding">
+    <style name="Commons.Divider.Horizontal.Padding15">
         <item name="android:paddingStart">15dp</item>
         <item name="android:paddingEnd">15dp</item>
     </style>
 
-    <style name="Commons.Divider.Vertical.Padding">
+    <style name="Commons.Divider.Vertical.Padding15">
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
     </style>
 
-    <style name="Commons.Divider.Horizontal.Margin">
+    <style name="Commons.Divider.Horizontal.Margin15">
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_marginEnd">15dp</item>
     </style>
 
-    <style name="Commons.Divider.Vertical.Margin">
+    <style name="Commons.Divider.Vertical.Margin15">
         <item name="android:layout_marginTop">15dp</item>
         <item name="android:layout_marginBottom">15dp</item>
     </style>
@@ -126,5 +127,9 @@
 
     <style name="Commons.Image" />
 
+
+    <!-- EditText appearance -->
+
+    <style name="Commons.Edit" />
 
 </resources>
