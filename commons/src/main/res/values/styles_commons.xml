@@ -48,6 +48,14 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
+    <style name="Commons.Layout.WrapWrap.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Commons.Layout.WrapWrap.Horizontal">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
     <style name="Commons.Layout.MatchWrap.Vertical">
         <item name="android:orientation">vertical</item>
     </style>
