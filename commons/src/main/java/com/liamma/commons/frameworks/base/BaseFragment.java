@@ -1,13 +1,16 @@
-package com.liamma.commons.frameworks;
+package com.liamma.commons.frameworks.base;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 /**
- * Created by Liam on 2018/8/9
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/8/9 10:31
+ * DESCRIPTION:
  */
-public abstract class SimpleBaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     protected boolean isViewInitiated;
     protected boolean isVisibleToUser;

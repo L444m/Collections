@@ -3,8 +3,10 @@ package com.liamma.commons.http.bean;
 import androidx.annotation.NonNull;
 
 /**
- * Response 实体。
- * Created by Liam on 2018/7/15.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/7/15 10:08
+ * DESCRIPTION: Response 实体。
  */
 public class ResponseEntity<T> extends AbstractResponse {
 

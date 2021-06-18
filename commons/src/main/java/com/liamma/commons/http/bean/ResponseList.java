@@ -5,12 +5,12 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 /**
- * Response 实体 list。
- * Created by Liam on 2018/7/15.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/7/15 10:09
+ * DESCRIPTION: Response 实体 list。
  */
 public class ResponseList<T> extends AbstractResponse {
-
-    // add paging data here.
 
     private List<T> data;
 

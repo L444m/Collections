@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/common_title_bar" />
+    <include layout="@layout/common_layout_title_bar" />
 
     <!-- only used for WebView -->
     <ProgressBar
-        android:id="@+id/pbWebLoadingProgress"
+        android:id="@+id/pbProgress"
         style="?android:progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -17,10 +17,17 @@
         android:progressDrawable="@drawable/common_bg_web_progress"
         android:visibility="gone" />
 
-    <!-- Layout for inflating content view. -->
-    <FrameLayout
-        android:id="@+id/flBaseContainer"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srlRefresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <!-- Layout for inflating content view. -->
+        <FrameLayout
+            android:id="@+id/flBaseContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

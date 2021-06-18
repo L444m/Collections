@@ -1,7 +1,7 @@
 package com.liamma.collections.main.ui;
 
 import com.liamma.collections.R;
-import com.liamma.commons.frameworks.BaseToolsActivity;
+import com.liamma.commons.frameworks.base.BaseTitleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  * DATE: Created on 2021/4/28 12:21
  * DESCRIPTION:
  */
-public class SpinnerActivity extends BaseToolsActivity {
+public class SpinnerActivity extends BaseTitleActivity {
 
     @Override
     protected int getLayoutId() {

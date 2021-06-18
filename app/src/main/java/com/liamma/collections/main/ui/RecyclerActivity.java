@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.liamma.collections.R;
 import com.liamma.commons.adapters.BaseViewHolder;
 import com.liamma.commons.adapters.CommonLvAdapter;
-import com.liamma.commons.frameworks.BaseToolsActivity;
+import com.liamma.commons.frameworks.base.BaseTitleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Used for testing RecyclerView.
  */
-public class RecyclerActivity extends BaseToolsActivity {
+public class RecyclerActivity extends BaseTitleActivity {
 
     private RecyclerView rvRecycler;
     private ListView lvList;

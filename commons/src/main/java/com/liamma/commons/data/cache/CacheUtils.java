@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class CacheUtils {
 
     private CacheUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static <T extends Serializable> void putL1(@NonNull String key, @Nullable T value) {

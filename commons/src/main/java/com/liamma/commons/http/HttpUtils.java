@@ -9,8 +9,7 @@ package com.liamma.commons.http;
 public final class HttpUtils {
 
     private HttpUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
-
 
 }

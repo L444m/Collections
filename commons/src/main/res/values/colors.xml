@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Title bar colors -->
+    <color name="title_bar_background">@color/Silver</color>
+    <color name="title_bar_text">@color/Gold</color>
+
+
     <!-- Basic colors -->
 
     <!-- The color white, equivalent to 0xffffffff -->
@@ -152,7 +157,5 @@
     <color name="Gray">#808080</color> <!-- 灰色 -->
     <color name="DimGray">#696969</color> <!-- 暗淡灰 -->
     <color name="Black">#000000</color> <!-- 纯黑 -->
-
-    <!-- Basic colors ends -->
 
 </resources>

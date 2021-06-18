@@ -7,22 +7,18 @@ import android.widget.TextView;
 
 import com.liamma.collections.event.MessageEvent;
 import com.liamma.collections.event.MessageEvent2;
-import com.liamma.commons.frameworks.BaseToolsActivity;
+import com.liamma.commons.frameworks.base.BaseTitleActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import butterknife.BindView;
 
-
-public class SecondActivity extends BaseToolsActivity {
+public class SecondActivity extends BaseTitleActivity {
 
     private static final String TAG = "SecondActivity";
 
-    @BindView(R.id.tv_second_show)
     TextView tvShowMsg;
 
-    @BindView(R.id.btn_second_start)
     Button btnStart;
 
     @Override

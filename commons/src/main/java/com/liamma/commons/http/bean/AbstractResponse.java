@@ -1,8 +1,10 @@
 package com.liamma.commons.http.bean;
 
 /**
- * Abstract Response。有 response 的基本结构，不能直接使用，需要子类继承。
- * Created by Liam on 2018/7/15.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/7/15 10:04
+ * DESCRIPTION: Abstract Response。有 response 的基本结构，不能直接使用，需要子类继承。
  */
 public abstract class AbstractResponse implements IResponse {
 

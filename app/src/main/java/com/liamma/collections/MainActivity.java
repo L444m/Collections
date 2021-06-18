@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.widget.Button;
 
 import com.liamma.collections.main.ui.TestingActivity;
-import com.liamma.commons.frameworks.BaseToolsActivity;
+import com.liamma.commons.frameworks.base.BaseTitleActivity;
 
-public class MainActivity extends BaseToolsActivity {
+public class MainActivity extends BaseTitleActivity {
 
     private static final String TAG = "MainActivity";
 
@@ -23,7 +23,7 @@ public class MainActivity extends BaseToolsActivity {
     }
 
     @Override
-    protected void initClick() {
+    protected void initListeners() {
         btnBigDecimal.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TestingActivity.class)));
     }
 

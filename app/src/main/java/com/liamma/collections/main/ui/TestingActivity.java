@@ -8,7 +8,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.liamma.collections.R;
 import com.liamma.collections.dialog.BaseDialogFragment;
-import com.liamma.commons.frameworks.BaseToolsActivity;
+import com.liamma.commons.frameworks.base.BaseTitleActivity;
 import com.liamma.commons.log.LogUtils;
 import com.liamma.commons.utils.DateTimeUtils;
 import com.liamma.commons.utils.SpannableEditor;
@@ -22,7 +22,7 @@ import java.sql.Timestamp;
  * DATE: Created on 2021/4/28 9:40
  * DESCRIPTION:
  */
-public class TestingActivity extends BaseToolsActivity {
+public class TestingActivity extends BaseTitleActivity {
 
     private TextView tvShowMessage;
 

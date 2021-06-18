@@ -1,4 +1,4 @@
-package com.liamma.commons.frameworks;
+package com.liamma.commons.frameworks.base;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import androidx.annotation.CheckResult;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.liamma.commons.ActivitiesManager;
@@ -24,9 +25,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 /**
  * @author Liam
  * @version 1.0
@@ -38,7 +36,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected static String TAG = "";
 
     protected Context context;
-    protected Unbinder unbinder;
     @Nullable
     protected Bundle extras;
     protected LoadingDialog loadingDialog;
@@ -59,8 +56,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         prepare();
         initContentView();
-        // ButterKnife initiation should be processed after setting content view.
-        this.unbinder = ButterKnife.bind(this);
         doBusiness();
     }
 
@@ -75,9 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
      * Initiates the UI, show content of layout resource.
      */
     protected void initContentView() {
-        if (getLayoutId() == 0) {
-            throw new IllegalArgumentException("must set layout id in activity.");
-        }
+        validateLayoutId();
         setContentView(getLayoutId());
     }
 
@@ -86,22 +79,28 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
      */
     private void doBusiness() {
         initView();
-        initClick();
+        initListeners();
         initData();
     }
 
     /**
      * Returns the layout resource Id.
-     * Subclass which is not abstract <>must</> override it and provide a corresponding layout id.
+     * Subclass which is not abstract <strong>must</strong> override it and provide a corresponding layout id.
      */
     @CheckResult
     @LayoutRes
     protected abstract int getLayoutId();
 
+    protected void validateLayoutId() {
+        if (getLayoutId() == 0) {
+            throw new IllegalArgumentException("must set layout id in activity.");
+        }
+    }
+
     protected void initView() {
     }
 
-    protected void initClick() {
+    protected void initListeners() {
     }
 
     protected void initData() {
@@ -136,9 +135,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onDestroy() {
         LogUtils.d(" ---> onDestroy");
-        if (unbinder != null) {
-            unbinder.unbind();
-        }
         ActivitiesManager.getInstance().finish(this);
         super.onDestroy();
     }
@@ -194,6 +190,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         startActivity(intent);
     }
 
+    protected void quickStartActivity(@NonNull Class<?> clazz) {
+        Intent intent = new Intent(this, clazz);
+        startActivity(intent);
+    }
+
     protected void quickStartActivity(@NonNull Class<?> clazz, @Nullable Bundle bundle) {
         Intent intent = new Intent(this, clazz);
         if (bundle != null) {
@@ -202,16 +203,24 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         startActivity(intent);
     }
 
-    protected void quickStartActivity(@NonNull Class<?> clazz) {
-        quickStartActivity(clazz, null);
-    }
-
     protected void showToastLong(String message) {
         ToastUtils.showLong(this, message);
     }
 
+    protected void showToastLong(@StringRes int stringResId) {
+        ToastUtils.showLong(this, stringResId);
+    }
+
     protected void showToastShort(String message) {
         ToastUtils.showShort(this, message);
+    }
+
+    protected void showToastShort(@StringRes int stringResId) {
+        ToastUtils.showShort(this, stringResId);
+    }
+
+    protected void showKeyboard() {
+        // to be completed.
     }
 
     protected void hideKeyboard(View v) {
