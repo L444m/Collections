@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="onClickListener"
+            type="View.OnClickListener" />
+
+        <variable
+            name="viewData"
+            type="com.liamma.commons.frameworks.mvvm.UserViewData" />
+    </data>
+
+    <LinearLayout style="@style/Commons.Layout.MatchMatch.Vertical">
+
+    </LinearLayout>
+</layout>

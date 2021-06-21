@@ -8,13 +8,13 @@
     android:paddingRight="20dp">
 
     <Button
-        android:id="@+id/btnBigDecimal"
+        android:id="@+id/btnNextPage"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="@color/LightGray"
         android:gravity="center"
-        android:text="Test BigDecimal"
+        android:text="Next Page"
         android:textColor="@color/IndianRed"
         android:textSize="16sp" />
 

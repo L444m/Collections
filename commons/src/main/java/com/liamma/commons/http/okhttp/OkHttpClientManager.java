@@ -1,5 +1,8 @@
 package com.liamma.commons.http.okhttp;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.liamma.commons.http.HttpConfigs;
 import com.liamma.commons.http.okhttp.interceptor.HttpLoggingInterceptor;
 import com.liamma.commons.utils.EmptyUtils;
@@ -37,29 +40,40 @@ public class OkHttpClientManager {
         return instance;
     }
 
-    private synchronized OkHttpClient createOkHttpClient(List<Interceptor> list) {
+    /**
+     * Creates a new OkHttpClient instance.
+     */
+    private synchronized OkHttpClient createOkHttpClient(@Nullable final List<Interceptor> interceptors) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(HttpConfigs.DEFAULT_CONNECT_TIME, TimeUnit.MILLISECONDS);
         builder.readTimeout(HttpConfigs.DEFAULT_READ_TIME, TimeUnit.MILLISECONDS);
         builder.writeTimeout(HttpConfigs.DEFAULT_WRITE_TIME, TimeUnit.MILLISECONDS);
 
-        if (EmptyUtils.isNotEmpty(list)) {
-            for (Interceptor interceptor : list) {
+        if (EmptyUtils.isNotEmpty(interceptors)) {
+            for (Interceptor interceptor : interceptors) {
                 builder.addInterceptor(interceptor);
             }
         }
         return builder.build();
     }
 
-    // Create a default OkHttpClient which has only a log interceptor.
+    /**
+     * Creates a default OkHttpClient instance which has only a log interceptor.
+     */
     private synchronized OkHttpClient createOkHttpClient() {
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         List<Interceptor> list = new ArrayList<>();
-        list.add(httpLoggingInterceptor);
+        list.add(loggingInterceptor);
         return createOkHttpClient(list);
     }
 
+    /**
+     * Returns the default OkHttpClient instance.
+     *
+     * @return OkHttpClient
+     */
+    @NonNull
     public OkHttpClient getOkHttpClient() {
         if (okHttpClient == null) {
             okHttpClient = createOkHttpClient();
@@ -67,7 +81,13 @@ public class OkHttpClientManager {
         return okHttpClient;
     }
 
-    public OkHttpClient getNewOkHttpClient(List<Interceptor> interceptors) {
+    /**
+     * Returns a new OkHttpClient instance.
+     *
+     * @param interceptors Interceptor list
+     * @return OkHttpClient
+     */
+    public OkHttpClient getOkHttpClient(@Nullable List<Interceptor> interceptors) {
         return createOkHttpClient(interceptors);
     }
 

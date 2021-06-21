@@ -24,7 +24,7 @@ public class RetrofitManager {
     private HashMap<String, Retrofit> retrofitMap;
 
     private RetrofitManager() {
-        initRetrofitManager();
+        init();
     }
 
     public static RetrofitManager getInstance() {
@@ -38,7 +38,7 @@ public class RetrofitManager {
         return instance;
     }
 
-    private void initRetrofitManager() {
+    private void init() {
         if (retrofitMap == null) {
             retrofitMap = new HashMap<>();
         } else {

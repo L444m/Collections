@@ -13,14 +13,15 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-
 /**
- * Interceptor for adding headers in requests.
- * Created by Liam on 2018/7/19.
+ * @author Liam
+ * @version 1.0
+ * DATE: Created on 2018/7/19 14:40
+ * DESCRIPTION: Interceptor for adding headers in requests.
  */
 public class HeaderInterceptor implements Interceptor {
 
-    private Map<String, Object> headers = new LinkedHashMap<>();
+    private final Map<String, Object> headers = new LinkedHashMap<>();
 
     public HeaderInterceptor() {
     }
@@ -38,15 +39,12 @@ public class HeaderInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-
         Request.Builder builder = chain.request().newBuilder();
-
         if (EmptyUtils.isNotEmpty(headers)) {
             for (Map.Entry<String, Object> entry : headers.entrySet()) {
                 builder.addHeader(entry.getKey(), String.valueOf(entry.getValue()));
             }
         }
-
         return chain.proceed(builder.build());
     }
 

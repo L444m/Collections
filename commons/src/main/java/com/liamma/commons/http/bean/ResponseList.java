@@ -2,6 +2,8 @@ package com.liamma.commons.http.bean;
 
 import androidx.annotation.NonNull;
 
+import com.liamma.commons.utils.EmptyUtils;
+
 import java.util.List;
 
 /**
@@ -25,6 +27,14 @@ public class ResponseList<T> extends AbstractResponse {
     @Override
     public boolean isNull() {
         return this.data == null;
+    }
+
+    public boolean isEmpty() {
+        return EmptyUtils.isEmpty(this.data);
+    }
+
+    public boolean isNotEmpty() {
+        return EmptyUtils.isNotEmpty(this.data);
     }
 
     @NonNull

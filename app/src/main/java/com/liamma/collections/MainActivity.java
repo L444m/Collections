@@ -3,14 +3,14 @@ package com.liamma.collections;
 import android.content.Intent;
 import android.widget.Button;
 
-import com.liamma.collections.main.ui.TestingActivity;
+import com.liamma.collections.main.ui.DataBindingActivity;
 import com.liamma.commons.frameworks.base.BaseTitleActivity;
 
 public class MainActivity extends BaseTitleActivity {
 
     private static final String TAG = "MainActivity";
 
-    private Button btnBigDecimal;
+    private Button btnNextPage;
 
     @Override
     protected int getLayoutId() {
@@ -19,12 +19,12 @@ public class MainActivity extends BaseTitleActivity {
 
     @Override
     protected void initView() {
-        btnBigDecimal = findViewById(R.id.btnBigDecimal);
+        btnNextPage = findViewById(R.id.btnNextPage);
     }
 
     @Override
     protected void initListeners() {
-        btnBigDecimal.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TestingActivity.class)));
+        btnNextPage.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, DataBindingActivity.class)));
     }
 
 }

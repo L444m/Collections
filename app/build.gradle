@@ -17,14 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
-
     lintOptions {
         disable 'GoogleAppIndexingWarning'
+    }
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -38,5 +39,16 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     implementation project(':commons')
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.7'
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    // RxJava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    // EventBus
+    implementation 'org.greenrobot:eventbus:3.1.1'
 
 }

@@ -10,4 +10,7 @@
         <item>六年级</item>
     </array>
 
+    <string name="user_name">姓名</string>
+    <string name="user_password">密码</string>
+
 </resources>

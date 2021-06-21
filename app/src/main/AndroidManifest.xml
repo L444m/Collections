@@ -22,6 +22,7 @@
         <activity android:name=".main.ui.AdapterActivity" />
         <activity android:name=".main.ui.AnimatorActivity"/>
         <activity android:name=".main.ui.TestingActivity" />
+        <activity android:name=".main.ui.DataBindingActivity" />
     </application>
 
 </manifest>
