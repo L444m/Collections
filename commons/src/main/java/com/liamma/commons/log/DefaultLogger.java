@@ -41,7 +41,8 @@ public class DefaultLogger extends AbstractLogger {
      * Determines the start point stack trace.
      */
     private static int getStackOffset(StackTraceElement[] elements) {
-        String name = DefaultLogger.class.getName();
+        //String name = DefaultLogger.class.getName();
+        String name = LogUtils.class.getName();
         int size = elements.length;
 
         for (int i = 0; i < size; i++) {

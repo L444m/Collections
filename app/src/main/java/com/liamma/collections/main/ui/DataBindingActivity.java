@@ -1,20 +1,31 @@
 package com.liamma.collections.main.ui;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableList;
+import androidx.databinding.ObservableLong;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.liamma.collections.BR;
 import com.liamma.collections.R;
+import com.liamma.collections.bean.Image;
+import com.liamma.collections.bean.ObservableUser;
 import com.liamma.collections.bean.User;
 import com.liamma.collections.databinding.TestDataBinding;
 import com.liamma.commons.log.LogUtils;
 import com.liamma.commons.utils.ToastUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Liam
@@ -25,6 +36,11 @@ import com.liamma.commons.utils.ToastUtils;
 public class DataBindingActivity extends AppCompatActivity {
 
     private User user;
+    private ObservableUser observableUser;
+    private List<User> list;
+    private ObservableList<User> observableList;
+    private int index;
+
     private TestDataBinding dataBinding;
     private int userIndex = 0;
 
@@ -41,10 +57,30 @@ public class DataBindingActivity extends AppCompatActivity {
         dataBinding.tvName.setText("王小强");
 
         user = new User("Alice", "password0088", "0000");
+        observableUser = new ObservableUser("Candy", "password1010", 1111);
+        list = new ArrayList<>();
+        list.add(new User("list001", "pwd001", "0001"));
+        list.add(new User("list002", "pwd002", "0002"));
+        observableList = new ObservableArrayList<>();
+        observableList.addAll(list);
+        index = 1;
         dataBinding.setUserInfo(user);
+        dataBinding.setObservableUser(observableUser);
+        dataBinding.setList(observableList);
+        dataBinding.setIndex(index);
+        dataBinding.setUserPresenter(new UserPresenter());
+        dataBinding.setImage(new Image("wwww.baidu.com/fuckyou/index.jsp"));
 
-        addListeners();
+        //addListeners();
+        //addChangeIdListener();
         addFragment();
+    }
+
+    private void addChangeIdListener() {
+        dataBinding.tvChangUser.setOnClickListener(v -> {
+            LogUtils.i("click change Id button");
+            dataBinding.tvID.setText("manual changed id " + userIndex);
+        });
     }
 
     private void addListeners() {
@@ -60,13 +96,17 @@ public class DataBindingActivity extends AppCompatActivity {
                 }
             }
         });
-        dataBinding.tvChangUser.setOnClickListener(v -> {
+        /*dataBinding.tvChangUser.setOnClickListener(v -> {
             userIndex++;
             ToastUtils.showShort(DataBindingActivity.this, "change user index = " + userIndex);
             //user = new User("Bob", "user_pwd_" + userIndex);
-            user.setName("Bob user_" + userIndex);
-            user.setPassword("password_user_" + userIndex);
-            user.setId("0000 user_" + userIndex);
+            observableUser.setName("Doggie user_" + userIndex);
+            observableUser.setPassword("observable password_user_" + userIndex);
+            observableUser.setId(1111L + Long.valueOf(userIndex));
+        });*/
+        dataBinding.tvChangUser.setOnClickListener(v -> {
+            ToastUtils.showShort(DataBindingActivity.this, "change user");
+            observableList.add(1, new User("changed User", "changed pwd", "changed 0000"));
         });
     }
 
@@ -76,6 +116,12 @@ public class DataBindingActivity extends AppCompatActivity {
         transaction.add(R.id.flFragmentContainer, dataBindingFragment, "dataBinding");
         //transaction.show(dataBindingFragment);
         transaction.commit();
+    }
+
+    public class UserPresenter {
+        public void onChangeUserClick(User user) {
+            LogUtils.i("on change user button clicked.");
+        }
     }
 
 }

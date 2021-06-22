@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <!-- data: 声明需要用到的变量及变量类型 -->
     <data class="TestDataBinding">
+
+        <import type="android.view.View" />
 
         <import
             alias="AliasUser"
             type="com.liamma.collections.bean.User" />
 
+        <import type="com.liamma.collections.bean.ObservableUser" />
+
+        <import type="com.liamma.collections.main.ui.DataBindingActivity.UserPresenter" />
+
+        <import type="com.liamma.commons.utils.StringUtils" />
+
         <variable
             name="userInfo"
             type="AliasUser" />
+
+        <variable
+            name="observableUser"
+            type="ObservableUser" />
+
+        <variable
+            name="list"
+            type="androidx.databinding.ObservableList&lt;AliasUser&gt;" />
+
+        <variable
+            name="index"
+            type="int" />
+
+        <variable
+            name="userPresenter"
+            type="UserPresenter" />
+
+        <import type="com.liamma.collections.bean.Image" />
+
+        <variable
+            name="image"
+            type="Image" />
+
     </data>
 
     <LinearLayout
@@ -43,9 +75,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@{userInfo.id, default=0000}"
+            android:text='@{"testing_id"}'
             android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="@{StringUtils.isNotBlank(userInfo.id) ? View.VISIBLE : View.GONE}" />
+
+        <EditText
+            android:id="@+id/etMark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Please input mark"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@={userInfo.mark}"
+            android:textColor="@color/black"
+            android:textColorHint="@color/LightGray"
             android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_launcher_background"
+            bind:url="@{image.url}" />
 
         <TextView
             android:id="@+id/tvChangUser"
@@ -53,9 +107,14 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:gravity="start|center_vertical"
+            android:onClick="@{()->userPresenter.onChangeUserClick(userInfo)}"
             android:text="Change User"
             android:textColor="@color/DarkBlue"
             android:textSize="20sp" />
+
+        <include
+            layout="@layout/main_layout_bind_include"
+            bind:includeUserInfo="@{userInfo}" />
 
         <FrameLayout
             android:id="@+id/flFragmentContainer"

@@ -4,6 +4,7 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.liamma.collections.BR;
+import com.liamma.commons.log.LogUtils;
 
 /**
  * @author Liam
@@ -16,6 +17,7 @@ public class User extends BaseObservable {
     private String name;
     private String password;
     private String id;
+    private String mark;
 
     public User(String name, String password, String id) {
         this.name = name;
@@ -50,5 +52,15 @@ public class User extends BaseObservable {
 
     public void setId(String id) {
         this.id = id;
+        LogUtils.i("双向绑定，ET 数据写回 model, id = " + id);
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
+        LogUtils.i("双向绑定，ET 数据写回 model, mark = " + mark);
     }
 }

@@ -12,12 +12,12 @@ import androidx.databinding.ObservableLong;
 public class ObservableUser {
 
     private ObservableField<String> name;
-    private ObservableField<String> password;
+    private String password;
     private ObservableLong id;
 
     public ObservableUser(String name, String password, long id) {
         this.name = new ObservableField<String>(name);
-        this.password = new ObservableField<String>(password);
+        this.password = password;
         this.id = new ObservableLong(id);
     }
 
@@ -25,23 +25,23 @@ public class ObservableUser {
         return name;
     }
 
-    public void setName(ObservableField<String> name) {
-        this.name = name;
-    }
-
-    public ObservableField<String> getPassword() {
+    public String getPassword() {
         return password;
-    }
-
-    public void setPassword(ObservableField<String> password) {
-        this.password = password;
     }
 
     public ObservableLong getId() {
         return id;
     }
 
-    public void setId(ObservableLong id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setId(Long id) {
+        this.id.set(id);
     }
 }
