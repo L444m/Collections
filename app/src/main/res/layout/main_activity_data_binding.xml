@@ -43,6 +43,10 @@
             name="image"
             type="Image" />
 
+        <variable
+            name="key"
+            type="androidx.databinding.ObservableField&lt;String&gt;" />
+
     </data>
 
     <LinearLayout

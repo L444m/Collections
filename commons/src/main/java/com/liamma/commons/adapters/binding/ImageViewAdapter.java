@@ -1,4 +1,4 @@
-package com.liamma.commons.frameworks.mvvm.bdadapters;
+package com.liamma.commons.adapters.binding;
 
 import android.widget.ImageView;
 
@@ -10,7 +10,7 @@ import androidx.databinding.BindingAdapter;
  * DATE: Created on 2021/6/22 17:14
  * DESCRIPTION:
  */
-public final class ImageBindingAdapter {
+public final class ImageViewAdapter {
 
     @BindingAdapter(value = {"imageUrl", "placeholder"}, requireAll = false)
     public static void loadImage(ImageView imageView, String imageUrl, String placeholder) {

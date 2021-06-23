@@ -1,17 +1,14 @@
 package com.liamma.collections.main.ui;
 
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableList;
-import androidx.databinding.ObservableLong;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -40,6 +37,7 @@ public class DataBindingActivity extends AppCompatActivity {
     private List<User> list;
     private ObservableList<User> observableList;
     private int index;
+    private ObservableField<String> key;
 
     private TestDataBinding dataBinding;
     private int userIndex = 0;
@@ -64,12 +62,17 @@ public class DataBindingActivity extends AppCompatActivity {
         observableList = new ObservableArrayList<>();
         observableList.addAll(list);
         index = 1;
+
         dataBinding.setUserInfo(user);
         dataBinding.setObservableUser(observableUser);
         dataBinding.setList(observableList);
         dataBinding.setIndex(index);
         dataBinding.setUserPresenter(new UserPresenter());
         dataBinding.setImage(new Image("wwww.baidu.com/fuckyou/index.jsp"));
+
+        key = new ObservableField<String>("testing");
+        dataBinding.setKey(key);
+        //key.set("changed key");
 
         //addListeners();
         //addChangeIdListener();
