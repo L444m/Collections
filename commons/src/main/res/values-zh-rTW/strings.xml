@@ -1,38 +1,38 @@
 <resources>
     <string name="app_name">Commons</string>
 
-    <string name="confirm">确认</string>
+    <string name="confirm">確認</string>
     <string name="cancel">取消</string>
     <string name="submit">提交</string>
     <string name="add">添加</string>
-    <string name="delete">删除</string>
+    <string name="delete">刪除</string>
     <string name="remove">移除</string>
     <string name="clear">清除</string>
     <string name="done">完成</string>
     <string name="save">保存</string>
-    <string name="publish">发布</string>
+    <string name="publish">發布</string>
     <string name="prompt">提示</string>
     <string name="got_it">知道了</string>
-    <string name="copy">复制</string>
-    <string name="paste">粘贴</string>
-    <string name="close">关闭</string>
+    <string name="copy">複製</string>
+    <string name="paste">粘貼</string>
+    <string name="close">關閉</string>
     <string name="back">返回</string>
     <string name="exit">退出</string>
-    <string name="send">发送</string>
+    <string name="send">發送</string>
     <string name="agree">同意</string>
-    <string name="refuse">拒绝</string>
+    <string name="refuse">拒絕</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="next_step">下一步</string>
     <string name="search">搜索</string>
     <string name="reply">回复</string>
-    <string name="forward">转发</string>
-    <string name="photo_album">相册</string>
+    <string name="forward">轉發</string>
+    <string name="photo_album">相冊</string>
     <string name="take_photo">拍照</string>
 
-    <string name="request_successfully">请求成功</string>
-    <string name="request_failed">请求失败</string>
-    <string name="no_data">暂无数据</string>
+    <string name="request_successfully">請求成功</string>
+    <string name="request_failed">請求失敗</string>
+    <string name="no_data">暫無數據</string>
     <string name="press_again_to_exit">再按一次退出程序</string>
 
 </resources>
