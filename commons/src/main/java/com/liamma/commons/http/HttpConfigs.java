@@ -10,6 +10,10 @@ import com.liamma.commons.utils.DateTimeUtils;
  */
 public final class HttpConfigs {
 
+    // http status
+    public static final int HTTP_STATUS_CODE_SUCCESS = 200;
+    public static final String HTTP_STATUS_MSG_SUCCESS = "success";
+
     public static final long DEFAULT_CONNECT_TIME = 20 * DateTimeUtils.SECOND_IN_MILLI;
     public static final long DEFAULT_READ_TIME = 20 * DateTimeUtils.SECOND_IN_MILLI;
     public static final long DEFAULT_WRITE_TIME = 20 * DateTimeUtils.SECOND_IN_MILLI;
